@@ -2,15 +2,16 @@
 <html>
 <head>
 <meta charset='UTF-8'><meta name='viewport' content='width=device-width initial-scale=1'>
-<title>冰布子的简易建站指南</title><style type='text/css'>html {overflow-x: initial !important;}:root { --bg-color: #ffffff; --text-color: #333333; --select-text-bg-color: #B5D6FC; --select-text-font-color: auto; --monospace: "Lucida Console",Consolas,"Courier",monospace; --title-bar-height: 20px; }
-.mac-os-11 { --title-bar-height: 28px; }
+
+<style type='text/css'>html {overflow-x: initial !important;}:root { --bg-color:#ffffff; --text-color:#333333; --select-text-bg-color:#B5D6FC; --select-text-font-color:auto; --monospace:"Lucida Console",Consolas,"Courier",monospace; --title-bar-height:20px; }
+.mac-os-11 { --title-bar-height:28px; }
 html { font-size: 14px; background-color: var(--bg-color); color: var(--text-color); font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; -webkit-font-smoothing: antialiased; }
-body { margin: 0px; padding: 0px; height: auto; bottom: 0px; top: 0px; left: 0px; right: 0px; font-size: 1rem; line-height: 1.42857143; overflow-x: hidden; background-image: inherit; background-size: inherit; background-attachment: inherit; background-origin: inherit; background-clip: inherit; background-color: inherit; tab-size: 4; background-position: inherit inherit; background-repeat: inherit inherit; }
+body { margin: 0px; padding: 0px; height: auto; inset: 0px; font-size: 1rem; line-height: 1.42857; overflow-x: hidden; background: inherit; tab-size: 4; }
 iframe { margin: auto; }
 a.url { word-break: break-all; }
 a:active, a:hover { outline: 0px; }
 .in-text-selection, ::selection { text-shadow: none; background: var(--select-text-bg-color); color: var(--select-text-font-color); }
-#write { margin: 0px auto; height: auto; width: inherit; word-break: normal; word-wrap: break-word; position: relative; white-space: normal; overflow-x: visible; padding-top: 36px; }
+#write { margin: 0px auto; height: auto; width: inherit; word-break: normal; overflow-wrap: break-word; position: relative; white-space: normal; overflow-x: visible; padding-top: 36px; }
 #write.first-line-indent p { text-indent: 2em; }
 #write.first-line-indent li p, #write.first-line-indent p * { text-indent: 0px; }
 #write.first-line-indent li { margin-left: 2em; }
@@ -18,16 +19,14 @@ a:active, a:hover { outline: 0px; }
 body.typora-export { padding-left: 30px; padding-right: 30px; }
 .typora-export .footnote-line, .typora-export li, .typora-export p { white-space: pre-wrap; }
 .typora-export .task-list-item input { pointer-events: none; }
-@media screen and (max-width: 500px) { 
+@media screen and (max-width: 500px) {
   body.typora-export { padding-left: 0px; padding-right: 0px; }
   #write { padding-left: 20px; padding-right: 20px; }
-  .CodeMirror-sizer { margin-left: 0px !important; }
-  .CodeMirror-gutters { display: none !important; }
 }
 #write li > figure:last-child { margin-bottom: 0.5rem; }
 #write ol, #write ul { position: relative; }
 img { max-width: 100%; vertical-align: middle; image-orientation: from-image; }
-button, input, select, textarea { color: inherit; font-family: inherit; font-size: inherit; font-style: inherit; font-variant-caps: inherit; font-weight: inherit; font-stretch: inherit; line-height: inherit; }
+button, input, select, textarea { color: inherit; font: inherit; }
 input[type="checkbox"], input[type="radio"] { line-height: normal; padding: 0px; }
 *, ::after, ::before { box-sizing: border-box; }
 #write h1, #write h2, #write h3, #write h4, #write h5, #write h6, #write p, #write pre { width: inherit; }
@@ -45,17 +44,17 @@ h6 { font-size: 1rem; }
 .hidden { display: none; }
 .md-blockmeta { color: rgb(204, 204, 204); font-weight: 700; font-style: italic; }
 a { cursor: pointer; }
-sup.md-footnote { padding: 2px 4px; background-color: rgba(238, 238, 238, 0.7); color: rgb(85, 85, 85); border-top-left-radius: 4px; border-top-right-radius: 4px; border-bottom-right-radius: 4px; border-bottom-left-radius: 4px; cursor: pointer; }
+sup.md-footnote { padding: 2px 4px; background-color: rgba(238, 238, 238, 0.7); color: rgb(85, 85, 85); border-radius: 4px; cursor: pointer; }
 sup.md-footnote a, sup.md-footnote a:hover { color: inherit; text-transform: inherit; text-decoration: inherit; }
 #write input[type="checkbox"] { cursor: pointer; width: inherit; height: inherit; }
 figure { overflow-x: auto; margin: 1.2em 0px; max-width: calc(100% + 16px); padding: 0px; }
 figure > table { margin: 0px; }
-tr { break-inside: avoid; break-after: auto; }
+thead, tr { break-inside: avoid; break-after: auto; }
 thead { display: table-header-group; }
 table { border-collapse: collapse; border-spacing: 0px; width: 100%; overflow: auto; break-inside: auto; text-align: left; }
 table.md-table td { min-width: 32px; }
-.CodeMirror-gutters { border-right-width: 0px; background-color: inherit; }
-.CodeMirror-linenumber { }
+.CodeMirror-gutters { border-right: 0px; background-color: inherit; }
+.CodeMirror-linenumber { user-select: none; }
 .CodeMirror { text-align: left; }
 .CodeMirror-placeholder { opacity: 0.3; }
 .CodeMirror pre { padding: 0px 4px; }
@@ -65,16 +64,17 @@ div.hr:focus { cursor: none; }
 #write.fences-no-line-wrapping pre { white-space: pre; }
 #write pre.ty-contain-cm { white-space: normal; }
 .CodeMirror-gutters { margin-right: 4px; }
-.md-fences { font-size: 0.9rem; display: block; break-inside: avoid; text-align: left; overflow: visible; white-space: pre; background-image: inherit; background-size: inherit; background-attachment: inherit; background-origin: inherit; background-clip: inherit; background-color: inherit; position: relative !important; background-position: inherit inherit; background-repeat: inherit inherit; }
-.md-diagram-panel { width: 100%; margin-top: 10px; text-align: center; padding-top: 0px; padding-bottom: 8px; overflow-x: auto; }
+.md-fences { font-size: 0.9rem; display: block; break-inside: avoid; text-align: left; overflow: visible; white-space: pre; background: inherit; position: relative !important; }
+.md-fences-adv-panel { width: 100%; margin-top: 10px; text-align: center; padding-top: 0px; padding-bottom: 8px; overflow-x: auto; }
 #write .md-fences.mock-cm { white-space: pre-wrap; }
 .md-fences.md-fences-with-lineno { padding-left: 0px; }
 #write.fences-no-line-wrapping .md-fences.mock-cm { white-space: pre; overflow-x: auto; }
 .md-fences.mock-cm.md-fences-with-lineno { padding-left: 8px; }
 .CodeMirror-line, twitterwidget { break-inside: avoid; }
+svg { break-inside: avoid; }
 .footnotes { opacity: 0.8; font-size: 0.9rem; margin-top: 1em; margin-bottom: 1em; }
 .footnotes + .footnotes { margin-top: 0px; }
-.md-reset { margin: 0px; padding: 0px; border: 0px; outline: 0px; vertical-align: top; text-decoration: none; text-shadow: none; float: none; position: static; width: auto; height: auto; white-space: nowrap; cursor: inherit; line-height: normal; font-weight: 400; text-align: left; box-sizing: content-box; direction: ltr; background-position: 0px 0px; background-repeat: initial initial; }
+.md-reset { margin: 0px; padding: 0px; border: 0px; outline: 0px; vertical-align: top; background: 0px 0px; text-decoration: none; text-shadow: none; float: none; position: static; width: auto; height: auto; white-space: nowrap; cursor: inherit; -webkit-tap-highlight-color: transparent; line-height: normal; font-weight: 400; text-align: left; box-sizing: content-box; direction: ltr; }
 li div { padding-top: 0px; }
 blockquote { margin: 1rem 0px; }
 li .mathjax-block, li p { margin: 0.5rem 0px; }
@@ -84,17 +84,18 @@ blockquote > :last-child { margin-bottom: 0px; }
 blockquote > :first-child, li > :first-child { margin-top: 0px; }
 .footnotes-area { color: rgb(136, 136, 136); margin-top: 0.714rem; padding-bottom: 0.143rem; white-space: normal; }
 #write .footnote-line { white-space: pre-wrap; }
-@media print { 
+@media print {
   body, html { border: 1px solid transparent; height: 99%; break-after: avoid; break-before: avoid; font-variant-ligatures: no-common-ligatures; }
-  #write { margin-top: 0px; padding-top: 0px; border-color: transparent !important; }
+  #write { margin-top: 0px; padding-top: 0px; border-color: transparent !important; padding-bottom: 0px !important; }
   .typora-export * { -webkit-print-color-adjust: exact; }
   .typora-export #write { break-after: avoid; }
   .typora-export #write::after { height: 0px; }
   .is-mac table { break-inside: avoid; }
+  .typora-export-show-outline .typora-export-sidebar { display: none; }
 }
 .footnote-line { margin-top: 0.714em; font-size: 0.7em; }
 a img, img a { cursor: pointer; }
-pre.md-meta-block { font-size: 0.8rem; min-height: 0.8rem; white-space: pre-wrap; background-color: rgb(204, 204, 204); display: block; overflow-x: hidden; background-position: initial initial; background-repeat: initial initial; }
+pre.md-meta-block { font-size: 0.8rem; min-height: 0.8rem; white-space: pre-wrap; background: rgb(204, 204, 204); display: block; overflow-x: hidden; }
 p > .md-image:only-child:not(.md-img-error) img, p > img:only-child { display: block; margin: auto; }
 #write.first-line-indent p > .md-image:only-child:not(.md-img-error) img { left: -2em; position: relative; }
 p > .md-image:only-child { display: inline-block; width: 100%; }
@@ -107,7 +108,7 @@ p > .md-image:only-child { display: inline-block; width: 100%; }
 .task-list-item.md-task-list-item { padding-left: 0px; }
 .md-task-list-item > input { position: absolute; top: 0px; left: 0px; margin-left: -1.2em; margin-top: calc(1em - 10px); border: none; }
 .math { font-size: 1rem; }
-.md-toc { min-height: 3.58rem; position: relative; font-size: 0.9rem; border-top-left-radius: 10px; border-top-right-radius: 10px; border-bottom-right-radius: 10px; border-bottom-left-radius: 10px; }
+.md-toc { min-height: 3.58rem; position: relative; font-size: 0.9rem; border-radius: 10px; }
 .md-toc-content { position: relative; margin-left: 0px; }
 .md-toc-content::after, .md-toc::after { display: none; }
 .md-toc-item { display: block; color: rgb(65, 131, 196); }
@@ -120,7 +121,7 @@ p > .md-image:only-child { display: inline-block; width: 100%; }
 .md-toc-h4 .md-toc-inner { margin-left: 6em; }
 .md-toc-h5 .md-toc-inner { margin-left: 8em; }
 .md-toc-h6 .md-toc-inner { margin-left: 10em; }
-@media screen and (max-width: 48em) { 
+@media screen and (max-width: 48em) {
   .md-toc-h3 .md-toc-inner { margin-left: 3.5em; }
   .md-toc-h4 .md-toc-inner { margin-left: 5em; }
   .md-toc-h5 .md-toc-inner { margin-left: 6.5em; }
@@ -128,47 +129,84 @@ p > .md-image:only-child { display: inline-block; width: 100%; }
 }
 a.md-toc-inner { font-size: inherit; font-style: inherit; font-weight: inherit; line-height: inherit; }
 .footnote-line a:not(.reversefootnote) { color: inherit; }
+.reversefootnote { font-family: ui-monospace, sans-serif; }
 .md-attr { display: none; }
 .md-fn-count::after { content: "."; }
 code, pre, samp, tt { font-family: var(--monospace); }
-kbd { margin: 0px 0.1em; padding: 0.1em 0.6em; font-size: 0.8em; color: rgb(36, 39, 41); background-color: rgb(255, 255, 255); border: 1px solid rgb(173, 179, 185); border-top-left-radius: 3px; border-top-right-radius: 3px; border-bottom-right-radius: 3px; border-bottom-left-radius: 3px; box-shadow: rgba(12, 13, 14, 0.2) 0px 1px 0px, rgb(255, 255, 255) 0px 0px 0px 2px inset; white-space: nowrap; vertical-align: middle; background-position: initial initial; background-repeat: initial initial; }
-.md-comment { color: rgb(162, 127, 3); opacity: 0.8; font-family: var(--monospace); }
-code { text-align: left; }
-a.md-print-anchor { white-space: pre !important; border: none !important; display: inline-block !important; position: absolute !important; width: 1px !important; right: 0px !important; outline: 0px !important; text-shadow: initial !important; background-position: 0px 0px !important; background-repeat: initial initial !important; }
-.md-inline-math .MathJax_SVG .noError { display: none !important; }
-.html-for-mac .inline-math-svg .MathJax_SVG { vertical-align: 0.2px; }
-.md-math-block .MathJax_SVG_Display { text-align: center; margin: 0px; position: relative; text-indent: 0px; max-width: none; max-height: none; min-height: 0px; min-width: 100%; width: auto; overflow-y: hidden; display: block !important; }
-.MathJax_SVG_Display, .md-inline-math .MathJax_SVG_Display { width: auto; margin: inherit; display: inline-block !important; }
-.MathJax_SVG .MJX-monospace { font-family: var(--monospace); }
-.MathJax_SVG .MJX-sans-serif { font-family: sans-serif; }
-.MathJax_SVG { display: inline; font-style: normal; font-weight: 400; line-height: normal; zoom: 90%; text-indent: 0px; text-align: left; text-transform: none; letter-spacing: normal; word-spacing: normal; word-wrap: normal; white-space: nowrap; float: none; direction: ltr; max-width: none; max-height: none; min-width: 0px; min-height: 0px; border: 0px; padding: 0px; margin: 0px; }
-.MathJax_SVG * { transition: none; }
-.MathJax_SVG_Display svg { vertical-align: middle !important; margin-bottom: 0px !important; margin-top: 0px !important; }
+kbd { margin: 0px 0.1em; padding: 0.1em 0.6em; font-size: 0.8em; color: rgb(36, 39, 41); background: rgb(255, 255, 255); border: 1px solid rgb(173, 179, 185); border-radius: 3px; box-shadow: rgba(12, 13, 14, 0.2) 0px 1px 0px, rgb(255, 255, 255) 0px 0px 0px 2px inset; white-space: nowrap; vertical-align: middle; }
+.md-comment { color: rgb(162, 127, 3); opacity: 0.6; font-family: var(--monospace); }
+code { text-align: left; vertical-align: initial; }
+a.md-print-anchor { white-space: pre !important; border-width: initial !important; border-style: none !important; border-color: initial !important; display: inline-block !important; position: absolute !important; width: 1px !important; right: 0px !important; outline: 0px !important; background: 0px 0px !important; text-decoration: initial !important; text-shadow: initial !important; }
 .os-windows.monocolor-emoji .md-emoji { font-family: "Segoe UI Symbol", sans-serif; }
 .md-diagram-panel > svg { max-width: 100%; }
 [lang="flow"] svg, [lang="mermaid"] svg { max-width: 100%; height: auto; }
 [lang="mermaid"] .node text { font-size: 1rem; }
-table tr th { border-bottom-width: 0px; }
+table tr th { border-bottom: 0px; }
 video { max-width: 100%; display: block; margin: 0px auto; }
 iframe { max-width: 100%; width: 100%; border: none; }
 .highlight td, .highlight tr { border: 0px; }
-mark { background-color: rgb(255, 255, 0); color: rgb(0, 0, 0); background-position: initial initial; background-repeat: initial initial; }
+mark { background: rgb(255, 255, 0); color: rgb(0, 0, 0); }
 .md-html-inline .md-plain, .md-html-inline strong, mark .md-inline-math, mark strong { color: inherit; }
-mark .md-meta { color: rgb(0, 0, 0); opacity: 0.3 !important; }
-@media print { 
+.md-expand mark .md-meta { opacity: 0.3 !important; }
+mark .md-meta { color: rgb(0, 0, 0); }
+@media print {
   .typora-export h1, .typora-export h2, .typora-export h3, .typora-export h4, .typora-export h5, .typora-export h6 { break-inside: avoid; }
 }
 .md-diagram-panel .messageText { stroke: none !important; }
 .md-diagram-panel .start-state { fill: var(--node-fill); }
 .md-diagram-panel .edgeLabel rect { opacity: 1 !important; }
-.md-require-zoom-fix foreignObject { font-size: var(--mermaid-font-zoom); }
+.md-fences.md-fences-math { font-size: 1em; }
+.md-fences-advanced:not(.md-focus) { padding: 0px; white-space: nowrap; border: 0px; }
+.md-fences-advanced:not(.md-focus) { background: inherit; }
+.typora-export-show-outline .typora-export-content { max-width: 1440px; margin: auto; display: flex; flex-direction: row; }
+.typora-export-sidebar { width: 300px; font-size: 0.8rem; margin-top: 80px; margin-right: 18px; }
+.typora-export-show-outline #write { --webkit-flex:2; flex: 2 1 0%; }
+.typora-export-sidebar .outline-content { position: fixed; top: 0px; max-height: 100%; overflow: hidden auto; padding-bottom: 30px; padding-top: 60px; width: 300px; }
+@media screen and (max-width: 1024px) {
+  .typora-export-sidebar, .typora-export-sidebar .outline-content { width: 240px; }
+}
+@media screen and (max-width: 800px) {
+  .typora-export-sidebar { display: none; }
+}
+.outline-content li, .outline-content ul { margin-left: 0px; margin-right: 0px; padding-left: 0px; padding-right: 0px; list-style: none; }
+.outline-content ul { margin-top: 0px; margin-bottom: 0px; }
+.outline-content strong { font-weight: 400; }
+.outline-expander { width: 1rem; height: 1.42857rem; position: relative; display: table-cell; vertical-align: middle; cursor: pointer; padding-left: 4px; }
+.outline-expander::before { content: ""; position: relative; font-family: Ionicons; display: inline-block; font-size: 8px; vertical-align: middle; }
+.outline-item { padding-top: 3px; padding-bottom: 3px; cursor: pointer; }
+.outline-expander:hover::before { content: ""; }
+.outline-h1 > .outline-item { padding-left: 0px; }
+.outline-h2 > .outline-item { padding-left: 1em; }
+.outline-h3 > .outline-item { padding-left: 2em; }
+.outline-h4 > .outline-item { padding-left: 3em; }
+.outline-h5 > .outline-item { padding-left: 4em; }
+.outline-h6 > .outline-item { padding-left: 5em; }
+.outline-label { cursor: pointer; display: table-cell; vertical-align: middle; text-decoration: none; color: inherit; }
+.outline-label:hover { text-decoration: underline; }
+.outline-item:hover { border-color: rgb(245, 245, 245); background-color: var(--item-hover-bg-color); }
+.outline-item:hover { margin-left: -28px; margin-right: -28px; border-left: 28px solid transparent; border-right: 28px solid transparent; }
+.outline-item-single .outline-expander::before, .outline-item-single .outline-expander:hover::before { display: none; }
+.outline-item-open > .outline-item > .outline-expander::before { content: ""; }
+.outline-children { display: none; }
+.info-panel-tab-wrapper { display: none; }
+.outline-item-open > .outline-children { display: block; }
+.typora-export .outline-item { padding-top: 1px; padding-bottom: 1px; }
+.typora-export .outline-item:hover { margin-right: -8px; border-right: 8px solid transparent; }
+.typora-export .outline-expander::before { content: "+"; font-family: inherit; top: -1px; }
+.typora-export .outline-expander:hover::before, .typora-export .outline-item-open > .outline-item > .outline-expander::before { content: "−"; }
+.typora-export-collapse-outline .outline-children { display: none; }
+.typora-export-collapse-outline .outline-item-open > .outline-children, .typora-export-no-collapse-outline .outline-children { display: block; }
+.typora-export-no-collapse-outline .outline-expander::before { content: "" !important; }
+.typora-export-show-outline .outline-item-active > .outline-item .outline-label { font-weight: 700; }
+.md-inline-math-container mjx-container { zoom: 0.95; }
+mjx-container { break-inside: avoid; }
 
 
 .CodeMirror { height: auto; }
-.CodeMirror.cm-s-inner { background-image: inherit; background-size: inherit; background-attachment: inherit; background-origin: inherit; background-clip: inherit; background-color: inherit; background-position: inherit inherit; background-repeat: inherit inherit; }
+.CodeMirror.cm-s-inner { background: inherit; }
 .CodeMirror-scroll { overflow: auto hidden; z-index: 3; }
 .CodeMirror-gutter-filler, .CodeMirror-scrollbar-filler { background-color: rgb(255, 255, 255); }
-.CodeMirror-gutters { border-right-width: 1px; border-right-style: solid; border-right-color: rgb(221, 221, 221); background-image: inherit; background-size: inherit; background-attachment: inherit; background-origin: inherit; background-clip: inherit; background-color: inherit; white-space: nowrap; background-position: inherit inherit; background-repeat: inherit inherit; }
+.CodeMirror-gutters { border-right: 1px solid rgb(221, 221, 221); background: inherit; white-space: nowrap; }
 .CodeMirror-linenumber { padding: 0px 3px 0px 5px; text-align: right; color: rgb(153, 153, 153); }
 .cm-s-inner .cm-keyword { color: rgb(119, 0, 136); }
 .cm-s-inner .cm-atom, .cm-s-inner.cm-atom { color: rgb(34, 17, 153); }
@@ -204,410 +242,512 @@ mark .md-meta { color: rgb(0, 0, 0); opacity: 0.3 !important; }
 .cm-defined { color: rgb(181, 137, 0); }
 div.CodeMirror span.CodeMirror-matchingbracket { color: rgb(0, 255, 0); }
 div.CodeMirror span.CodeMirror-nonmatchingbracket { color: rgb(255, 34, 34); }
-.cm-s-inner .CodeMirror-activeline-background { background-image: inherit; background-size: inherit; background-attachment: inherit; background-origin: inherit; background-clip: inherit; background-color: inherit; background-position: inherit inherit; background-repeat: inherit inherit; }
+.cm-s-inner .CodeMirror-activeline-background { background: inherit; }
 .CodeMirror { position: relative; overflow: hidden; }
-.CodeMirror-scroll { height: 100%; outline: 0px; position: relative; box-sizing: content-box; background-image: inherit; background-size: inherit; background-attachment: inherit; background-origin: inherit; background-clip: inherit; background-color: inherit; background-position: inherit inherit; background-repeat: inherit inherit; }
+.CodeMirror-scroll { height: 100%; outline: 0px; position: relative; box-sizing: content-box; background: inherit; }
 .CodeMirror-sizer { position: relative; }
-.CodeMirror-gutter-filler, .CodeMirror-hscrollbar, .CodeMirror-scrollbar-filler, .CodeMirror-vscrollbar { position: absolute; z-index: 6; display: none; }
+.CodeMirror-gutter-filler, .CodeMirror-hscrollbar, .CodeMirror-scrollbar-filler, .CodeMirror-vscrollbar { position: absolute; z-index: 6; display: none; outline: 0px; }
 .CodeMirror-vscrollbar { right: 0px; top: 0px; overflow: hidden; }
-.CodeMirror-hscrollbar { bottom: 0px; left: 0px; overflow: hidden; }
+.CodeMirror-hscrollbar { bottom: 0px; left: 0px; overflow: auto hidden; }
 .CodeMirror-scrollbar-filler { right: 0px; bottom: 0px; }
 .CodeMirror-gutter-filler { left: 0px; bottom: 0px; }
-.CodeMirror-gutters { position: absolute; left: 0px; top: 0px; padding-bottom: 30px; z-index: 3; }
+.CodeMirror-gutters { position: absolute; left: 0px; top: 0px; padding-bottom: 10px; z-index: 3; overflow-y: hidden; }
 .CodeMirror-gutter { white-space: normal; height: 100%; box-sizing: content-box; padding-bottom: 30px; margin-bottom: -32px; display: inline-block; }
-.CodeMirror-gutter-wrapper { position: absolute; z-index: 4; border: none !important; background-position: 0px 0px !important; background-repeat: initial initial !important; }
+.CodeMirror-gutter-wrapper { position: absolute; z-index: 4; background: 0px 0px !important; border: none !important; }
 .CodeMirror-gutter-background { position: absolute; top: 0px; bottom: 0px; z-index: 4; }
 .CodeMirror-gutter-elt { position: absolute; cursor: default; z-index: 4; }
 .CodeMirror-lines { cursor: text; }
-.CodeMirror pre { border-top-left-radius: 0px; border-top-right-radius: 0px; border-bottom-right-radius: 0px; border-bottom-left-radius: 0px; border-width: 0px; font-family: inherit; font-size: inherit; margin: 0px; white-space: pre; word-wrap: normal; color: inherit; z-index: 2; position: relative; overflow: visible; background-position: 0px 0px; background-repeat: initial initial; }
-.CodeMirror-wrap pre { word-wrap: break-word; white-space: pre-wrap; word-break: normal; }
-.CodeMirror-code pre { border-right-width: 30px; border-right-style: solid; border-right-color: transparent; width: fit-content; }
-.CodeMirror-wrap .CodeMirror-code pre { border-right-style: none; width: auto; }
-.CodeMirror-linebackground { position: absolute; left: 0px; right: 0px; top: 0px; bottom: 0px; z-index: 0; }
+.CodeMirror pre { border-radius: 0px; border-width: 0px; background: 0px 0px; font-family: inherit; font-size: inherit; margin: 0px; white-space: pre; overflow-wrap: normal; color: inherit; z-index: 2; position: relative; overflow: visible; }
+.CodeMirror-wrap pre { overflow-wrap: break-word; white-space: pre-wrap; word-break: normal; }
+.CodeMirror-code pre { border-right: 30px solid transparent; width: fit-content; }
+.CodeMirror-wrap .CodeMirror-code pre { border-right: none; width: auto; }
+.CodeMirror-linebackground { position: absolute; inset: 0px; z-index: 0; }
 .CodeMirror-linewidget { position: relative; z-index: 2; overflow: auto; }
 .CodeMirror-wrap .CodeMirror-scroll { overflow-x: hidden; }
 .CodeMirror-measure { position: absolute; width: 100%; height: 0px; overflow: hidden; visibility: hidden; }
 .CodeMirror-measure pre { position: static; }
-.CodeMirror div.CodeMirror-cursor { position: absolute; visibility: hidden; border-right-style: none; width: 0px; }
+.CodeMirror div.CodeMirror-cursor { position: absolute; visibility: hidden; border-right: none; width: 0px; }
 .CodeMirror div.CodeMirror-cursor { visibility: hidden; }
 .CodeMirror-focused div.CodeMirror-cursor { visibility: inherit; }
-.cm-searching { background-color: rgba(255, 255, 0, 0.4); background-position: initial initial; background-repeat: initial initial; }
-@media print { 
+.cm-searching { background: rgba(255, 255, 0, 0.4); }
+span.cm-underlined { text-decoration: underline; }
+span.cm-strikethrough { text-decoration: line-through; }
+.cm-tw-syntaxerror { color: rgb(255, 255, 255); background-color: rgb(153, 0, 0); }
+.cm-tw-deleted { text-decoration: line-through; }
+.cm-tw-header5 { font-weight: 700; }
+.cm-tw-listitem:first-child { padding-left: 10px; }
+.cm-tw-box { border-style: solid; border-right-width: 1px; border-bottom-width: 1px; border-left-width: 1px; border-color: inherit; border-top-width: 0px !important; }
+.cm-tw-underline { text-decoration: underline; }
+@media print {
   .CodeMirror div.CodeMirror-cursor { visibility: hidden; }
 }
 
 
 :root {
-  --window-border: none;
-  --typora-center-window-title: true;
-  --active-file-bg-color: #f3f3f3;
-  --bg-color: #fcfcfc;
-  --control-text-color: #777;
+    --side-bar-bg-color: #d9ede5;
+	--control-text-color: #6B6B6B;
+	--active-file-bg-color: #ecf6f2;
+	--active-file-border-color: #6B6B6B;
+	--active-file-text-color: #202020;
+	--table-even-row-color:#f8fcfa;
+	--table-head-color:#d9ede5;
+	--deep-theme-color: #4eb289;
+	--code-block-bg-color: #0F111A;
 }
 
-.mac-seamless-mode #typora-sidebar {
-  top: 20px;
-  padding-top: 0;
-  height: auto;
+/*serif*/
+/*monospace*/
+/*Chinese*/
+html{
+	font-size: 16px;
 }
 
-html,
-body,
-#write {
-  background: #fcfcfc;
-  background: var(--bg-color);
-  font-family: 'Mplus1p', sans-serif;
-  font-weight: 300;
-}
-
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-  color: #111;
-  font-family: 'Mplus1p Bold', sans-serif;
-}
-
-html {
-  font-size: 16px;
+body {
+  font-family: 'Lexend','Helvetica','SourceCodePro','NotoSansSC';
+	font-weight: normal;
+	line-height: 1.5rem;
+	letter-spacing: 0;
+  margin: 0;
 }
 
 #write {
-  max-width: 1024px;
-  text-align: justify;
+	max-width: 900px;
+  padding: 30px 50px 20px;
 }
 
-#write>h1:first-child {
-  margin-top: 2.75rem;
+#write p{
+	text-align:left;
 }
 
-#write>h2:first-child {
-  margin-top: 1.75rem;
+#write pre.md-meta-block {
+	padding: 1rem;
+	font-size: 85%;
+	line-height: 1.45;
+	background-color: #f7f7f7;
+	border: 0;
+	border-radius: 3px;
+	color: #777777;
+	margin-top: 0 !important;
 }
 
-#write>h3:first-child {
-  margin-top: 1rem;
+.md-image>.md-meta {
+  color: #777777;
+  font-size: 0.9rem;
+	font-family: 'Lexend';
+  padding: 4px 0;
 }
 
-#write>h4:first-child {
-  margin-top: 0.5rem;
-}
 
-h1 {
-  font-weight: normal;
-  line-height: 4rem;
-  font-size: 3rem;
-  margin: 0 0 1.75rem;
-}
-
-h2 {
-  font-weight: normal;
-  line-height: 3rem;
-  margin: 0 0 1.9375rem;
-}
-
-h3 {
-  font-weight: normal;
-}
-
-h4 {
-  font-weight: normal;
-}
-
-h5 {
-  font-size: 1.125rem;
-  font-weight: normal;
-}
-
-h6 {
-  font-size: 1rem;
-  font-weight: bold;
-}
-
-p {
-  color: #111;
-  font-size: 1rem;
-  line-height: 1.75rem;
-  margin: 0 0 1.25rem;
-}
-
-#write>h3.md-focus:before {
-  left: -1.875rem;
-  top: 0.5rem;
-  padding: 2px;
-}
-
-#write>h4.md-focus:before {
-  left: -1.875rem;
-  top: 0.3125rem;
-  padding: 2px;
-}
-
-#write>h5.md-focus:before {
-  left: -1.875rem;
-  top: 0.25rem;
-  padding: 2px;
-}
-
-#write>h6.md-focus:before {
-  left: -1.875rem;
-  top: .125rem;
-  padding: 2px;
-}
-
-@media screen and (max-width: 48em) {
-  blockquote {
-    margin-left: 1rem;
-    margin-right: 0;
-    padding: 0.5em;
+@media print {
+  html,body {
+    font-size: 14px;
+  }
+  
+  .md-fences {
+    line-height: 1.2rem;
   }
 
-  .h1,
-  h1 {
-    font-size: 2.827rem;
+
+  table,
+  pre {
+    page-break-inside: avoid;
   }
 
-  .h2,
-  h2 {
-    font-size: 1.999rem;
+  pre {
+    word-wrap: break-word;
   }
-
-  .h3,
-  h3 {
-    font-size: 1.413rem;
-  }
-
-  .h4,
-  h4 {
-    font-size: 1.250rem;
-  }
-
-  .h5,
-  h5 {
-    font-size: 1.150rem;
-  }
-
-  .h6,
-  h6 {
-    font-size: 1rem;
-  }
+  
+}
+@page {
+  size: A4; 
+  margin: 8mm 0mm;
 }
 
-a,
-.md-def-url {
-  color: #990000;
-  text-decoration: none;
+/*toc*/
+.md-toc { 
+  margin-top:20px;
+  padding-bottom:20px;
+	color: var(--deep-theme-color);
+}
+
+a {
+	color: var(--deep-theme-color);
+	text-decoration: none;
 }
 
 a:hover {
   text-decoration: underline;
 }
 
-a:link {
-  color: #1841ce;
+/*headers*/
+h1,h2,h3,h4,h5,h6 {
+	display: block;
+	font-weight:bold;
 }
 
-table {
-  margin-bottom: 20px
+h1 {
+	font-size: 1.8em;
+  line-height: 110%;
+	margin-top: 0.67em;
+	margin-bottom: 0.67em;
 }
 
-table th,
-table td {
-  padding: 8px;
-  line-height: 1.25rem;
-  vertical-align: top;
-  border-top: 1px solid #ddd
+h2 {
+	font-size: 1.5em;
+	margin-top: 0.83em;
+	margin-bottom: 0.83em;
 }
 
-table th {
-  font-weight: bold
+h3 {
+	font-size: 1.17em;
+	margin-top: 1em;
+	margin-bottom: 1em;
 }
 
-table thead th {
-  vertical-align: bottom
+h4 {
+	font-size: 1em;
+	margin-top: 1.33em;
+	margin-bottom: 1.33em;
 }
 
-table caption+thead tr:first-child th,
-table caption+thead tr:first-child td,
-table colgroup+thead tr:first-child th,
-table colgroup+thead tr:first-child td,
-table thead:first-child tr:first-child th,
-table thead:first-child tr:first-child td {
-  border-top: 0
+h5 {
+	font-size: 1em;
+	margin-top: 1.33em;
+	margin-bottom: 1.33em;
+	color: #777777;
 }
 
-table tbody+tbody {
-  border-top: 2px solid #ddd
+h6 {
+	font-size: 1em;
+	margin-top: 1.33em;
+	margin-bottom: 1.33em;
+	color: #adadad;
 }
 
-code,
-.md-fences {
-  padding: .5em;
-  /*background: #f0f0f0;*/
-  border: 1px solid #ccc;
-  padding: .1em;
-  font-size: 0.9em;
-  margin-left: 0.2em;
-  margin-right: 0.2em;
-}
-
-.md-fences {
-  margin: 0 0 20px;
-  font-size: 1em;
-  padding: 0.3em 1em;
-  padding-top: 0.4em;
-}
-
-.task-list {
-  padding-left: 0;
-}
-
-.task-list-item {
-  padding-left: 2.125rem;
-}
-
-.task-list-item input {
-  top: 3px;
-}
-
-.md-task-list-item input {
-  margin-left: -1.5em;
-}
-
-/* Chrome 29+ */
-@media screen and (-webkit-min-device-pixel-ratio:0) and (min-resolution:.001dpcm) {
-  .task-list-item input:before {
-    margin-top: -0.2rem;
-  }
-
-  .task-list-item input:checked:before,
-  .task-list-item input[checked]:before {
-    margin-top: -0.2rem;
-  }
-}
-
-blockquote {
-  margin: 0 0 1.11111rem;
-  padding: 0.5rem 1.11111rem 0 1.05556rem;
-  border-left: 1px solid gray;
-}
-
+p,
 blockquote,
-blockquote p {
-  line-height: 1.6;
-  color: #8f6f6f;
+ul,
+ol,
+dl,
+table {
+	margin: 0.5rem 0;
 }
 
-#write pre.md-meta-block {
-  min-height: 30px;
-  background: #f8f8f8;
-  padding: 1.5em;
-  font-weight: 300;
-  font-size: 1em;
-  padding-bottom: 1.5em;
-  padding-top: 3em;
-  margin-top: -1.5em;
-  color: #999;
-
-  width: 100vw;
-  max-width: calc(100% + 60px);
-  margin-left: -30px;
-  border-left: 30px #f8f8f8 solid;
-  border-right: 30px #f8f8f8 solid;
+/*table*/
+table {
+	border-collapse: collapse;
+	padding: 0;
+  word-break: initial;
+	width: 100%;
 }
 
-.MathJax_Display {
-  font-size: 0.9em;
-  margin-top: 0.5em;
+table tr:nth-child(even){
+    background-color: var(--table-even-row-color);
+}
+
+thead{
+	background-color: var(--table-head-color);
+}
+
+table th{
+	text-align: center;
+	padding:6px 13px;
+	border: 1px solid var(--table-head-color);
+}
+
+table td{
+	padding:6px 13px;
+	border: 1px solid var(--table-head-color);
+}
+table tr{
+	padding:6px 13px;
+	border: 1px solid var(--table-head-color);
+}
+
+/*blockquote*/
+blockquote {
+	border-left: 0.2rem solid var(--side-bar-bg-color);
+	color: #777777;
+	font-family: 'Lexend','NotoSansSC';
+	font-size: 0.9rem;
+	padding-left: 2rem;
+}
+
+
+/*list*/
+
+li p.first {
+  display: inline-block;
+}
+ul,
+ol {
+  padding-left: 30px;
+}
+ul:first-child,
+ol:first-child {
+  margin-top: 0;
+}
+ul:last-child,
+ol:last-child {
   margin-bottom: 0;
 }
 
-p.mathjax-block,
-.mathjax-block {
-  padding-bottom: 0;
+.md-task-list-item:hover > input:before,
+input[type='checkbox']:hover:before {
+	opacity: 1;
+	transition: 0.5s;
+	background-color: var(--side-bar-bg-color);
 }
 
-.mathjax-block>.code-tooltip {
-  bottom: 5px;
-  box-shadow: none;
+.task-list-item input::before {
+  content: "";
+  display: inline-block;
+	border-radius: 1.1rem;
+  vertical-align: middle;
+  border: 1.2px solid var(--deep-theme-color);
+  background-color: #ffffff;
+	width: 1.1rem;
+  height: 1.1rem;
+	margin-left: -0.1rem;
+  margin-right: 0.1rem;
+  margin-top: -0.68rem; 
 }
 
-.md-image>.md-meta {
-  padding-left: 0.5em;
-  padding-right: 0.5em;
+.task-list-item input:checked::before {
+  padding-left: 0.125em;
+  content: '✔';
+  color:white;
+	background-color: var(--deep-theme-color);
+  font-size: 0.8rem;
+  line-height: 0.95rem;
+  margin-top: -0.68rem;
+	transition: background-color 200ms ease-in-out;
 }
 
-.md-image>img {
-  margin-top: 2px;
+.task-list-done {
+    text-decoration: line-through;
+    color: #adadad;
 }
 
-.md-image>.md-meta:first-of-type:before {
-  padding-left: 4px;
+hr {
+	border-style: none;
+  border-top-style: solid;
+  border-color: #e7e7e7;
+  border-width: 1px;
+	margin: 2rem 0;
 }
 
-#typora-source {
-  color: #555;
+/*highlight*/
+#write mark {
+	background-color: #c7ffe8;
+	border-radius: 2px;
+	color: black;
+	padding: 0 4px;
+	margin: 0 2px;
 }
 
-/** ui for windows **/
-#md-searchpanel {
-  border-bottom: 1px solid #ccc;
+/*inline code*/
+#write code,tt {
+	padding: 0.6px 4px;
+	border-radius: 2px;
+	background-color: #f1f1f1;
+	font-family: 'SourceCodePro',Consolas,Courier,'NotoSansSC';
+	font-size: 0.9rem;
+	color: var(--code-block-bg-color);
+	margin: 0 2px;
 }
 
-#md-searchpanel .btn {
-  border: 1px solid #ccc;
+/*footnote*/
+#write .md-footnote {
+	color: #777777;
+	background-color: #f7f7f7;
 }
 
-#md-notification:before {
-  top: 14px;
+/*source code mode*/
+.cm-s-typora-default .cm-header {
+	color:var(--code-block-bg-color);
+}
+.cm-s-typora-default .cm-link {
+	color:var(--deep-theme-color);
+
 }
 
-#md-notification {
-  background: #eee;
+
+/*code block*/
+#write .md-fences {
+  font-size: 1rem;
+  margin: 0.2em 0;
+  padding: 0.5em;
+  border-radius: 3px;
+	font-size: 0.9em;
+  font-family: 'SourceCodePro',Consolas,Courier,'NotoSansSC';
+  background-color: var(--code-block-bg-color);
+  color: #A9B7C6;
+  border: none;
+	text-shadow: none;
 }
 
-.megamenu-menu-panel .btn {
-  border: 1px solid #ccc;
+.md-fences .code-tooltip {
+	background-color: var(--code-block-bg-color);
 }
 
-#typora-sidebar {
-  box-shadow: none;
+/*
+  Name:       material-ocean
+  Author:     Mattia Astorino (http://github.com/equinusocio)
+  Website:    https://material-theme.site/
+*/
+
+.cm-s-inner.CodeMirror {
+  background-color: #0F111A;
+  color: #8F93A2;
 }
 
-.file-list-item,
-.show-folder-name .file-list-item {
-  padding-top: 20px;
-  padding-bottom: 20px;
-  line-height: 20px;
+.cm-s-inner .CodeMirror-gutters {
+  background: #0F111A;
+  color: #464B5D;
+  border: none;
 }
 
-.file-list-item-summary {
-  height: 40px;
-  line-height: 20px;
+.cm-s-inner .CodeMirror-linenumber {color: #464B5D;}
+.cm-s-inner .CodeMirror-guttermarker { color: #FFEE80; }
+.cm-s-inner .CodeMirror-guttermarker-subtle { color: #D0D0D0; }
+
+/*
+.cm-s-inner .CodeMirror-cursor {
+  border-left: 1px solid #FFCC00;
+}
+.cm-s-inner.cm-fat-cursor .CodeMirror-cursor {
+  background-color: #FFCC00 !important;
+}
+.cm-s-inner .cm-animate-fat-cursor {
+  background-color: #FFCC00 !important;
+}
+*/
+
+.cm-s-inner .CodeMirror-cursor { border-left: 1px solid #A9B7C6; }
+.cm-s-inner div.CodeMirror-cursor { border-left: 1px solid #ffffff; }
+.cm-s-inner div.CodeMirror-selected {
+  background: rgba(113, 124, 180, 0.2);
 }
 
-.ty-table-edit {
-  background: #ededed;
+.cm-s-inner.CodeMirror-focused div.CodeMirror-selected {
+  background: rgba(113, 124, 180, 0.2);
 }
 
-.dropdown-menu .divider {
-  border-color: #e5e5e5;
+.cm-s-inner .CodeMirror-selected{ background: #214283 !important; }
+.cm-s-inner .CodeMirror-selectedtext { background: #214283 !important; }
+.cm-overlay.CodeMirror-selectedtext { background: #B5D6FC !important; }
+
+.cm-s-inner .CodeMirror-line::selection,
+.cm-s-inner .CodeMirror-line>span::selection,
+.cm-s-inner .CodeMirror-line>span>span::selection {
+  background: rgba(128, 203, 196, 0.2);
 }
 
-pre,
-code,
-kbd,
-tt,
-var {
-  font-family: Monaco, Consolas, "Andale Mono", "DejaVu Sans Mono", monospace;
+.cm-s-inner .CodeMirror-line::-moz-selection,
+.cm-s-inner .CodeMirror-line>span::-moz-selection,
+.cm-s-inner .CodeMirror-line>span>span::-moz-selection {
+  background: rgba(128, 203, 196, 0.2);
 }
 
- :root {--mermaid-font-zoom:1em ;}  .typora-export li, .typora-export p, .typora-export,  .footnote-line {white-space: normal;} 
-</style>
+/* .cm-s-inner .CodeMirror-activeline-background {
+  background: rgba(0, 0, 0, 0.5);
+} */
+
+.cm-s-inner .cm-keyword {
+  color: #C792EA;
+}
+
+.cm-s-inner .cm-operator {
+  color: #89DDFF;
+}
+
+.cm-s-inner .cm-variable-2 {
+  color: #EEFFFF;
+}
+
+.cm-s-inner .cm-variable-3,
+.cm-s-inner .cm-type {
+  color: #f07178;
+}
+
+.cm-s-inner .cm-builtin {
+  color: #FFCB6B;
+}
+
+.cm-s-inner .cm-atom {
+  color: #F78C6C;
+}
+
+.cm-s-inner .cm-number {
+  color: #FF5370;
+}
+
+.cm-s-inner .cm-def {
+  color: #82AAFF;
+}
+
+.cm-s-inner .cm-string {
+  color: #C3E88D;
+}
+
+.cm-s-inner .cm-string-2 {
+  color: #f07178;
+}
+
+.cm-s-inner .cm-comment {
+  color: #585d6d;
+}
+
+.cm-s-inner .cm-variable {
+  color: #f07178;
+}
+
+.cm-s-inner .cm-tag {
+  color: #FF5370;
+}
+
+.cm-s-inner .cm-meta {
+  color: #FFCB6B;
+}
+
+.cm-s-inner .cm-attribute {
+  color: #C792EA;
+}
+
+.cm-s-inner .cm-property {
+  color: #C792EA;
+}
+
+.cm-s-inner .cm-qualifier {
+  color: #DECB6B;
+}
+
+.cm-s-inner .cm-variable-3,
+.cm-s-inner .cm-type {
+  color: #DECB6B;
+}
+
+
+.cm-s-inner .cm-error {
+  color: rgba(255, 255, 255, 1.0);
+  background-color: #FF5370;
+}
+
+.cm-s-inner .CodeMirror-matchingbracket {
+  text-decoration: underline;
+  color: white !important;
+}
+
+
+
+
+
+</style><title>冰布子的简易建站指南</title>
 </head>
-<body class='typora-export'>
-<div id='write'  class=' first-line-indent'><h1><a name="冰布子的简易建站指南" class="md-header-anchor"></a><span>冰布子的简易建站指南</span></h1><p><strong><span>如果你想以超低的成本且轻松地建立一个静态网站，请阅读 </span><a href='https://glaceon-wpguide.netlify.app/gridea.html'><span>这份指南</span></a></strong></p><p><span>本简易指南会从域名选购开始，直至在网站空间（虚拟主机）上建立好Wordpress站点并做好简单的优化结束。涉及到域名、DNS、Wordpress框架几个部分。将会尽可能地简易且尽可能的让新手避坑，建好属于自己的Wordpress站点。</span></p><hr /><p>&nbsp;</p><div class='md-toc' mdtype='toc'><p class="md-toc-content" role="list"><span role="listitem" class="md-toc-item md-toc-h1" data-ref="n716"><a class="md-toc-inner" style="" href="#冰布子的简易建站指南">冰布子的简易建站指南</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n724"><a class="md-toc-inner" style="" href="#0-准备">0. 准备</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n728"><a class="md-toc-inner" style="" href="#01-为什么要搭建独立博客">0.1 为什么要搭建独立博客</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n734"><a class="md-toc-inner" style="" href="#1-域名">1. 域名</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n739"><a class="md-toc-inner" style="" href="#10-备案问题">1.0 备案问题</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n742"><a class="md-toc-inner" style="" href="#11-选择域名注册商">1.1 选择域名注册商</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n749"><a class="md-toc-inner" style="" href="#12-域名购买">1.2 域名购买</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n751"><a class="md-toc-inner" style="" href="#121-避免无关消费">1.2.1 避免无关消费</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n755"><a class="md-toc-inner" style="" href="#122-注册信息">1.2.2 注册信息</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n759"><a class="md-toc-inner" style="" href="#123-选择dns服务商">1.2.3 选择DNS服务商</a></span><span role="listitem" class="md-toc-item md-toc-h5" data-ref="n783"><a class="md-toc-inner" style="" href="#1231-阿里云dns">1.2.3.1 阿里云DNS</a></span><span role="listitem" class="md-toc-item md-toc-h5" data-ref="n789"><a class="md-toc-inner" style="" href="#1232-腾讯云dnspod">1.2.3.2 腾讯云DNSPod</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n796"><a class="md-toc-inner" style="" href="#124-修改dns服务器">1.2.4 修改DNS服务器</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n801"><a class="md-toc-inner" style="" href="#13-申请域名邮箱">1.3 申请域名邮箱</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n808"><a class="md-toc-inner" style="" href="#2-服务器">2. 服务器</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n823"><a class="md-toc-inner" style="" href="#21-服务器地理位置的误区">2.1 服务器地理位置的误区</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n827"><a class="md-toc-inner" style="" href="#22-虚拟主机网站空间）">2.2 虚拟主机（网站空间）</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n846"><a class="md-toc-inner" style="" href="#23-vps虚拟服务器）">2.3 VPS（虚拟服务器）</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n857"><a class="md-toc-inner" style="" href="#3-搭建wordpress">3. 搭建Wordpress</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n863"><a class="md-toc-inner" style="" href="#31-dns解析">3.1 DNS解析</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n865"><a class="md-toc-inner" style="" href="#311-域名相关基本常识">3.1.1 域名相关基本常识</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n872"><a class="md-toc-inner" style="" href="#312-dns解析">3.1.2 DNS解析</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n894"><a class="md-toc-inner" style="" href="#313-添加网站并添加ssl证书以plesk面板为例）">3.1.3 添加网站并添加SSL证书（以Plesk面板为例）</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n904"><a class="md-toc-inner" style="" href="#314-上传wordpress程序框架">3.1.4 上传Wordpress程序框架</a></span><span role="listitem" class="md-toc-item md-toc-h5" data-ref="n906"><a class="md-toc-inner" style="" href="#3141-使用服务商提供的一键安装功能">3.1.4.1 使用服务商提供的一键安装功能</a></span><span role="listitem" class="md-toc-item md-toc-h5" data-ref="n911"><a class="md-toc-inner" style="" href="#3142-手动安装wordpress">3.1.4.2 手动安装Wordpress</a></span><span role="listitem" class="md-toc-item md-toc-h6" data-ref="n913"><a class="md-toc-inner" style="" href="#31421-创建数据库">3.1.4.2.1 创建数据库</a></span><span role="listitem" class="md-toc-item md-toc-h6" data-ref="n916"><a class="md-toc-inner" style="" href="#31422-上传并安装wordpress框架">3.1.4.2.2 上传并安装Wordpress框架</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n929"><a class="md-toc-inner" style="" href="#4-简易设置与优化">4. 简易设置与优化</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n931"><a class="md-toc-inner" style="" href="#41-创建个人头像">4.1 创建个人头像</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n935"><a class="md-toc-inner" style="" href="#42-wordpress基本设置">4.2 Wordpress基本设置</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n938"><a class="md-toc-inner" style="" href="#421-完善个人资料">4.2.1 完善个人资料</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n940"><a class="md-toc-inner" style="" href="#421-设置固定链接">4.2.1 设置固定链接</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n946"><a class="md-toc-inner" style="" href="#422-安装插件">4.2.2 安装插件</a></span><span role="listitem" class="md-toc-item md-toc-h5" data-ref="n949"><a class="md-toc-inner" style="" href="#4221-缓存">4.2.2.1 缓存</a></span><span role="listitem" class="md-toc-item md-toc-h6" data-ref="n953"><a class="md-toc-inner" style="" href="#42211-litespeed-cache">4.2.2.1.1 LiteSpeed Cache</a></span><span role="listitem" class="md-toc-item md-toc-h6" data-ref="n964"><a class="md-toc-inner" style="" href="#42211-其他缓存">4.2.2.1.1 其他缓存</a></span><span role="listitem" class="md-toc-item md-toc-h5" data-ref="n969"><a class="md-toc-inner" style="" href="#4222-对象存储">4.2.2.2 对象存储</a></span><span role="listitem" class="md-toc-item md-toc-h6" data-ref="n972"><a class="md-toc-inner" style="" href="#42221-创建bucket">4.2.2.2.1 创建Bucket</a></span><span role="listitem" class="md-toc-item md-toc-h6" data-ref="n974"><a class="md-toc-inner" style="" href="#42222-创建accesskey">4.2.2.2.2 创建AccessKey</a></span><span role="listitem" class="md-toc-item md-toc-h6" data-ref="n977"><a class="md-toc-inner" style="" href="#42223-开启cdn加速可选）">4.2.2.2.3 开启CDN加速（可选）</a></span><span role="listitem" class="md-toc-item md-toc-h6" data-ref="n985"><a class="md-toc-inner" style="" href="#42224-设置wordpress插件">4.2.2.2.4 设置Wordpress插件</a></span><span role="listitem" class="md-toc-item md-toc-h5" data-ref="n988"><a class="md-toc-inner" style="" href="#4223-反垃圾插件akismet">4.2.2.3 反垃圾插件Akismet</a></span><span role="listitem" class="md-toc-item md-toc-h5" data-ref="n991"><a class="md-toc-inner" style="" href="#4224-网站发信插件wp-mail-smtp">4.2.2.4 网站发信插件WP Mail SMTP</a></span><span role="listitem" class="md-toc-item md-toc-h5" data-ref="n998"><a class="md-toc-inner" style="" href="#4225-友情链接link-manager">4.2.2.5 友情链接Link Manager</a></span><span role="listitem" class="md-toc-item md-toc-h5" data-ref="n1001"><a class="md-toc-inner" style="" href="#4226-其它实用插件">4.2.2.6 其它实用插件</a></span><span role="listitem" class="md-toc-item md-toc-h6" data-ref="n1003"><a class="md-toc-inner" style="" href="#42261-auto-ping-booster-和-google-xml-sitemap-generator">4.2.2.6.1 Auto Ping Booster 和 Google XML Sitemap Generator</a></span><span role="listitem" class="md-toc-item md-toc-h6" data-ref="n1005"><a class="md-toc-inner" style="" href="#42262-google-font-fix">4.2.2.6.2 Google Font Fix</a></span><span role="listitem" class="md-toc-item md-toc-h6" data-ref="n1007"><a class="md-toc-inner" style="" href="#42263-really-simple-ssl">4.2.2.6.3 Really Simple SSL</a></span><span role="listitem" class="md-toc-item md-toc-h6" data-ref="n1009"><a class="md-toc-inner" style="" href="#42264-wp-statistics">4.2.2.6.4 WP Statistics</a></span><span role="listitem" class="md-toc-item md-toc-h5" data-ref="n1011"><a class="md-toc-inner" style="" href="#4227-使用cdn加速其它静态文件可选）">4.2.2.7 使用CDN加速其它静态文件（可选）</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n1017"><a class="md-toc-inner" style="" href="#43-从lofter迁移到wordpress">4.3 从Lofter迁移到Wordpress</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n1023"><a class="md-toc-inner" style="" href="#5-个性化">5. 个性化</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n1025"><a class="md-toc-inner" style="" href="#51-主题">5.1 主题</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n1030"><a class="md-toc-inner" style="" href="#511-自定义功能">5.1.1 自定义功能</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n1036"><a class="md-toc-inner" style="" href="#512-菜单和小工具">5.1.2 菜单和小工具</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n1043"><a class="md-toc-inner" style="" href="#6-撰写内容">6. 撰写内容</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n1046"><a class="md-toc-inner" style="" href="#61-使用wordpress编辑器">6.1 使用Wordpress编辑器</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n1058"><a class="md-toc-inner" style="" href="#62-首页显示摘要">6.2 首页显示摘要</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n1063"><a class="md-toc-inner" style="" href="#7-rss订阅">7. RSS订阅</a></span></p></div><p>&nbsp;</p><h2><a name="0-准备" class="md-header-anchor"></a><span>0. 准备</span></h2><p><span>自己独立建站相对于托管（Lofter、新浪博客等）是有一定门槛且必须付出相对更多的时间和金钱成本的，请务必做好准备，因为耐心和坚持是最重要的。</span></p><p><span>物质方面，你可能需要每年投入150~500元（包含域名、服务器和其他开销，价格主要取决于你使用哪种服务器和域名后缀），冰布子建议持有一张非银联信用卡用于购买域名，理由会在域名一章中提到。</span></p><p><strong><span>如果你不想买服务器，想只出一个域名钱，建立一个静态网站，可以阅读 </span><a href='https://glaceon-wpguide.netlify.app/gridea.html'><span>这份指南</span></a><span>，会引导你使用Gridea建站。</span></strong></p><h3><a name="01-为什么要搭建独立博客" class="md-header-anchor"></a><span>0.1 为什么要搭建独立博客</span></h3><p><span>虽然严格来讲，独立博客依旧离不开托管平台，但相较于Lofter等服务，其自由度更高，限制更少，且</span><strong><span>不能为你的网站打差评；完全掌控文章和评论；只要不违反当地法律和服务商条款，内容不会被莫名删除；不能随意被举报；即便被某些群体盯上受到和AO3一样的遭遇但数据不会有半点损失，能随时带着数据库跑路并一瞬搬家重启</span></strong><span>。</span><em><span>并不是说使用独立博客就完全能免受网络暴力的侵害，不管在哪个平台，做好隐私保护都同样重要。</span></em></p><p><span>需要说明的是，独立博客和微博没有冲突，完全可以通过微博或类似服务一起使用增强社交属性。</span></p><p>&nbsp;</p><hr /><p>&nbsp;</p><h2><a name="1-域名" class="md-header-anchor"></a><span>1. 域名</span></h2><p><span>提到域名后缀，很多人肯定会想到 com/net/org ，但事实上现在光是可购买的就有800多种，除了某些后缀（tk/ga/cf 这类可以免费使用的）可能会受到搜索引擎歧视之外，不管用哪种都是一样的，这就有非常大的可个性化空间了。因此在选择域名之前，在这里冰布子先简单提一下域名种类。</span></p><p><span>目前可以购买的顶级域名后缀主要分为 gTLD（通用顶级域） 和 ccTLD（国家或地区顶级域），前者多数可以自由购买，如 com net org info name 和新增的后缀 moe gay lgbt red cat dog 等，几乎所有的域名服务商都可以购买，门槛很低；后者部分可以直接购买，如 us me 等，部分可能需要签证或当地居住证明，如 tn 等，此类域名后缀购买门槛通常较高。</span></p><p><span>关于个性化域名的提示，这里举个3个例子，伊布英文名Eevee，后缀 .ee 是真实存在的，那么 eev.ee 就是一个非常棒的域名；外卖平台饿了么，域名就是 ele.me ，巧妙运用公司名称的拼音和真实存在的后缀 .me；GameFreak简称GF，而 .sb 后缀是真实存在的，那么我们就可以使用 gf.sb 作为域名抒发情感。也就是说，你可以发挥你的想象力，只要后缀真实存在且开放购买，那你就能得到一个极其个性的域名。</span></p><p><span>域名通常以年为单位售卖，注册后需要按年续费。请务必仔细想好想要的域名，中途修改域名、频繁修改域名是非常不可取的事情。同时，域名也应该尽可能地短，尽可能地展现个性或可以让人过目不忘。</span></p><h3><a name="10-备案问题" class="md-header-anchor"></a><span>1.0 备案问题</span></h3><p><span>如果你只打算使用非中国大陆的服务器搭建网站，则根本不需要考虑备案问题。</span></p><p><strong><span>如果你想使用中国大陆的服务器搭建网站</span></strong><span>，则你的域名必须进行</span><strong><span>备案</span></strong><span>。你必须在你购买服务器的服务商处进行备案，如果你要更换服务器提供商，则必须</span><strong><span>转移备案</span></strong><span>，且备案域名必须保证其裸域和 </span><code>www</code><span> 记录解析在国内的服务器中，否则会丢失备案。由于政策原因，</span><strong><span>只有一部分gTLD域名和 .cn 后缀域名才能备案， .org 目前不可以备案</span></strong><span>，因此如果你要使用中国大陆的服务器，必须要提前考虑好此类问题。至于备案流程，各大服务器提供商均有专门的页面和专业客服提供指导（尤其是阿里云，服务得非常详尽，甚至可以电话指导）。</span></p><h3><a name="11-选择域名注册商" class="md-header-anchor"></a><span>1.1 选择域名注册商</span></h3><p><span>通常情况下域名的新购价格和续费价格是不一样的，且一般来讲续费价格高于新购价格（甚至可能远高于新购价格），因此如果你的预算不多，选择后缀的时候</span><strong><span>必须查看续费（Renew）价格而非新购（Registration）价格</span></strong><span>，不然你会被狠狠地坑一笔！举例说明：info 后缀通常新购价格可以压到很低，低到1美元以下，但续费至少需要13美元。</span></p><p><span>除了续费价格之外，部分域名注册商为了赚更多钱，经常默认捆绑一些没用的产品，稍不注意就一起买了，而且此类服务商常常把续费价格表藏得很深，这里点名批评GoDaddy。</span></p><p><span>鉴于上述的门槛限制和潜在的坑钱机制，冰布子整理了一些自己用过的域名服务商，请根据自身情况选择。</span></p><p><span>如果你想购买 com net org moe gay lgbt red cat dog 等gTLD，或常见的ccTLD如 us me，</span><strong><span>且有国际信用卡</span></strong><span>，推荐选择 </span><a href='https://porkbun.com/products/domains'><span>Porkbun</span></a><span> ，因为它的价格很低且透明，并直接不会有各种杂七杂八坑的新人的推销陷阱（点名批评GoDaddy）；如果你没有国际信用卡，则推荐选择 </span><a href='https://www.namesilo.com/pricing?rid=2c66e95er'><span>NameSilo</span></a><span> ，价格也比较低且消费透明，支持支付宝，使用专属优惠码 </span><code>GLACEON</code><span> 可以在NameSilo购买时优惠1美元。</span></p><p><span>如果你想买类似于 pm de nl lu ie lv eu es pt cm 等不太常见的ccTLD，</span><strong><span>且有国际信用卡、能给客服提供你不在欧洲的英文证明（发票等）</span></strong><span>，推荐选择 </span><a href='https://www.ovh.ie/domains/prices/'><span>OVH爱尔兰站</span></a><span>，价格实惠、消费透明且后缀很多；如果只有支付宝或银联卡，则可以考虑 </span><a href='https://internetbs.net/zh/domain-name-registrations/price.html'><span>InternetBS</span></a><span>（此网站注册账户时，国家填写中国才可以用支付宝），不过可购买的后缀就远远没有OVH那么丰富了。</span></p><p><span>冰布子上面提到的注册商都是海外的，国内注册商推荐去 阿里云、腾讯云 购买，但后缀不多，价格一般且需要实名（域名实名和账户实名是分开的）。</span></p><h3><a name="12-域名购买" class="md-header-anchor"></a><span>1.2 域名购买</span></h3><p><span>由于域名注册商比较多，冰布子不可能一一给出所有域名商的注册教程，但实际上这些服务商的购买流程和上网买东西没有太大差别，这里只提一些需要注意的几点。</span></p><h4><a name="121-避免无关消费" class="md-header-anchor"></a><span>1.2.1 避免无关消费</span></h4><p><img src="https://i.loli.net/2021/03/13/wgnBhS5z9iRMalK.png" referrerpolicy="no-referrer" alt="NameSilo的捆绑套餐"></p><p><span> 绝大多数域名注册商不会只卖域名，因此要小心他们在购买的时候提供的捆绑套餐。如上图为Namesilo点击结算后出现的套餐推销页面，实际上上面的所有套餐都没有购买的必要，这时候找到页面的 SKIP 跳过即可。</span></p><p><span>总结出来就是，记住售卖页面提到的价格，对比你结账时的最终价格，任何附加费用都不要有（ICANN手续费除外，通常金额很小）。</span><strong><span>因为你要在这里买的仅仅只是域名本身，其他的什么都不需要。</span></strong></p><h4><a name="122-注册信息" class="md-header-anchor"></a><span>1.2.2 注册信息</span></h4><p><span>域名注册需要的信息分为两类，互相无关联：账号信息和域名WHOIS信息。总结下来就是大体不必填写自己的真实信息，但</span><strong><span>电子邮箱必须保证真实</span></strong><span>。</span></p><p><span>账号信息就是注册域名商账号时填写的账号信息，除了OVH，</span><strong><span>不必</span></strong><span>填写真实信息，但也不能太假（跨国、地址太离谱），如果你要用 1.1 中提到的 InternetBS 且需要用支付宝，还必须把账户注册国写中国。</span></p><p><span>WHOIS信息就是注册（购买）域名的时候要求你填写的信息（持有人姓名、地址、电话等），除了邮箱外</span><strong><span>不要</span></strong><span>填写太真实的信息，因为如果域名商不提供WHOIS保护（Whois Privacy），这些信息都可以直接被查到。当然，你也不需要过于紧张，上述的域名商所售卖的gTLD基本都会提供免费的WHOIS保护，但ccTLD多数是没有相关保护服务的。</span></p><h4><a name="123-选择dns服务商" class="md-header-anchor"></a><span>1.2.3 选择DNS服务商</span></h4><p><span>如果你在阿里云、腾讯云购买的域名，则可以直接使用他们自己提供的免费DNS，跳过本章节其余部分。</span></p><p><span>DNS简单来说就是将域名解析为IP的“指路”服务，通过DNS将域名解析为IP地址，从而找到对应的服务器。通常而言，域名服务商会赠送DNS服务，但为了优化速度，我们不使用他们的DNS（阿里云、腾讯云除外）。下面推荐几个DNS服务商供参考。</span></p><p><span>如果你对实名要求不太敏感，冰布子更推荐直接使用阿里云或腾讯云的服务一是方便，有淘宝或支付宝（腾讯云对应QQ微信）账户就能直接用，二是因为最后我们会提到使用对象存储加速网站，所以到头来还是需要使用阿里云或腾讯云的服务，三是确实对新手更加友好。</span></p><ol start='' ><li><p><span>阿里云（免费 需要实名）</span></p><p><span>国内第一大云服务商，国内解析速度快，海外解析速度一般，免费套餐完全够用。</span></p></li><li><p><span>腾讯云（免费 需要实名）</span></p><p><span>国内第二大云服务商，国内解析速度快，海外解析速度一般，免费套餐完全够用。</span></p></li><li><p><span>Cloudflare（免费 海外服务商）</span></p><p><span>Cloudflare其实是CDN提供商，但也免费提供DNS服务，国内解析速度一般且可能会受到污染，国外速度不错</span></p></li><li><p><span>微软Azure（付费 海外服务商 需要信用卡）</span></p><p><span>冰布子目前使用的是Azure的DNS服务，虽然是付费的，但价格很低，单个域名托管仅需0.5美元/月，请求费用对于个人网站而言很难超过0.1美元/月。国内外解析速度都不错。</span></p></li><li><p><span>亚马逊Route53（付费 海外服务商 需要信用卡）</span></p><p><span>著名的亚马逊旗下AWS的DNS服务。国内解析速度一般，国外速度不错。</span></p></li><li><p><span>Netlify（免费 基于NSOne）</span></p><p><span>Netlify其实并不是DNS服务商，但其提供免费的基于NSOne的DNS解析服务，NSOne的速度在国内外都还可以。</span></p></li></ol><p><span>下面针对阿里云和腾讯云的DNS进行讲解。如果需要使用Cloudflare或Azure或其他服务商，请自行摸索或上网搜索教程。</span></p><h5><a name="1231-阿里云dns" class="md-header-anchor"></a><span>1.2.3.1 阿里云DNS</span></h5><p><img src="https://i.loli.net/2021/03/13/cJl42gxVPReX6Ga.png" referrerpolicy="no-referrer" alt="截屏2020-07-18 13.42.10"></p><p><span>要使用阿里云的DNS服务，登陆阿里云并确认账户实名后，鼠标悬停在控制台右上角，选择“产品与服务”，在弹出的菜单中找到“域名与网站（万网）”板块，选择“云解析DNS”（建议加一个星标，这样就会置顶，阿里云业务比较多，老是这样找很麻烦）</span></p><p><span>在网页跳转后，点击蓝色按钮“添加域名”，弹出窗口中输入你注册的域名，添加完成后，你可以看到“DNS服务器状态”一栏是“未使用阿里云解析”。</span></p><p><img src="https://i.loli.net/2021/03/13/L5fjAbOX2sPw8eU.png" referrerpolicy="no-referrer" alt="截屏2020-07-18 13.47.45"></p><p><span>鼠标悬停在这串文字上，会弹出一个提示，要求你去域名注册商处修改DNS服务器，把提示中的服务器网址复制下来备用（请参考阿里云实际给你的地址，不要以我的截图为准），在 1.2.3.3 小节会写修改方法。</span></p><h5><a name="1232-腾讯云dnspod" class="md-header-anchor"></a><span>1.2.3.2 腾讯云DNSPod</span></h5><p><img src="https://i.loli.net/2021/03/13/7bEGlaSeqfvNV8z.png" referrerpolicy="no-referrer" alt="截屏2020-07-18 13.28.32"></p><p><span>要使用腾讯云的DNS服务，先登陆腾讯云，确保账户实名后，点击最上面的“云产品”，找到“域名和网站”板块，选择“DNS解析”，在跳转后的页面中，点击“添加解析”，在弹出的窗口中输入自己注册好的域名，点击确定</span></p><p><img src="https://i.loli.net/2021/03/13/g6fZ8Nit5SFVbpL.png" referrerpolicy="no-referrer" alt="截屏2020-07-18 13.33.39"></p><p><span>完成后，列表会出现你刚刚添加好的域名，“解析状态”一栏会显示“域名DNS未修改”，点击域名进入管理界面，你会看到页面上部分的蓝色框，内容如下：</span></p><p><img src="https://i.loli.net/2021/03/13/Iwrn9Zcs5DbEgPN.png" referrerpolicy="no-referrer" alt="截屏2020-07-18 13.35.32"></p><p><span>这时候你只需要回到 域名注册商，把域名DNS服务器地址修改为画红线部分的地址（也就是DNS服务器地址）即可（请不要按照我的截图修改，以自己得到的地址为准）。</span></p><h4><a name="124-修改dns服务器" class="md-header-anchor"></a><span>1.2.4 修改DNS服务器</span></h4><p><span>选择好DNS服务商后，先注册好对应DNS提供商的账户，然后把你注册好的域名添加进去。完成后，系统会给你一串网址（这些网址就是DNS服务器地址），提示你需要在</span><strong><span>域名注册商</span></strong><span>的后台修改DNS服务器（DNS Server/Name Server）。</span></p><p><span>对于 NameSilo，可以参考 </span><a href='https://medium.com/@jackme256/namesilo-guide-2b7859157556'><span>这篇文章</span></a><span> 中“域名解析 / 设置DNS服务器”的“方法二”（需要代理访问）；对于Porkbun，登录账户后，在“DOMAIN MANAGEMENT”下，点击对应域名右边的 Details，在“AUTHORITATIVE NAMESERVERS”这一栏中，点击EDIT，输入DNS服务商提供的DNS服务器地址即可。</span></p><p><span>修改DNS服务器的操作一般需要2~72小时才能生效；关于DNS记录，会在后续讲解。</span></p><p><span>至此，域名部分讲解完毕。</span></p><h3><a name="13-申请域名邮箱" class="md-header-anchor"></a><span>1.3 申请域名邮箱</span></h3><p><span>所谓域名邮箱（部分服务商称之为企业邮箱），就是用自己的域名后缀创建邮箱。因为这类邮箱完完全全是你自己使用，因此不会存在前缀被占用的问题，你可以做出个性化十足的邮箱使用！举例说明，如果你的域名是 </span><code>glaceon.best</code><span>  ，那么你可以使用类似于 </span><code>i@glaceon.best</code><span> 的邮箱。</span></p><p><span>此类域名邮箱，冰布子推荐使用 </span><a href='https://exmail.qq.com/'><span>腾讯企业邮</span></a><span>（基础版免费） 或 </span><a href='https://www.newlearner.site/2019/08/05/yandex-domain-mail.html'><span>Yandex</span></a><span>（免费） 或 </span><a href='https://www.daniao.org/4053.html'><span>Zoho</span></a><span>（建议使用付费套餐 1美元/月）。如果预算充足可以考虑购买 GSuite（付费 5美元/月）或 Microsoft365（付费）。</span></p><p><span>域名邮箱的注册方法请参考上面给出的链接，使用域名邮箱会涉及到DNS，使用DNS可以参考本文第三章 </span><a href='#31-dns解析'><span>3.1 DNS解析</span></a><span> 。此外，提供商也会提供详尽的设置方法帮助你设置。</span></p><p>&nbsp;</p><hr /><p>&nbsp;</p><h2><a name="2-服务器" class="md-header-anchor"></a><span>2. 服务器</span></h2><p><span>有了域名，接下来就要选择合适的服务器（或网页空间托管）了。冰布子相信大部分人不会愿意去搞“ICP备案”的，因此位于大陆的一切服务器全部跳过。</span></p><p><span>个人建站一般会选择实用虚拟主机（网站空间）或VPS，下表简单地描述了两者之间的特点。</span></p><figure><table><thead><tr><th style='text-align:left;' ><span>类型</span></th><th><span>特性</span></th></tr></thead><tbody><tr><td style='text-align:left;' ><span>虚拟主机（网站空间）</span></td><td><span>只能搭建网站，且大部分都只能使用PHP/HTML+数据库（MySQL/PgSQL），有图形化面板，操作简单，几乎0门槛，价格相对便宜。</span></td></tr><tr><td style='text-align:left;' ><span>VPS</span></td><td><span>相当于一台完整的但是配置不高的服务器，通常使用Linux系统且无图形界面，只要条件允许可以做任何服务器能做的事情，如果需要面板则要自行搭建，需要用户掌握基本的Linux操作方法，更加自由但是门槛稍高，价格比虚拟主机贵。</span></td></tr></tbody></table></figure><p><span>但是不管用什么，有一点必须要清楚：不要去淘宝买。</span></p><p><span>由于VPS涉及到用户必须具备一定的Linux知识，考虑到本文的受众群体，故此指南不提供VPS建站教程。</span></p><h3><a name="21-服务器地理位置的误区" class="md-header-anchor"></a><span>2.1 服务器地理位置的误区</span></h3><p><span>很多人都会认为离国内近的国家或地区的服务器就一定快，这是完全错误的，</span><strong><span>物理距离不能决定延迟，且延迟不能决定速度</span></strong><span>。因此不可以想当然地认为美国服务器一定比香港服务器慢。</span></p><p><span>举例说明，中国上海到美国西海岸的延迟可以低到130ms，但是香港LeaseWeb机房或者SoftLayer机房的服务器到大陆联通或电信机房的延迟可以达到200甚至300ms——因为他们的路由都绕美国了。而有的海外虚拟主机提供商却恰恰最爱用这两个香港机房，甚至号称“中国大陆优化”。</span></p><p><span>如果你参考了下面的推荐，直接用冰布子筛选过的服务商，则问题不大；如果你打算自己找提供商，那最好找到该提供商的测试IP，使用Besttrace进行路由追踪就可以看其是否有</span><strong><span>去程</span></strong><span>绕路了。</span></p><h3><a name="22-虚拟主机网站空间）" class="md-header-anchor"></a><span>2.2 虚拟主机（网站空间）</span></h3><p><span>对于虚拟主机，一般人来讲有1GB为好，也不需要更大空间，因为后续教程会讲解把静态资源（图片、附件、视频等）转移到对象存储中。</span></p><p><span>虚拟主机市场鱼龙混杂，推荐反而不太好做，而且各家使用的面板也不一样。目前我自己看到的能拿出来的有下面这几个。</span></p><p><span>好的虚拟主机其实能比VPS还贵，虽说看起来性价比不高，但现实是大部分人并没有时间或精力自己维护服务器，而且对于内容为主的平台，如果要花太多心思在不熟悉的维护上确实会影响产出。但问题在于，当前国内此类市场并不太好，国内大部分做这类产品的服务商用的还是Easypanel面板（漏洞巨多），而国外常见虚拟主机提供商大多贵且国内速度极慢（部分有香港机房，但是就如同我在 2.1 中说过的，地理位置不能决定速度，更何况他们用的大都是LeaseWeb或者SoftLayer机房，大陆方向会绕美国一圈）。综合价格和其他因素，个人觉得可以拿出手的几家是：</span></p><ol start='' ><li><p><a href='https://idc.wiki/aff.php?aff=878'><span>微基主机</span></a><span>（70元/年）</span></p><p><span>冰布子目前正在使用的虚拟主机（而且是110元3年的传家宝款），使用Plesk面板，便宜，还算稳定，速度也不错。</span><em><span>上面的链接是返利链接，如果你注册购买我会得到一定数额的佣金，无佣金的通道可以使用 </span><a href='http://idc.wiki/'><span>这个链接</span></a></em></p></li><li><p><a href='https://i.zhujike.com/flag/14228'><span>主机壳</span></a><span>（199元/年）</span></p><p><span>曾经在他们那里买过moe域名，自带CDN和Memcached，有的社团和汉化组就架设在他们家。</span><em><span>上面的链接是返利链接，如果你注册购买你会得到一张5元代金券，我会得到一定数额的佣金，无佣金的通道可以使用 </span><a href='http://zhujike.com/'><span>这个链接</span></a></em></p></li><li><p><a href='https://my.laoxuehost.com/aff.php?aff=10358'><span>老薛主机</span></a><span>（110元/年）</span></p><p><span>开了很多年的服务商了，8年前独立博客还比较流行的那会儿我有几个友链在用这家。使用专属优惠码 </span><code>GLACEON</code><span> 可享受终身85折优惠。</span><em><span>上面的链接是返利链接，如果你注册购买你会得到一张5元代金券，我会得到一定数额的佣金，无佣金的通道可以使用 </span><a href='http://laoxuehost.com'><span>这个链接</span></a></em></p></li><li><p><a href='https://wanwang.aliyun.com/hosting?spm=5176.12825654.eofdhaal5.11.54212c4axvYx1v'><span>阿里云</span></a><span>（298元/年 此价格包含独立IP）</span></p><p><span>国内第一大厂，配置高一点，空间多一点且包含独立IP，这个价格已经算很实惠了。</span></p></li></ol><p><span>另外，如果你有日本当地发行的信用卡的话，去 </span><a href='https://www.sakura.ne.jp/'><span>Sakura Internet</span></a><span> 或者其他用IIJ或KDDI机房的本土服务商，搞一台524日元/月的虚拟主机也不错，IIJ/KDDI机房建站到大陆还是可以的。</span></p><p><span>虚拟主机买好后就可以直接绑定域名，上传网站程序使用了，其难度可能就比用QQ空间难一点。</span></p><h3><a name="23-vps虚拟服务器）" class="md-header-anchor"></a><span>2.3 VPS（虚拟服务器）</span></h3><p><strong><span>考虑到本指南的主要受众群体，且使用VPS的门槛较高，故仅做介绍，如果你想使用VPS，请自行上网检索相关教程</span></strong></p><p><span>虚拟主机只能用来建站且大多不提供独立IP，但VPS就可以看做是一台配置不太高的长期联网在线的电脑（服务器）。</span></p><p><span>如果你面向的群体主要是在国内，冰布子更推荐购买 </span><a href='https://cn.aliyun.com/'><span>阿里云</span></a><span> 或 </span><a href='https://www.qcloud.com/'><span>腾讯云</span></a><span> 的香港轻量应用服务器（都是24元/月，两人合租可以考虑买第二档34元/月），虽然线路和性能都一般般，但绝对对得起价格，而且大厂出品稳定性可以保证。当前，冰布子更推荐使用腾讯云的香港轻量服务器。</span></p><p><span>如果你有信用卡（包括银联），且想照顾一下海外人士，可以注册 </span><a href='https://lightsail.aws.amazon.com/'><span>亚马逊AWS</span></a><span> ，买LightSail日本区，建议购买5美元/月的那一档。按照后续的教程分离静态资源后国内速度也不会太差。（任天堂也在用亚马逊AWS）由于名称太长，下称AWSL。</span></p><p><span>如果你想搞国际化，且有信用卡，可以考虑买一台位于圣佛朗西斯科的 </span><a href='https://www.digitalocean.com/'><span>DigitalOcean</span></a><span> （一定要圣佛朗西斯科的，不要觉得新加坡近就快），价格为5美元/月，性能不错，就是国内路由实在是一般，一定要按照后续的教程分离静态资源后拯救国内速度。下称DO。</span></p><p><span>建站用VPS只推荐使用大厂或知名提供商的产品，相较于（到国内的）线路质量，更应该看重稳定性。不建议购买Vultr的VPS，即便它确实算大厂且网上很多人都推荐（因为推荐可以拿佣金），很多国人用他们的服务器做代理用途，导致其很多IP（尤其是美国西海岸和日本机房的）被墙，抽一个可选IP就跟抽卡一样爽。</span></p><p><span>VPS的建站环境可以考虑使用 </span><a href='http://oneinstack.com/'><span>Oneinstack一键包</span></a><span>（无GUI）或 </span><a href='https://bt.cn/'><span>宝塔面板</span></a><span>（网页可视化面板管理）。</span></p><p>&nbsp;</p><hr /><p>&nbsp;</p><h2><a name="3-搭建wordpress" class="md-header-anchor"></a><span>3. 搭建Wordpress</span></h2><p><span>本章将以Wordpress为例。</span></p><p><span>为什么要使用Wordpress呢？首先用的人多，鼎盛时期Wordpress驱动了整个互联网50%以上的网站，即便是现在，根据其官网的说明，仍然有35%的网站在使用Wordpress。大量的用户意味着遇到问题方便解决且有大量的插件、主题对自己的网站进行个性化。而且最重要的是，相较于其他博客程序（Hexo等纯静态博客或使用NodeJS的Ghost），Wordpress对新手友好且简单易用，搭建好后几乎和用QQ空间一样方便。</span></p><p><span>搭建之前，我们要先想好自己要怎么用自己的域名、做DNS解析，最后再上传源码安装。</span></p><p><span>首先，你需要想好自己要怎么使用域名。</span></p><p><span>例如，你申请的域名是 </span><code>glaceon.best</code><span> ，如果你仅仅只想安装一个Wordpress，那么你可以直接把 </span><code>glaceon.best</code><span> 和 </span><code>www.glaceon.best</code><span> 直接作为Wordpress的地址；如果你不仅想安装一个Wordpress，还想有一个静态（或动态）的，不是Wordpress做的个人主页，那这时候你应该考虑把裸域 </span><code>glaceon.best</code><span> 和 </span><code>www.glaceon.best</code><span> 指向个人主页，子域名 </span><code>blog.glaceon.best</code><span> （或其他你喜欢的子域名）指向你的Wordpress博客。</span></p><h3><a name="31-dns解析" class="md-header-anchor"></a><span>3.1 DNS解析</span></h3><p><span>我们在第一章介绍了DNS，但并没有开始正式使用，现在是让它发挥作用的时候了。但是在这之前，我们需要了解一点点域名的概念和DNS记录的知识。</span></p><h4><a name="311-域名相关基本常识" class="md-header-anchor"></a><span>3.1.1 域名相关基本常识</span></h4><p><span>为了方便理解，现举例说明：</span></p><pre spellcheck="false" class="md-fences md-end-block md-fences-with-lineno ty-contain-cm modeLoaded" lang=""><div class="CodeMirror cm-s-inner CodeMirror-wrap" lang=""><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 0px; left: 33px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: none;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 29px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: none;"><div class="CodeMirror-measure"><pre><span>xxxxxxxxxx</span></pre><div class="CodeMirror-linenumber CodeMirror-gutter-elt"><div>1</div></div></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation"><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: -29px; width: 29px;"></div><div class="CodeMirror-gutter-wrapper CodeMirror-activeline-gutter" style="left: -29px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt CodeMirror-linenumber-show" style="left: 0px; width: 20px;">1</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">news.sina.com.cn</span></pre></div></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom-width: 0px; border-bottom-style: solid; border-bottom-color: transparent; top: 22px;"></div><div class="CodeMirror-gutters" style="height: 22px;"><div class="CodeMirror-gutter CodeMirror-linenumbers" style="width: 28px;"></div></div></div></div></pre><p><span>第一章中提到的“后缀”，即TLD，为顶级域名，对应上述举例的 .cn；</span></p><p><span>二级域名为就是最靠近顶级域名左侧的字段，对应上述举例的 com 部分，剩余的部分以此类推 （不过部分人也会认为 sina.com.cn 中 sina 算作二级域名）；</span></p><p><span>为了避免混淆，且大部分人最多只会用到三级域名（如 </span><code>xiaozhan.is.sb</code><span>），故后面将会把三级域名称作“子域名”。</span></p><p><span>需要注意的是， </span><code>www</code><span> ，如 </span><code>www.google.com</code><span> ，也是一个三级域名。不带 </span><code>www</code><span> 的，如 </span><code>google.com</code><span> 可以称之为“裸域”，DNS服务商通常用 </span><code>@</code><span> 表示裸域。这两条记录是相互独立的，故必须分两次填写记录。</span></p><h4><a name="312-dns解析" class="md-header-anchor"></a><span>3.1.2 DNS解析</span></h4><p><span>开始使用DNS解析之前，首先我们要了解DNS的“记录”。常用到的DNS记录有 A（IPV4），CNAME（别名）、MX（邮件相关）TXT（存储文本，多用于验证）4种。</span></p><p><span>通常情况下，搭建网站时需要添加的DNS记录主要是 A 或者 CNAME，取决于你的提供商。如果提供商给你的服务器地址是IP地址，对应 A 记录；如果是一串网址，则对应 CNAME 记录。</span></p><p><span>登陆到你的DNS提供商管理页面后，找到添加DNS记录（记录集）的相关按钮，这时候网页会弹出一个表单让你填写。</span></p><figure><table><thead><tr><th><span>表单项目</span></th><th><span>填写内容</span></th></tr></thead><tbody><tr><td><span>类型</span></td><td><span>参考3.1.2中的DNS记录类型或服务商给的解释</span></td></tr><tr><td><span>名称</span></td><td><span>子域名名称 如 </span><code>blog.example.com</code><span> 就填写 </span><code>blog</code><span>；裸域则留空或填写 </span><code>@</code></td></tr><tr><td><span>目标</span></td><td><span>服务器商提供的IP地址（A记录）或网址（CNAME记录）</span></td></tr><tr><td><span>TTL</span></td><td><span>保持默认，或者通常选择1小时</span></td></tr></tbody></table></figure><p><span>需要注意的是，CNAME记录无法在裸域上使用，如果你一定要这么做，则应先使用 </span><a href='https://ip.sb/'><span>IP查询工具</span></a><span> ，输入提供商提供的服务器网址，获取其IP，并在DNS服务商处添加裸域的A记录。</span></p><p><span>添加好DNS记录后，可能需要15分钟至2小时生效。</span></p><h4><a name="313-添加网站并添加ssl证书以plesk面板为例）" class="md-header-anchor"></a><span>3.1.3 添加网站并添加SSL证书（以Plesk面板为例）</span></h4><p><span>为了方便讲解，本节使用的示例网址为 </span><code>glaceon.best</code><span> 及其子域名。本节暂时不会包含宝塔面板的创建方法。</span></p><p><span>遗憾的是，当前虚拟主机提供商使用的面板可能各不相同，冰布子不可能全部讲解，本节将会使用Plesk面板举例，其他面板操作方法或逻辑大致相同。</span></p><p><span>现在都是2020年了，大家创建网站一定要开启并默认开启HTTPS。</span></p><p><span>你已经添加了DNS记录，现在，你可以在虚拟主机提供商的面板中添加网站了。你在购买虚拟主机的时候，主机商会询问你的域名，虚拟主机开通后，你的域名的裸域和 </span><code>www</code><span> 子域名会自动创建，并指向同一个目录（public_html目录）。如果你想让你的Wordpress博客直接放置在裸域上，那么请直接跳过本节；如果你想将Wordpress运行在一个子域名下，如 </span><code>blog.glaceon.best</code><span> ，则需要按照本节下面的步骤创建一个子域名。</span></p><p><img src="https://i.loli.net/2021/03/13/9jJgdRweqLGPiO8.png" referrerpolicy="no-referrer" alt="截屏2020-07-19 12.17.00"></p><p><span>在Plesk面板“网站与域名”页面，点击“添加子域名”，在跳转的页面中，“子域名”一栏填写你所想要的子域名名称，如 </span><code>blog.glaceon.best</code><span> 则在左边的框中填写 </span><code>blog</code><span> ，在右侧的框中选择 </span><code>glaceon.best</code><span> ；文档根目录会在填写好后自动生成，可以保持默认，最后点击确定即可。</span><strong><span>注意，你的子域名必须保证在DNS服务商那边添加过，否则无法解析。</span></strong></p><p><span>点击确定后，Plesk面板会自动跳转到SSL证书页面，询问你是否添加SSL证书。滑动到页面底部，有一个“Entry-level protection”，是Let’s Encrypt提供的免费证书，点击它底下的“免费获取”以申请免费的SSL证书。（你必须要拥有有效的、可被浏览器信任的证书才能正常地启用HTTPS），只要你保证DNS记录已经成功添加，系统就可以自动为你申请、绑定SSL证书。申请完成后，不要忘记开启“自动跳转HTTPS（从HTTP重定向到HTTPS）”，让浏览器访问你的网站时默认就使用HTTPS。</span></p><p><span>现在你可能有点疑惑：什么是HTTPS，什么又是SSL证书？简单地说HTTPS是HTTP协议的加密版，使用SSL/TLS加密数据包，是保护交换数据的隐私与完整性的技术。你也许会认为这对于个人网站来讲没什么大的用处，但是，现在网站如果不支持HTTPS的话主流浏览器会直接标记“不安全”，非常难看；且更重要的是，还能抵御部分来自电信运营商的DNS污染。现在都是2020年了，网站没有HTTPS都不好意思出来混的（摊手）。</span></p><p><em><span>上文的例子都是针对的Plesk面板，对于cPanel虚拟主机，你应该去面板主页“安全”一栏中的“SSL Status”，具体操作可以直接询问主机提供商客服，问他们如何申请免费SSL证书</span></em></p><h4><a name="314-上传wordpress程序框架" class="md-header-anchor"></a><span>3.1.4 上传Wordpress程序框架</span></h4><p><span>本文中所有截图示例都是在Plesk面板下完成，部分提供商可能不使用本面板，但基本都是一样的。</span></p><h5><a name="3141-使用服务商提供的一键安装功能" class="md-header-anchor"></a><span>3.1.4.1 使用服务商提供的一键安装功能</span></h5><p><span>如果你使用的是虚拟主机，绝大部分服务商都会提供“一键安装Wordpress”功能（使用Plesk、cPanel面板的服务商一定会有此功能），那么此步骤会变得更加简单。</span></p><p><img src="https://i.loli.net/2021/03/13/UQGiVYxydMDX4aR.png" referrerpolicy="no-referrer" alt="image-20200719191150954"></p><p><span>你只需要登陆虚拟主机控制面板，找到“Wordpress”相关选项，点击“安装”按钮，选择好默认协议（这都2020年了，请务必使用HTTPS且不带</span><code>www</code><span>）、安装路径（该Wordpress实例运使用哪个域名）、标题（你的网站名称，可以随时修改）、语言（有简体中文）、管理员账户密码（请不要用admin作为用户名，且请务必使用强密码）、电子邮箱（务必真实有效，否则你无法收到评论通知、更新通知等），其余的可以保持默认，然后点击安装，等待完成。</span></p><p><span>当程序告诉你安装好后，你可以直接访问你安装的网址，一个全新的Wordpress网站就诞生了！</span></p><h5><a name="3142-手动安装wordpress" class="md-header-anchor"></a><span>3.1.4.2 手动安装Wordpress</span></h5><p><span>有的服务商可能不自带一键安装功能，但是问题不大，本身Wordpress的安装流程就不复杂。</span></p><h6><a name="31421-创建数据库" class="md-header-anchor"></a><span>3.1.4.2.1 创建数据库</span></h6><p><img src="https://i.loli.net/2021/03/13/rpQXyjTOtG7gZDY.png" referrerpolicy="no-referrer" alt="image-20200719192053543"></p><p><span>首先你需要创建一个MySQL（MariaDB）数据库：在虚拟主机面板找到MySQL数据库（或就叫数据库）的选项，点击“添加数据库”，在跳转后的页面（如上图），填写数据库名（为本数据库起名，名称随意）、数据库服务器类型（MySQL/MariaDB，因为Wordpress只能用此类数据库）、相关网站（Wordpress要使用的域名）、数据库用户名及密码（</span><strong><span>数据库</span></strong><span>的登录名和密码，请务必使用高强度密码且不要和Wordpress登录名密码一样），其余可以保持默认。最后点击确定，等待服务器为你创建数据库。</span></p><h6><a name="31422-上传并安装wordpress框架" class="md-header-anchor"></a><span>3.1.4.2.2 上传并安装Wordpress框架</span></h6><p><span>现在，我们要把Wordpress的程序框架上传到服务器上。由于Wordpress官网被墙，这一步你需要使用代理（你也可以直接使用SSH登陆进去，</span><code>wget</code><span> 框架到服务器上，但老实说使用SSH本身对新手太不友好了）。</span></p><p><a href='https://cn.wordpress.org/download/'><span>点击这里</span></a><span> 访问Wordpress官网，下载框架到你的电脑。</span><em><span>哦对了，如果你喜欢，还可以到Google Play或者APP Store下载官方手机APP，在网站创建后可以直接使用手机码字、管理评论等等。</span></em></p><p><span>下载好后，访问虚拟主机提供商的面板，找到文件管理相关页面，进入你准备安装Wordpress的文件夹（如果你要在裸域上安装，则通常这个文件夹就叫public_html；如果你要在子域名上安装，则通常这个文件夹名称就是子域名名称），点击“上传”来上传你刚刚下载好的Wordpress压缩包，再选择此文件，点击面板上的“解压文件”，进行解压。如果解压后只有一个 </span><code>wordpress</code><span> 文件夹，请不要忘记把这个文件夹的所有内容全部移动出来。</span></p><p><img src="https://i.loli.net/2021/03/13/LvXbSUERPhAJVqm.png" referrerpolicy="no-referrer" alt="image-20200719194732115"></p><p><span>你的网站目录应该类似于这个样子。完成后，你可以直接使用浏览器访问你的网站网址了。浏览器会自动跳转到Wordpress安装页面。</span></p><p><img src="https://i.loli.net/2021/03/13/h3sUp2SVnqB1zcP.png" referrerpolicy="no-referrer" alt="image-20200719195357433"></p><p><span>上图一整页要求你填写的都是</span><strong><span>数据库</span></strong><span>信息，这些信息基本上只会在这里使用一次，以后很少会用到。</span></p><p><span>数据库名填写 3.1.4.2.1 中你自定义的数据库名称，用户名和密码对应的是你创建的数据库用户名和密码，数据库主机保持默认，表前缀建议不使用默认，改成其他字符（但不要忘记最后需要有一个下划线，如 </span><code>gLa_</code><span>），完成后提交。如果信息正确，系统会告诉你可以安装了。</span></p><p><img src="https://i.loli.net/2021/03/13/mEIjLGgRpZA56dU.png" referrerpolicy="no-referrer" alt="image-20200719200054540"></p><p><span>接下来，Wordpress会让你填写网站基本信息，本页的所有信息都是</span><strong><span>你的Wordpress网站信息</span></strong><span>。</span></p><p><span>站点标题即网站名称，用户名请务必</span><strong><span>不要</span></strong><span>使用 </span><code>admin</code><span> 或 </span><code>root</code><span> ，密码请</span><strong><span>务必</span></strong><span>使用高强度随机密码，电子邮件请务必填写真实且你自己常用的邮箱。而“对搜索引擎的可见性”一项，如果你不想公开你的Wordpress网站（因为你的网站是</span><strong><span>可以</span></strong><span>被Google等搜索引擎索引到的），则请勾选；否则请务必保持默认（建议不勾选，部分文章不想所有人可见可以设置密码，而非把整个网站变成非公开）。</span></p><p><span>填写完成确保正确无误后，点击安装Wordpress，大功告成~！</span></p><h2><a name="4-简易设置与优化" class="md-header-anchor"></a><span>4. 简易设置与优化</span></h2><p><span>首先，恭喜你创建好了属于你自己的Wordpress站点！不过在正式开写之前，你需要设置和优化一下你的网站。</span></p><h3><a name="41-创建个人头像" class="md-header-anchor"></a><span>4.1 创建个人头像</span></h3><p><span>老实说，这不算站点设置，但同样重要！</span></p><p><span>Wordpress（和其他非常非常多的程序）使用 </span><a href='https://cn.gravatar.com/'><span>Gravatar</span></a><span> （需要使用代理访问）读取头像，用户只需在网站上留下电子邮箱即可自动读取该邮箱在 Gravatar 中的头像。因此，请务必点击上面给的链接注册一个账户，将你在 3.1.4 节中安装Wordpress时留下的邮箱添加进去并设置好头像，完成后，你的Wordpress会自动获取并展示。</span></p><p><em><span>当你在别的网站中评论时，使用带有头像的邮箱，即可在别人的网站评论中显示你的头像；如果你没有头像，在别人的网站去评论的话可能更容易会被当做为垃圾评论。</span></em></p><h3><a name="42-wordpress基本设置" class="md-header-anchor"></a><span>4.2 Wordpress基本设置</span></h3><p><span>从本节开始，你应该登陆进Wordpress仪表盘（后台）进行操作。地址为 </span><code>https://你的网站链接/wp-admin</code><span> 。</span></p><p><span>本节主要讲的是可能会被忽略的设置，其余设置可以自行摸索，也鼓励自行摸索。</span></p><h4><a name="421-完善个人资料" class="md-header-anchor"></a><span>4.2.1 完善个人资料</span></h4><p><span>在Wordpress仪表盘——用户——我的个人资料中，根据个人喜好编辑自己的资料（尤其是昵称），同时可以完善一下“个人说明”，部分主题会展示这个个人说明。如果你想修改密码和邮箱，也需要在本页面操作。</span></p><h4><a name="421-设置固定链接" class="md-header-anchor"></a><span>4.2.1 设置固定链接</span></h4><p><span>所谓“固定链接”，指某一篇文章的唯一的链接（URL）。在Wordpress仪表盘——设置——固定链接中，你可以根据个人喜好设置固定链接。</span></p><p><span>对于新手，冰布子建议使用“数字型”，因为这样最省心，否则你</span><strong><span>必须</span></strong><span>为每篇文章指定</span><strong><span>英文</span></strong><span>的URL名称。（如果不指定，Wordpress会直接将文章的中文标题放到URL上，非常难看且对搜索引擎极其不友好。指定的方法是，在文章编辑页，点击文章标题，在会出现一个“永久链接”，点击编辑更改即可。）</span></p><p><span>注意，修改好后请</span><strong><span>不要</span></strong><span>频繁地变更链接样式，过干脆以后都不要修改，否则会严重影响网站被搜索引擎索引的效率。</span></p><p><em><span>此情况通常不会出现，但是不能完全排除可能性</span></em><span> 如果在这个设置页面中，发现系统给出的固定链接示例URL带有 </span><code>index.php</code><span> ，例如 </span><code>https://glaceon.best/index.php/2020/07/sample-post</code><span> ，则说明你网站没有做“伪静态”。鉴于几乎所有的虚拟主机都用的Apache或LiteSpeed，只需要加一个</span><code>.htaccess</code><span>文件即可搞定：使用记事本编辑一个名为 </span><code>.htaccess</code><span> 的文件，上传到Wordpress的安装目录即可。文件内容如下。</span></p><pre spellcheck="false" class="md-fences md-end-block md-fences-with-lineno ty-contain-cm modeLoaded" lang="shell"><div class="CodeMirror cm-s-inner CodeMirror-wrap" lang="shell"><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 0px; left: 42px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: none;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 38px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: none;"><div class="CodeMirror-measure"><pre><span>xxxxxxxxxx</span></pre><div class="CodeMirror-linenumber CodeMirror-gutter-elt"><div>10</div></div></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation" style=""><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: -38px; width: 38px;"></div><div class="CodeMirror-gutter-wrapper CodeMirror-activeline-gutter" style="left: -38px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt CodeMirror-linenumber-show" style="left: 0px; width: 29px;">1</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-comment"># BEGIN WordPress</span></span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" style="left: -38px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 29px;">2</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="">​</span></span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" style="left: -38px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 29px;">3</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">RewriteEngine On</span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" style="left: -38px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 29px;">4</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">RewriteBase /</span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" style="left: -38px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 29px;">5</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">RewriteRule ^index\.php<span class="cm-def">$ </span><span class="cm-attribute">-</span> [L]</span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" style="left: -38px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 29px;">6</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">RewriteCond %{REQUEST_FILENAME} !-f</span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" style="left: -38px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 29px;">7</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">RewriteCond %{REQUEST_FILENAME} !-d</span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" style="left: -38px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 29px;">8</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">RewriteRule . /index.php [L]</span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" style="left: -38px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 29px;">9</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="">​</span></span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" style="left: -38px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt CodeMirror-linenumber-show" style="left: 0px; width: 29px;">10</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-comment"># END WordPress</span></span></pre></div></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom-width: 0px; border-bottom-style: solid; border-bottom-color: transparent; top: 220px;"></div><div class="CodeMirror-gutters" style="height: 220px;"><div class="CodeMirror-gutter CodeMirror-linenumbers" style="width: 37px;"></div></div></div></div></pre><h4><a name="422-安装插件" class="md-header-anchor"></a><span>4.2.2 安装插件</span></h4><p><span>Wordpress的扩展性非常强，使用插件可以方便地扩展其功能。</span></p><p><span>在 Wordpress仪表盘——插件——安装插件，即可直接搜索或上传插件安装。</span></p><h5><a name="4221-缓存" class="md-header-anchor"></a><span>4.2.2.1 缓存</span></h5><p><span>利用缓存插件，可以极大地加快网站加载速度。同时这些插件往往还有优化功能（尤其是懒加载Lazy Load，即页面加载完成后才开始加载图片，有效减少空白页面时间）。</span></p><p><span>在安装缓存插件之前，你需要了解自己的主机使用的是什么HTTP服务器软件（通常要么是Apache要么是LiteSpeed），因为这会决定我们最终使用哪款缓存插件。如果你不知道，请访问 </span><a href='https://zh.infobyip.com/httpservertest.php'><span>这个网站</span></a><span> ，输入你的Wordpress网址，在返回值中，找到 </span><code>Server</code><span> 字段，内容就是你的主机HTTP服务器软件名称。</span></p><p><span>你只需要安装一种缓存插件，不要重复安装。</span></p><h6><a name="42211-litespeed-cache" class="md-header-anchor"></a><span>4.2.2.1.1 LiteSpeed Cache</span></h6><p><span>如果你的主机使用LiteSpeed，那么恭喜你，这是最适合Wordpress的HTTP服务器软件，配合专属缓存插件可以显著提升网站速度。你可以直接在安装插件页面搜索 </span><code>LiteSpeed Cache</code><span> 并直接安装、启用。下面开始配置。</span></p><p><span>启用后，你的仪表盘左侧菜单就会多出一个“LiteSpeed”选项，选择 LiteSpeed Cache——缓存规则，里面有8个选项卡供设置。这里我们大部分可以保持默认，不过可以考虑进入 [5]ESI 开启ESI，[7]浏览器 开启浏览器缓存，如果你的主机商告诉你提供Memcached或Redis，则还可以进入 [6]对象 开启对应的（Redis或Memcached）对象缓存，这是内存缓存，如果服务商提供的话效果还是非常可观的（一般来讲不会提供）。</span></p><p><em><span>虽然已经考虑到了主题兼容性，但是下面几段的选项仍然可能会导致主题出现问题，请根据你的主题兼容性，开或关部分选项。</span></em><span> </span></p><p><span>依旧是在LiteSpeed Cache这个大类中，选择左侧菜单的“页面优化”，这个页面有7个选项卡供设置。</span></p><p><span>首先在 [1]CSS设置中，开启CSS最小化、CSS合并、CSS HTTP/2推送和异步加载CSS；</span></p><p><span>接着在 [2]JS设置中，开启JS HTTP/2推送和延迟加载JS；</span></p><p><span>在[3]优化设定中，开启HTTP最小化、DNS Prefetch Control、移除注释、异步加载Google Fonts、移除WordPress表情包；</span></p><p><span>在[4]多媒体设定中开启延迟加载图片（非常重要）、响应式占位符、延迟加载Iframe、Inline Lazy Load Images Library</span></p><p><span>在[6]Discussion Settings中，开启Gravatar 缓存、Gravatar 缓存 Cron</span></p><p><span>最后不要忘记保存修改。</span></p><h6><a name="42211-其他缓存" class="md-header-anchor"></a><span>4.2.2.1.1 其他缓存</span></h6><p><span>如果你的主机商不是用的LiteSpeed，则只能选择其他的通用插件。在这里推荐使用 Autoptimize 和 WP-Optimize 一起使用（直接在后台插件页面搜索）。</span></p><p><span>启用这两个插件后，在 WP-Optimize——缓存页面设置：在「页面缓存」选项卡，启用：启用页面缓存、为移动设备生成单独的文件、为登录用户提供缓存页面；「预加载选项卡」中，勾选激活预定的缓存预加载；最后记得保存更改。</span></p><p><em><span>虽然已经考虑到了主题兼容性，但是下面一段的选项仍然可能会导致主题出现问题，请根据你的主题兼容性，开或关部分选项。</span></em><span> </span></p><p><span>再到左侧菜单，选择设置——Autoptimize，在「JS CSS HTML」选项卡，勾选：启用 JavaScript 优化、启用 CSS 优化、生成小图片为Base64 数据、优化 HTML 代码，保存更改；「图像选项卡」，勾选“延迟加载”图像，保存更改；「额外」选项卡中，勾选移除 emojis，保存更改。</span></p><h5><a name="4222-对象存储" class="md-header-anchor"></a><span>4.2.2.2 对象存储</span></h5><p><span>网站最占用空间的是图片，加载最耗时的也是图片，现在我们可以将图片等附件分离出主机，存储到专业的“对象存储”内，不仅图片文件更安全，而且还能得到更快的速度。对象存储是一项付费服务，但价格便宜：对于个人网站，月消费通常会低于1元。</span></p><p><span>在这里，冰布子推荐使用阿里云OSS作为对象存储提供商，主要是国内访问速度快、价格低廉（且提供一定的免费额度）、插件完善且对新手友好。</span><em><span>如过你不想使用阿里云的存储，可以考虑使用微软的Azure Storage或亚马逊AWS的S3。但本文只会讲解如何使用阿里云OSS。</span></em></p><h6><a name="42221-创建bucket" class="md-header-anchor"></a><span>4.2.2.2.1 创建Bucket</span></h6><p><span>在阿里云控制台，在产品中心中找到对象存储OSS，</span><strong><span>在非中国大陆区（推荐香港或新加坡）</span></strong><span>新建一个bucket，存储类型选择标准存储、不需要开通版本控制和备份、无须加密、不需要开通日志。关于读写权限，如果你不想绑定自己的域名，想直接使用阿里云OSS外链或使用第三方CDN加速，则权限应该选择“公共读”；如果你想直接使用阿里云的CDN加速（价格也很便宜，且能全球加速），则权限建议选择“私有”。</span></p><h6><a name="42222-创建accesskey" class="md-header-anchor"></a><span>4.2.2.2.2 创建AccessKey</span></h6><p><span>创建好了对象存储Bucket后，还需要创建AccessKey，让Wordpress插件登录并上传文件到OSS中。</span></p><p><span>在阿里云控制台，鼠标悬停在右上角头像处，在弹出的菜单中点击“AccessKey管理”，确认继续使用AccessKey后，点击“创建AccessKey”，这时候请务必记下并</span><strong><span>妥善保管</span></strong><span>AccessKey和Secret，它们和你的账户密码一样重要。</span></p><h6><a name="42223-开启cdn加速可选）" class="md-header-anchor"></a><span>4.2.2.2.3 开启CDN加速（可选）</span></h6><p><span>冰布子不推荐直接绑定域名使用，故本节将会直接讲解如何开启CDN加速并绑定域名。因为阿里云OSS不会帮你自动申请SSL证书，你必须手动上传证书开启HTTPS（但使用CDN，则会直接用阿里云分配的SSL证书）。如果你不想绑定域名或使用CDN加速，可以直接跳过本节。</span></p><p><span>CDN也是付费服务，但是对于个人网站而言，价格实惠，一般网站月开销可能不足1元。</span></p><p><span>在阿里云控制台产品中，找到CDN，开通按量付费后，在“域名管理”内点击“添加域名”。</span></p><p><span>在跳转后的页面中，“加速域名”填写你想绑定的域名（一个子域名，名称自由发挥，例如你的网站是 </span><code>glaceon.best</code><span>，那么加速域名可以写 </span><code>static.glaceon.best</code><span> 或者 </span><code>image.glaceon.best</code><span>），业务类型选择“图片小文件”，源站信息选择“OSS域名”并在域名一栏中选择你刚刚创建的那一个Bucket，端口选择443，加速区域选择“全球（不含中国内地）”。最后确认、等待审核。</span></p><p><span>审核完成后会在“域名管理”处的“CNAME”一项显示一个网址，你需要将此CNAME记录添加到DNS提供商中：名称为你的加速域名，类型CNAME，记录值为阿里云CDN提供给你的这个CNAME。</span></p><p><span>添加完成后，等待解析生效，点击加速域名进入CDN管理页面，在“HTTPS配置”中，开启HTTPS安全加速，证书类型选择免费证书（如果不开启，你的网站会被警告有Mixed Content错误）。仍然在本页，你可以开启HTTP/2、强制跳转HTTPS、关闭TLS1.0支持和开启HSTS。</span></p><h6><a name="42224-设置wordpress插件" class="md-header-anchor"></a><span>4.2.2.2.4 设置Wordpress插件</span></h6><p><span>创建好了AccessKey后，回到Wordpress仪表盘。现在你可以安装Wordpress的OSS插件并使用了。本插件没有登录到Wordpress自带的插件目录，所以需要在安装插件页面自行上传。</span></p><p><span>插件作者提供了非常详细的安装说明，请 </span><a href='https://github.com/IvanChou/aliyun-oss-support/wiki/Quick-start'><span>参阅插件文档</span></a><span> 使用。需要特殊说明的是，如果你根据 4.2.2.2.3 的步骤启用了CDN，那么本插件的“Bucket 域名”一项应该填写你的CDN的加速域名，这样才能有加速效果。同时，请务必阅读插件文档中“图片服务”一节的讲解，冰布子强烈建议配置图片服务。</span></p><h5><a name="4223-反垃圾插件akismet" class="md-header-anchor"></a><span>4.2.2.3 反垃圾插件Akismet</span></h5><p><span>由于网站大都是公开的，任何人都可以访问，因此垃圾评论自然少不了，我们必须配置一些反垃圾评论插件。</span></p><p><span>Wordpress安装后自带了一个反垃圾插件，默认为禁用状态。启用后，插件会叫你去申请一个API密钥，按照插件提示申请，选择免费版本，最后把密钥填入插件中并保存设置即可。</span></p><h5><a name="4224-网站发信插件wp-mail-smtp" class="md-header-anchor"></a><span>4.2.2.4 网站发信插件WP Mail SMTP</span></h5><p><span>Wordpress会通过发邮件的形式提醒你一些事情（如评论待审、自动更新等），同时有的主题提供了评论回复邮件提醒功能。这些都涉及到“发邮件”的操作。然而Wordpress默认使用的发信方式是PHP的 </span><code>mail()</code><span> 函数，很大概率（或者说，几乎100%的概率）会被丢进垃圾邮件甚至直接被退信。因此，我们必须配置SMTP，让Wordpress使用真实的邮件服务器发信。</span></p><p><span>在开始之前，你必须拥有一个可靠的电子邮件地址（推荐使用GMail，当然如果你可以申请一个企业邮箱或域名邮箱就更好了），并开启SMTP功能，具体操作请上网搜索“[你的邮箱提供商] 开启SMTP”。</span><em><span>关于申请、使用免费域名邮箱的指引，可以考虑申请 腾讯企业邮 或 Yandex域名邮箱，冰布子自己使用的是Office365的付费服务。</span></em></p><p><span>在Wordpress插件安装页面，搜索WP Mail SMTP并安装。</span></p><p><span>如果你要使用GMail，需要使用API，请参考 </span><a href='https://wpmailsmtp.com/docs/how-to-set-up-the-gmail-mailer-in-wp-mail-smtp/'><span>插件官方文档（英语）</span></a><span> 进行配置。该文档非常详细。</span></p><p><span>如果你要使用其他邮件提供商，且知道其SMTP配置，可以在插件配置中选择Other SMTP，根据邮件服务提供商提供的信息填写。举例说明，Office365的SMTP主机为 </span><code>smtp.office365.com</code><span> ，加密类型为 </span><code>STARTTLS</code><span>，端口为587，用户名和密码即完整邮箱地址和邮箱密码。</span></p><p><span>设置完成后，保存更改，在“发送电子邮件测试”选项卡中给自己发送一封测试邮件，如果能收到，就说明没有问题可以正常使用了。</span></p><h5><a name="4225-友情链接link-manager" class="md-header-anchor"></a><span>4.2.2.5 友情链接Link Manager</span></h5><p><span>友情链接姑且算一种古老的“社交方式”了，可以算作博客时代的“朋友圈”，在自己网站的某个地方挂着其他人的网站链接。当你的朋友有了自己的网站后，不要忘记去交换友情链接噢。</span><em><span>友情链接对SEO（搜索引擎优化）也有一定的帮助</span></em></p><p><span>链接管理器本来是自带的，但后来Wordpress把它分离出来成了插件，如果要使用友情链接功能，需要去插件搜索 Link Manager 安装并启用。安装后会在仪表盘左侧菜单多出一个“链接”设置。只需点击链接——添加，即可添加友情链接。关于如何展示友情链接，会在后续讲到。</span></p><h5><a name="4226-其它实用插件" class="md-header-anchor"></a><span>4.2.2.6 其它实用插件</span></h5><p><span>冰布子实用Wordpress已经有10年了，现在总结一些自己使用的插件供各位参考。</span></p><h6><a name="42261-auto-ping-booster-和-google-xml-sitemap-generator" class="md-header-anchor"></a><span>4.2.2.6.1 Auto Ping Booster 和 Google XML Sitemap Generator</span></h6><p><span>想让自己的网站尽快被搜索引擎收录吗？除了多更新文章之外，使用Ping服务（新文章发布后会主动通知搜索引擎）、创建Sitemap（为搜索引擎准备的网站地图，方便爬虫爬取）是简单而有效的方式。</span></p><h6><a name="42262-google-font-fix" class="md-header-anchor"></a><span>4.2.2.6.2 Google Font Fix</span></h6><p><span>由于某些原因，Google Font在国内使用起来总有点问题，但绝大多数主题都会引用Google Font的字体。使用本插件可以加速Google Font的体验，同时还支持加速Gravatar头像，强烈推荐使用。</span></p><h6><a name="42263-really-simple-ssl" class="md-header-anchor"></a><span>4.2.2.6.3 Really Simple SSL</span></h6><p><span>你的网站多多少少都可能会出现Mixed Content（在HTTPS页面中，出现了非HTTPS的元素）的问题，这时候使用此插件就可以一键解决。简单、无脑、效果好。</span></p><h6><a name="42264-wp-statistics" class="md-header-anchor"></a><span>4.2.2.6.4 WP Statistics</span></h6><p><span>想知道你的博客人气的</span><strong><span>真实的</span></strong><span>数据吗？使用此插件可以直接为你分析你的搜索引擎索引量、访问量、访客数据（从哪里找到链接访问的、访问地区、访问了什么文章、使用了什么浏览器等等），然你对你的网站数据有一个详尽的了解，知道自己的网站访客的兴趣，并优化自己的内容。</span><em><span>部分主体的“本文被阅读过XX次”的功能就需要此插件</span></em></p><h5><a name="4227-使用cdn加速其它静态文件可选）" class="md-header-anchor"></a><span>4.2.2.7 使用CDN加速其它静态文件（可选）</span></h5><p><span>在 </span><a href='#-4222对象存储'><span>4.2.2.2 对象存储</span></a><span> 一节，冰布子讲到了使用CDN加速对象存储以起到加速网站的图片的作用。除此之外，我们还可以配合Wordpress插件，使用CDN加速CSS、JS等静态文件，减少对源站的请求以达到加速的效果。</span></p><p><span>在开始之前，你需要先参考 </span><a href='#42223开启cdn加速(可选)'><span>4.2.2.2.3 开启CDN加速（可选）</span></a><span> 一节，添加一个CDN域名，加速域名依旧是自己定义，如 </span><code>cdn.glaceon.best</code><span> ，源站选择“源站域名”，源站域名填写你的Wordpress网址，端口为443。冰布子的静态文件加速使用的是Azure CDN，创建方法和阿里云差不多，只需带入过去即可。</span></p><p><span>创建好CDN节点后，回到Wordpress仪表盘。</span></p><p><strong><span>如果你使用的是LiteSpeed Cache</span></strong><span>，直接在LiteSpeed Cache——CDN页面中：开启“使用CDN映射”、CDN URL填写你的CDN加速域名（需要包含 </span><code>https://</code><span> ）且进选择“包含CSS”和“包含JS”，原始URI填写 </span><code>//[你的Wordpress网址]</code><span>，包括目录填写</span><code>wp-content</code><span> </span><code>wp-includes</code><span> </span><code>/min/</code><span>，一行一个。最后保存修改即可。</span></p><p><strong><span>如果你使用的不是LiteSpeed Cache</span></strong><span>，请确保你已经安装了Autoptimize。在设置——Autoptimize中，第一个选项卡（JS CSS &amp; HTML）找到“CDN选项”，在“CDN基本URL”中填写 </span><code>//[你的CDN加速域名]</code><span>，最后保存修改即可。</span></p><h3><a name="43-从lofter迁移到wordpress" class="md-header-anchor"></a><span>4.3 从Lofter迁移到Wordpress</span></h3><p><strong><span>注意，由于Lofter、微博都有防盗链机制，因此你文章中的图片必须要自行上传并自行重新插入到文章中！</span></strong></p><p><span>请参考 </span><a href='https://github.com/alicewish/Lofter2Hexo'><span>Lofter2Hexo项目</span></a><span> ，或作者的 </span><a href='https://zhuanlan.zhihu.com/p/138983325'><span>知乎专栏</span></a><span> ，其中知乎专栏的最下面有作者提供的视频教程。但是需要注意的是，我们此处虽然需要下载图片，但不需要按照作者所说上传到Github图床，因为Wordpress本身自带图片上传功能且通过前文你应该已经配置好了对象存储，因此你应该直接把图片上传到Wordpress。作者这样做是为了照顾Hexo或Hugo用户。</span></p><p>&nbsp;</p><hr /><p>&nbsp;</p><h2><a name="5-个性化" class="md-header-anchor"></a><span>5. 个性化</span></h2><p><span>现在你已经初步设置好并简单地优化了你的Wordpress站点，在写作之前，挑一个你喜欢的主题，做好个性化配置再开始吧。</span></p><h3><a name="51-主题" class="md-header-anchor"></a><span>5.1 主题</span></h3><p><span>Wordpress拥有相当庞大的主题库，你可以充分利用主题来个性化网站。</span></p><p><span>在Wordpress仪表盘内置有主题市场（仪表盘——外观——主题——添加主题），可以在里面选择你喜欢的主题选用。但需要注意的是，外国人制作的主题通常</span><strong><span>不会</span></strong><span>考虑中文博客体验，因此建议选用主题时优先考虑国人制作的主题。</span></p><p><span>除了Wordpress内置的主题市场，你还可以去 </span><a href='https://github.com/search?q=Wordpress+theme'><span>Github搜索</span></a><span> 或 </span><a href='https://github.com/topics/wordpress-theme'><span>Github话题</span></a><span> 等网站寻找优秀的主题。在这里，冰布子推荐 </span><a href='https://github.com/mirai-mamori/Sakurairo'><span>Sakurairo</span></a><span> ，</span><a href='https://github.com/yrccondor/mdx'><span>mdx</span></a><span> ，</span><a href='https://github.com/solstice23/argon-theme'><span>argon-theme</span></a><span> ，</span><a href='https://github.com/HelipengTony/tony'><span>tony</span></a><span> 和Wordpress官方出品的 </span><a href='https://wordpress.org/themes/twentyseventeen/'><span>Twenty Seventeen</span></a><span> 等主题。</span></p><p><span>由于各主题的个性化配置都互不相同，且很多主题还有其特定的功能，因此具体使用方式请参照主题说明。但仍有很多通用的配置需要注意。</span></p><h4><a name="511-自定义功能" class="md-header-anchor"></a><span>5.1.1 自定义功能</span></h4><p><span>选择主题时，点击“即时预览”可以预览主题（但不保证是最终效果），在预览的同时可以对你的网站的站点身份和图标可以进行自定义。点击“站点身份”可以修改你的图标（即LOGO，如果没有，主题会自动换成文字。点击选择图标后网站会提示你建议尺寸）、站点标题和副标题、站点图片（网站图标，见下图，建议512*512以上的正方形）</span></p><p><img src="https://i.loli.net/2021/03/13/aOUVwryJAqj7dKG.png" referrerpolicy="no-referrer" alt="image-20200720155004182"></p><p><span>除此之外，即时预览功能还能修改和自定义其他很多选项，具体取决于你使用什么主题。每一项都有中文引导，其难度比装修淘宝店或修改QQ空间还简单，相信对各位来讲不是问题。</span></p><p><span>修改好后，点击“发布”，即可使用主题。</span></p><p><span>另外，有的主题功能非常强大，还自带自己的设置页面可以供用户调整，具体请参照实际和文档自行配置。</span></p><h4><a name="512-菜单和小工具" class="md-header-anchor"></a><span>5.1.2 菜单和小工具</span></h4><p><span>不同主题菜单的样式和位置都不一样，有的主题允许用户使用多个菜单（具体请参考主题本身的文档或即时预览中“菜单”选项中的说明），你可以利用其特点充分使用它们。</span></p><p><span>小工具（Widget）类似于一种“挂件”，可以在侧边栏或者网站底部展示特定内容，但部分主题没有侧边栏（单栏主题），因此请根据主题自身情况使用。</span></p><p><span>调整这些选项都</span><strong><span>不会</span></strong><span>触发缓存插件清理缓存，因此你修改后必须清除缓存（查看你仪表盘顶部，有删除缓存的菜单）后才能生效。</span></p><p>&nbsp;</p><hr /><p>&nbsp;</p><h2><a name="6-撰写内容" class="md-header-anchor"></a><span>6. 撰写内容</span></h2><p><span>终于，现在你可以</span><strong><span>准备</span></strong><span>动笔开写了！但是在写文章的同时还有一些问题必须要了解。同时冰布子将会给出一些建议，让你的文章更好看。</span></p><p><span>Wordpress有两种文章类型：文章、页面。“文章”即普通文章，会出现在博客时间线中；“页面”则被看作一个独立网页，默认隐藏，你必须在菜单中添加此页面才会显示该页面的链接（因此，“页面”通常用来写“关于”页或留言板页）。</span></p><h3><a name="61-使用wordpress编辑器" class="md-header-anchor"></a><span>6.1 使用Wordpress编辑器</span></h3><p><img src="https://i.loli.net/2021/03/13/H63ITJ7gSCBpqly.png" referrerpolicy="no-referrer" alt="image-20200720161001233"></p><p><span>不管是页面还是文章，使用的编辑器都是一样的。Wordpress的编辑器是最近比较流行的“模块化编辑器”，有的人一开始会不习惯，但实际上用一段时间后会发现比其他的那些所见即所得编辑器好用很多倍。插入图片也支持拖拽图片到窗口内，调整位置也非常简单。但现在冰布子主要想讲的是右侧菜单中的选项。</span></p><ul><li><span>永久链接：本文章的URL，如果你的永久链接不是选择的“数字型”，那么为了美观和SEO，务必修改此处，将里面的中文改成英文字母、横杠和数字的组合（拼音也行）</span></li><li><span>特色图像：文章封面图，为了美观，最好每篇文章都设置一个。</span></li><li><span>摘要：（建议每篇文章都要写）为文章写一个摘要（将会出现在首页的文章列表），如果懒得写，直接把你文章的第一段丢进去也行。</span></li><li><span>标签：你熟悉的标签，但是标签广场这种功能是不存在的，但是为了SEO，一定也不要忘记打TAG。</span></li></ul><h3><a name="62-首页显示摘要" class="md-header-anchor"></a><span>6.2 首页显示摘要</span></h3><p><span>如果你的主题不支持首页截取摘要，且你没有给文章写“摘要”，那么你的博客页面会变得非常————————长！因为没有写摘要且主题不支持截取的话，系统会在文章页中直接输出文章全文。这样会严重拖慢加载速度，非常不好。</span></p><p><span>如果你的主题支持首页截取摘要（通常来讲，国人主题大部分支持，外国人的主题大部分都不支持），则你不需要插件，直接去主题的设置中寻找是否有类似选项，开启即可。能不用插件的时候就尽量不要使用插件。</span></p><p><span>那如何让不支持首页截取摘要的主题支持此功能呢？你需要一个插件：</span><strong><span>Advanced Excerpt</span></strong><span>，在插件页搜索并启用它后，在设置——Excerpt中进行调整：Excerpt Length建议选择250至300词（Character）；勾选“Read More Link”，自定义文本为“继续阅读”或其他你喜欢的文字，其余的根据自己喜好调整，最后保存即可。</span></p><p><span>Wordpress相关讲解到此结束。有了一个属于自己的环境后，冰布子希望你能坚持写作，不要途中放弃。</span></p><h2><a name="7-rss订阅" class="md-header-anchor"></a><span>7. RSS订阅</span></h2><p><span>微博可以关注博主，Lofter也可以关注博主，那么独立博客能不能？当然可以，用一种古老的办法：RSS。</span></p><p><span>Wordpress、Typecho（使用PHP的博客平台）、Hexo（静态博客平台，需要插件）、Hugo（静态博客平台，需要插件）、Ghost（使用NodeJS的博客平台）等等等等都支持输出RSS，你只需要下载一个RSS阅读器（网上搜索即可），获取订阅链接（通常而言，就是博客链接后面加 </span><code>feed</code><span> 或 </span><code>rss</code><span> ，如 </span><code>https://glaceon.best/feed</code><span> ）在阅读器中订阅即可。</span></p><p><span>除了博客，很多媒体网站都支持RSS，不支持的也可以使用 </span><a href='https://docs.rsshub.app/'><span>RSSHub</span></a><span> 之类的工具让其支持。使用RSS，没有“猜你喜欢”，也没有广告（除非文章作者在文中插入广告），只有最原始的信息流。</span></p><p>&nbsp;</p><hr /><p>&nbsp;</p><div class='md-toc' mdtype='toc'><p class="md-toc-content" role="list"><span role="listitem" class="md-toc-item md-toc-h1" data-ref="n716"><a class="md-toc-inner" style="" href="#冰布子的简易建站指南">冰布子的简易建站指南</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n724"><a class="md-toc-inner" style="" href="#0-准备">0. 准备</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n728"><a class="md-toc-inner" style="" href="#01-为什么要搭建独立博客">0.1 为什么要搭建独立博客</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n734"><a class="md-toc-inner" style="" href="#1-域名">1. 域名</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n739"><a class="md-toc-inner" style="" href="#10-备案问题">1.0 备案问题</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n742"><a class="md-toc-inner" style="" href="#11-选择域名注册商">1.1 选择域名注册商</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n749"><a class="md-toc-inner" style="" href="#12-域名购买">1.2 域名购买</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n751"><a class="md-toc-inner" style="" href="#121-避免无关消费">1.2.1 避免无关消费</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n755"><a class="md-toc-inner" style="" href="#122-注册信息">1.2.2 注册信息</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n759"><a class="md-toc-inner" style="" href="#123-选择dns服务商">1.2.3 选择DNS服务商</a></span><span role="listitem" class="md-toc-item md-toc-h5" data-ref="n783"><a class="md-toc-inner" style="" href="#1231-阿里云dns">1.2.3.1 阿里云DNS</a></span><span role="listitem" class="md-toc-item md-toc-h5" data-ref="n789"><a class="md-toc-inner" style="" href="#1232-腾讯云dnspod">1.2.3.2 腾讯云DNSPod</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n796"><a class="md-toc-inner" style="" href="#124-修改dns服务器">1.2.4 修改DNS服务器</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n801"><a class="md-toc-inner" style="" href="#13-申请域名邮箱">1.3 申请域名邮箱</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n808"><a class="md-toc-inner" style="" href="#2-服务器">2. 服务器</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n823"><a class="md-toc-inner" style="" href="#21-服务器地理位置的误区">2.1 服务器地理位置的误区</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n827"><a class="md-toc-inner" style="" href="#22-虚拟主机网站空间）">2.2 虚拟主机（网站空间）</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n846"><a class="md-toc-inner" style="" href="#23-vps虚拟服务器）">2.3 VPS（虚拟服务器）</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n857"><a class="md-toc-inner" style="" href="#3-搭建wordpress">3. 搭建Wordpress</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n863"><a class="md-toc-inner" style="" href="#31-dns解析">3.1 DNS解析</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n865"><a class="md-toc-inner" style="" href="#311-域名相关基本常识">3.1.1 域名相关基本常识</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n872"><a class="md-toc-inner" style="" href="#312-dns解析">3.1.2 DNS解析</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n894"><a class="md-toc-inner" style="" href="#313-添加网站并添加ssl证书以plesk面板为例）">3.1.3 添加网站并添加SSL证书（以Plesk面板为例）</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n904"><a class="md-toc-inner" style="" href="#314-上传wordpress程序框架">3.1.4 上传Wordpress程序框架</a></span><span role="listitem" class="md-toc-item md-toc-h5" data-ref="n906"><a class="md-toc-inner" style="" href="#3141-使用服务商提供的一键安装功能">3.1.4.1 使用服务商提供的一键安装功能</a></span><span role="listitem" class="md-toc-item md-toc-h5" data-ref="n911"><a class="md-toc-inner" style="" href="#3142-手动安装wordpress">3.1.4.2 手动安装Wordpress</a></span><span role="listitem" class="md-toc-item md-toc-h6" data-ref="n913"><a class="md-toc-inner" style="" href="#31421-创建数据库">3.1.4.2.1 创建数据库</a></span><span role="listitem" class="md-toc-item md-toc-h6" data-ref="n916"><a class="md-toc-inner" style="" href="#31422-上传并安装wordpress框架">3.1.4.2.2 上传并安装Wordpress框架</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n929"><a class="md-toc-inner" style="" href="#4-简易设置与优化">4. 简易设置与优化</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n931"><a class="md-toc-inner" style="" href="#41-创建个人头像">4.1 创建个人头像</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n935"><a class="md-toc-inner" style="" href="#42-wordpress基本设置">4.2 Wordpress基本设置</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n938"><a class="md-toc-inner" style="" href="#421-完善个人资料">4.2.1 完善个人资料</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n940"><a class="md-toc-inner" style="" href="#421-设置固定链接">4.2.1 设置固定链接</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n946"><a class="md-toc-inner" style="" href="#422-安装插件">4.2.2 安装插件</a></span><span role="listitem" class="md-toc-item md-toc-h5" data-ref="n949"><a class="md-toc-inner" style="" href="#4221-缓存">4.2.2.1 缓存</a></span><span role="listitem" class="md-toc-item md-toc-h6" data-ref="n953"><a class="md-toc-inner" style="" href="#42211-litespeed-cache">4.2.2.1.1 LiteSpeed Cache</a></span><span role="listitem" class="md-toc-item md-toc-h6" data-ref="n964"><a class="md-toc-inner" style="" href="#42211-其他缓存">4.2.2.1.1 其他缓存</a></span><span role="listitem" class="md-toc-item md-toc-h5" data-ref="n969"><a class="md-toc-inner" style="" href="#4222-对象存储">4.2.2.2 对象存储</a></span><span role="listitem" class="md-toc-item md-toc-h6" data-ref="n972"><a class="md-toc-inner" style="" href="#42221-创建bucket">4.2.2.2.1 创建Bucket</a></span><span role="listitem" class="md-toc-item md-toc-h6" data-ref="n974"><a class="md-toc-inner" style="" href="#42222-创建accesskey">4.2.2.2.2 创建AccessKey</a></span><span role="listitem" class="md-toc-item md-toc-h6" data-ref="n977"><a class="md-toc-inner" style="" href="#42223-开启cdn加速可选）">4.2.2.2.3 开启CDN加速（可选）</a></span><span role="listitem" class="md-toc-item md-toc-h6" data-ref="n985"><a class="md-toc-inner" style="" href="#42224-设置wordpress插件">4.2.2.2.4 设置Wordpress插件</a></span><span role="listitem" class="md-toc-item md-toc-h5" data-ref="n988"><a class="md-toc-inner" style="" href="#4223-反垃圾插件akismet">4.2.2.3 反垃圾插件Akismet</a></span><span role="listitem" class="md-toc-item md-toc-h5" data-ref="n991"><a class="md-toc-inner" style="" href="#4224-网站发信插件wp-mail-smtp">4.2.2.4 网站发信插件WP Mail SMTP</a></span><span role="listitem" class="md-toc-item md-toc-h5" data-ref="n998"><a class="md-toc-inner" style="" href="#4225-友情链接link-manager">4.2.2.5 友情链接Link Manager</a></span><span role="listitem" class="md-toc-item md-toc-h5" data-ref="n1001"><a class="md-toc-inner" style="" href="#4226-其它实用插件">4.2.2.6 其它实用插件</a></span><span role="listitem" class="md-toc-item md-toc-h6" data-ref="n1003"><a class="md-toc-inner" style="" href="#42261-auto-ping-booster-和-google-xml-sitemap-generator">4.2.2.6.1 Auto Ping Booster 和 Google XML Sitemap Generator</a></span><span role="listitem" class="md-toc-item md-toc-h6" data-ref="n1005"><a class="md-toc-inner" style="" href="#42262-google-font-fix">4.2.2.6.2 Google Font Fix</a></span><span role="listitem" class="md-toc-item md-toc-h6" data-ref="n1007"><a class="md-toc-inner" style="" href="#42263-really-simple-ssl">4.2.2.6.3 Really Simple SSL</a></span><span role="listitem" class="md-toc-item md-toc-h6" data-ref="n1009"><a class="md-toc-inner" style="" href="#42264-wp-statistics">4.2.2.6.4 WP Statistics</a></span><span role="listitem" class="md-toc-item md-toc-h5" data-ref="n1011"><a class="md-toc-inner" style="" href="#4227-使用cdn加速其它静态文件可选）">4.2.2.7 使用CDN加速其它静态文件（可选）</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n1017"><a class="md-toc-inner" style="" href="#43-从lofter迁移到wordpress">4.3 从Lofter迁移到Wordpress</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n1023"><a class="md-toc-inner" style="" href="#5-个性化">5. 个性化</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n1025"><a class="md-toc-inner" style="" href="#51-主题">5.1 主题</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n1030"><a class="md-toc-inner" style="" href="#511-自定义功能">5.1.1 自定义功能</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n1036"><a class="md-toc-inner" style="" href="#512-菜单和小工具">5.1.2 菜单和小工具</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n1043"><a class="md-toc-inner" style="" href="#6-撰写内容">6. 撰写内容</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n1046"><a class="md-toc-inner" style="" href="#61-使用wordpress编辑器">6.1 使用Wordpress编辑器</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n1058"><a class="md-toc-inner" style="" href="#62-首页显示摘要">6.2 首页显示摘要</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n1063"><a class="md-toc-inner" style="" href="#7-rss订阅">7. RSS订阅</a></span></p></div><p>&nbsp;</p><p>&nbsp;</p></div>
+<body class='typora-export os-windows'><div class='typora-export-content'>
+<div id='write'  class=''><h1 id='冰布子的简易建站指南'><span>冰布子的简易建站指南</span></h1><p><strong><span>如果你想以超低的成本且轻松地建立一个静态网站，请阅读 </span><a href='https://glaceon-wpguide.netlify.app/gridea.html'><span>这份指南</span></a></strong></p><p><span>本简易指南会从域名选购开始，直至在网站空间（虚拟主机）上建立好Wordpress站点并做好简单的优化结束。涉及到域名、DNS、Wordpress框架几个部分。将会尽可能地简易且尽可能的让新手避坑，建好属于自己的Wordpress站点。</span></p><p><span>本指南大约有16,500字，请耐心阅读。</span></p><hr /><p>&nbsp;</p><div class='md-toc' mdtype='toc'><p class="md-toc-content" role="list"><span role="listitem" class="md-toc-item md-toc-h1" data-ref="n0"><a class="md-toc-inner" href="#冰布子的简易建站指南">冰布子的简易建站指南</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n8"><a class="md-toc-inner" href="#0-准备">0. 准备</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n12"><a class="md-toc-inner" href="#01-为什么要搭建独立博客">0.1 为什么要搭建独立博客</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n358"><a class="md-toc-inner" href="#02-为什么不使用博客托管服务">0.2 为什么不使用博客托管服务</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n378"><a class="md-toc-inner" href="#03-为什么选择wordpress作为建站框架">0.3 为什么选择Wordpress作为建站框架</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n385"><a class="md-toc-inner" href="#04-我还是希望使用更加快速的静态网站框架有推荐吗">0.4 我还是希望使用更加快速的静态网站框架，有推荐吗</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n413"><a class="md-toc-inner" href="#05-独立网站能解决盗图问题吗">0.5 独立网站能解决盗图问题吗</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n18"><a class="md-toc-inner" href="#1-域名">1. 域名</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n23"><a class="md-toc-inner" href="#10-备案问题">1.0 备案问题</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n26"><a class="md-toc-inner" href="#11-选择域名注册商">1.1 选择域名注册商</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n33"><a class="md-toc-inner" href="#12-域名购买">1.2 域名购买</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n35"><a class="md-toc-inner" href="#121-避免无关消费">1.2.1 避免无关消费</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n39"><a class="md-toc-inner" href="#122-注册信息">1.2.2 注册信息</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n43"><a class="md-toc-inner" href="#123-选择dns服务商">1.2.3 选择DNS服务商</a></span><span role="listitem" class="md-toc-item md-toc-h5" data-ref="n67"><a class="md-toc-inner" href="#1231-阿里云dns">1.2.3.1 阿里云DNS</a></span><span role="listitem" class="md-toc-item md-toc-h5" data-ref="n73"><a class="md-toc-inner" href="#1232-腾讯云dnspod">1.2.3.2 腾讯云DNSPod</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n80"><a class="md-toc-inner" href="#124-修改dns服务器">1.2.4 修改DNS服务器</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n85"><a class="md-toc-inner" href="#13-申请域名邮箱">1.3 申请域名邮箱</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n92"><a class="md-toc-inner" href="#2-服务器">2. 服务器</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n107"><a class="md-toc-inner" href="#21-服务器地理位置的误区">2.1 服务器地理位置的误区</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n111"><a class="md-toc-inner" href="#22-虚拟主机网站空间）">2.2 虚拟主机（网站空间）</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n130"><a class="md-toc-inner" href="#23-vps虚拟服务器）">2.3 VPS（虚拟服务器）</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n141"><a class="md-toc-inner" href="#3-搭建wordpress">3. 搭建Wordpress</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n147"><a class="md-toc-inner" href="#31-dns解析">3.1 DNS解析</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n156"><a class="md-toc-inner" href="#312-dns解析">3.1.2 DNS解析</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n178"><a class="md-toc-inner" href="#313-添加网站并添加ssl证书以plesk面板为例）">3.1.3 添加网站并添加SSL证书（以Plesk面板为例）</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n188"><a class="md-toc-inner" href="#314-上传wordpress程序框架">3.1.4 上传Wordpress程序框架</a></span><span role="listitem" class="md-toc-item md-toc-h5" data-ref="n190"><a class="md-toc-inner" href="#3141-使用服务商提供的一键安装功能">3.1.4.1 使用服务商提供的一键安装功能</a></span><span role="listitem" class="md-toc-item md-toc-h5" data-ref="n195"><a class="md-toc-inner" href="#3142-手动安装wordpress">3.1.4.2 手动安装Wordpress</a></span><span role="listitem" class="md-toc-item md-toc-h6" data-ref="n197"><a class="md-toc-inner" href="#31421-创建数据库">3.1.4.2.1 创建数据库</a></span><span role="listitem" class="md-toc-item md-toc-h6" data-ref="n200"><a class="md-toc-inner" href="#31422-上传并安装wordpress框架">3.1.4.2.2 上传并安装Wordpress框架</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n213"><a class="md-toc-inner" href="#4-简易设置与优化">4. 简易设置与优化</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n215"><a class="md-toc-inner" href="#41-创建个人头像">4.1 创建个人头像</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n219"><a class="md-toc-inner" href="#42-wordpress基本设置">4.2 Wordpress基本设置</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n222"><a class="md-toc-inner" href="#421-完善个人资料">4.2.1 完善个人资料</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n224"><a class="md-toc-inner" href="#421-设置固定链接">4.2.1 设置固定链接</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n230"><a class="md-toc-inner" href="#422-安装插件">4.2.2 安装插件</a></span><span role="listitem" class="md-toc-item md-toc-h5" data-ref="n233"><a class="md-toc-inner" href="#4221-缓存">4.2.2.1 缓存</a></span><span role="listitem" class="md-toc-item md-toc-h6" data-ref="n237"><a class="md-toc-inner" href="#42211-litespeed-cache">4.2.2.1.1 LiteSpeed Cache</a></span><span role="listitem" class="md-toc-item md-toc-h6" data-ref="n248"><a class="md-toc-inner" href="#42211-其他缓存">4.2.2.1.1 其他缓存</a></span><span role="listitem" class="md-toc-item md-toc-h5" data-ref="n253"><a class="md-toc-inner" href="#4222-对象存储">4.2.2.2 对象存储</a></span><span role="listitem" class="md-toc-item md-toc-h6" data-ref="n256"><a class="md-toc-inner" href="#42221-创建bucket">4.2.2.2.1 创建Bucket</a></span><span role="listitem" class="md-toc-item md-toc-h6" data-ref="n258"><a class="md-toc-inner" href="#42222-创建accesskey">4.2.2.2.2 创建AccessKey</a></span><span role="listitem" class="md-toc-item md-toc-h6" data-ref="n261"><a class="md-toc-inner" href="#42223-开启cdn加速可选）">4.2.2.2.3 开启CDN加速（可选）</a></span><span role="listitem" class="md-toc-item md-toc-h6" data-ref="n268"><a class="md-toc-inner" href="#42224-设置wordpress插件">4.2.2.2.4 设置Wordpress插件</a></span><span role="listitem" class="md-toc-item md-toc-h5" data-ref="n271"><a class="md-toc-inner" href="#4223-反垃圾插件akismet">4.2.2.3 反垃圾插件Akismet</a></span><span role="listitem" class="md-toc-item md-toc-h5" data-ref="n274"><a class="md-toc-inner" href="#4224-网站发信插件wp-mail-smtp">4.2.2.4 网站发信插件WP Mail SMTP</a></span><span role="listitem" class="md-toc-item md-toc-h5" data-ref="n281"><a class="md-toc-inner" href="#4225-友情链接link-manager">4.2.2.5 友情链接Link Manager</a></span><span role="listitem" class="md-toc-item md-toc-h5" data-ref="n284"><a class="md-toc-inner" href="#4226-其它实用插件">4.2.2.6 其它实用插件</a></span><span role="listitem" class="md-toc-item md-toc-h6" data-ref="n286"><a class="md-toc-inner" href="#42261-auto-ping-booster-和-google-xml-sitemap-generator">4.2.2.6.1 Auto Ping Booster 和 Google XML Sitemap Generator</a></span><span role="listitem" class="md-toc-item md-toc-h6" data-ref="n288"><a class="md-toc-inner" href="#42262-google-font-fix">4.2.2.6.2 Google Font Fix</a></span><span role="listitem" class="md-toc-item md-toc-h6" data-ref="n290"><a class="md-toc-inner" href="#42263-really-simple-ssl">4.2.2.6.3 Really Simple SSL</a></span><span role="listitem" class="md-toc-item md-toc-h6" data-ref="n292"><a class="md-toc-inner" href="#42264-wp-statistics">4.2.2.6.4 WP Statistics</a></span><span role="listitem" class="md-toc-item md-toc-h5" data-ref="n294"><a class="md-toc-inner" href="#4227-使用cdn加速其它静态文件可选）">4.2.2.7 使用CDN加速其它静态文件（可选）</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n300"><a class="md-toc-inner" href="#43-从lofter迁移到wordpress">4.3 从Lofter迁移到Wordpress</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n306"><a class="md-toc-inner" href="#5-个性化">5. 个性化</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n308"><a class="md-toc-inner" href="#51-主题">5.1 主题</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n313"><a class="md-toc-inner" href="#511-自定义功能">5.1.1 自定义功能</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n319"><a class="md-toc-inner" href="#512-菜单和小工具">5.1.2 菜单和小工具</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n326"><a class="md-toc-inner" href="#6-撰写内容">6. 撰写内容</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n329"><a class="md-toc-inner" href="#61-使用wordpress编辑器">6.1 使用Wordpress编辑器</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n341"><a class="md-toc-inner" href="#62-首页显示摘要">6.2 首页显示摘要</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n346"><a class="md-toc-inner" href="#7-rss订阅">7. RSS订阅</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n421"><a class="md-toc-inner" href="#8-接下来要做什么">8. 接下来要做什么</a></span></p></div><p>&nbsp;</p><h2 id='0-准备'><span>0. 准备</span></h2><p><span>自己独立建站相对于托管（Lofter、新浪博客等）是有一定门槛且必须付出相对更多的时间和金钱成本的，请务必做好准备，因为耐心和坚持是最重要的。</span></p><p><span>物质方面，你可能需要每年投入150~500元（包含域名、服务器和其他开销，价格主要取决于你使用哪种服务器和域名后缀），冰布子建议持有一张非银联信用卡用于购买域名，理由会在域名一章中提到。</span></p><p><strong><span>如果你不想买服务器，想只出一个域名钱，建立一个静态网站，可以阅读 </span><a href='https://glaceon-wpguide.netlify.app/gridea.html'><span>这份指南</span></a><span>，会引导你使用Gridea建站。</span></strong></p><h3 id='01-为什么要搭建独立博客'><span>0.1 为什么要搭建独立博客</span></h3><p><span>虽然严格来讲，独立博客依旧离不开托管平台，但相较于Lofter等服务，其自由度更高，限制更少，且</span><strong><span>不能为你的网站打差评；完全掌控文章和评论；只要不违反当地法律和服务商条款，内容不会被莫名删除；不能随意被举报；即便被某些群体盯上受到和AO3一样的遭遇但数据不会有半点损失，能随时带着数据库跑路并一瞬搬家重启</span></strong><span>。</span><em><span>并不是说使用独立博客就完全能免受网络暴力的侵害，不管在哪个平台，做好隐私保护都同样重要。</span></em></p><p><span>需要说明的是，独立博客和微博没有冲突，完全可以通过微博或类似服务一起使用增强社交属性。</span></p><h3 id='02-为什么不使用博客托管服务'><span>0.2 为什么不使用博客托管服务</span></h3><p><span>其实现在市面上有大量博客托管服务可以使用，甚至我们今天所介绍的Wordpress也有官方的托管服务，用户只需要专注于网站本身内容，不需要参与任何搭建工作，看起来十分方便，不是吗？但这里并不推荐使用这些托管，原因是：</span></p><ol><li><span>限制多。通常来讲这些博客托管服务的免费版甚至付费版会有一定量的限制，包括但不限于：无法自由使用插件、限制使用自定义主题（Wordpress官方的托管是无法使用未上架的第三方主题的）、免费版会强制在网站上投放广告、免费版无法使用自己的域名等等。</span></li><li><span>速度慢。国内的博客托管服务几乎绝迹，绝大部分服务提供商都是国外的，一般来讲都不会对国内网络环境进行优化，所以大部分速度较慢。更有甚者，整个托管服务本身都被墙掉，比如Wordpress官方托管服务。</span></li><li><span>费用高。以Wordpress官方的托管服务为例，它最便宜的付费套餐也需要4欧元/月，且需要年付。</span></li></ol><h3 id='03-为什么选择wordpress作为建站框架'><span>0.3 为什么选择Wordpress作为建站框架</span></h3><p><span>虽然现在已经是2023年，Wordpress多多少少会有点显得“Old-School”…或者稍显过时，且其速度绝对会慢于现在流行的静态建站框架（如Hugo、Hexo），但这类静态框架无图形界面后台，需要用户学习Markdown语法写作，且还需要有一定的电脑操作基础来使用和配置。</span></p><p><span>考虑到本文受众绝大部分无建站相关经验，使用静态建站框架门槛较高，而拥有图形界面后台的Wordpress就对新手友好很多。加之Wordpress虽然老牌，但依旧在活跃更新且仍然有极海量的用户群，这对新手入门来讲更加重要。</span></p><h3 id='04-我还是希望使用更加快速的静态网站框架有推荐吗'><span>0.4 我还是希望使用更加快速的静态网站框架，有推荐吗</span></h3><p><span>对于绝大部分人而言，由于其特性，可以直接使用Github和Vercel等平台免费托管，故使用静态网站框架建站不仅速度更快，还能省下一些服务器钱，但有着更高的门槛。</span></p><p><span>对于新手，可以考虑使用Gridea，一个有图形化客户端的静态框架，操作及其简单。可以参考其</span><a href='https://open.gridea.dev/gridea-start/'><span>官网教程</span></a><span>和里面的视频教程搭建，或者参考</span><a href='https://glaceon-wpguide.netlify.app/gridea.html'><span>我写的教程</span></a><span>（包含加速教程），另外Gridea也提供付费托管服务，10美元一年。</span></p><p><span>如果你对自己有一些信心且愿意花更多的时间学习配置，那么可以尝试使用Hexo、Hugo这些框架，配合Github和Vercel搭建网站（</span><a href='https://blog.cysi.me/'><span>我的新网站</span></a><span>就使用的是Hugo+Github+Vecel）。有兴趣的可以在网上搜索相关教程，关键字提示：Hugo Github Vercel 搭建教程</span></p><h3 id='05-独立网站能解决盗图问题吗'><span>0.5 独立网站能解决盗图问题吗</span></h3><p><span>不能，且其他平台也不能帮你解决该问题，除非没有人盗图。盗图和反盗图从来都不是技术问题，而是人品问题。即便你在网站上启用了禁止右键的脚本，也仍然不可能根治盗图问题（使用浏览器的F12开发者工具依旧可以将图片下载到本地），使用这些东西远不如添加图片水印来得实在。</span></p><p><span>也许你会听说“防盗链”防止盗图，但实际上这种技术只是用于防止别的网站直接引用你的服务器上的图片而已，如果盗图者转存到本地，防盗链是无法工作的。该技术更多的是防止别的网站未经授权使用你的服务器资源造成不必要的费用，而非版权保护。</span></p><hr /><p>&nbsp;</p><h2 id='1-域名'><span>1. 域名</span></h2><p><span>提到域名后缀，很多人肯定会想到 com/net/org ，但事实上现在光是可购买的就有800多种，除了某些后缀（tk/ga/cf 这类可以免费使用的）可能会受到搜索引擎歧视之外，不管用哪种都是一样的，这就有非常大的可个性化空间了。因此在选择域名之前，在这里冰布子先简单提一下域名种类。</span></p><p><span>目前可以购买的顶级域名后缀主要分为 gTLD（通用顶级域） 和 ccTLD（国家或地区顶级域），前者多数可以自由购买，如 com net org info name 和新增的后缀 moe gay lgbt red cat dog 等，几乎所有的域名服务商都可以购买，门槛很低；后者部分可以直接购买，如 us me 等，部分可能需要签证或当地居住证明，如 tn 等，此类域名后缀购买门槛通常较高。</span></p><p><span>关于个性化域名的提示，这里举个3个例子，伊布英文名Eevee，后缀 .ee 是真实存在的，那么 eev.ee 就是一个非常棒的域名；外卖平台饿了么，域名就是 ele.me ，巧妙运用公司名称的拼音和真实存在的后缀 .me。也就是说，你可以发挥自己的想象力，只要后缀真实存在且开放购买，那你就能得到一个极其个性的域名。</span></p><p><span>域名通常以年为单位售卖，注册后需要按年续费。请务必仔细想好想要的域名，中途修改域名、频繁修改域名是非常不可取的事情。同时，域名也应该尽可能地短，尽可能地展现个性或可以让人过目不忘。</span></p><h3 id='10-备案问题'><span>1.0 备案问题</span></h3><p><span>如果你只打算使用非中国大陆的服务器搭建网站，则根本不需要考虑备案问题。实际上我也只推荐在境外服务器建站，审核问题还是其次，主要是位于中国大陆的服务器通常都更贵。</span></p><p><strong><span>如果你想使用中国大陆的服务器搭建网站</span></strong><span>，则你的域名必须进行</span><strong><span>备案</span></strong><span>，否则将会被禁止访问。你必须在你购买服务器的服务商处进行备案，如果你要更换服务器提供商，则必须</span><strong><span>转移备案</span></strong><span>，且备案域名必须保证其裸域和 </span><code>www</code><span> 记录解析在国内的服务器中，否则会丢失备案。由于政策原因，</span><strong><span>只有一部分gTLD域名和 .cn 后缀域名才能备案， .org 目前不可以备案</span></strong><span>，因此如果你要使用中国大陆的服务器，必须要提前考虑好此类问题。至于备案流程，各大服务器提供商均有专门的页面和专业客服提供指导，且通常这些指导服务都是免费的（尤其是阿里云，服务得非常详尽，甚至可以电话指导）。</span></p><h3 id='11-选择域名注册商'><span>1.1 选择域名注册商</span></h3><p><span>通常情况下域名的新购价格和续费价格是不一样的，且一般来讲续费价格高于新购价格（甚至可能远高于新购价格），因此如果你的预算不多，选择后缀的时候</span><strong><span>必须查看续费（Renew）价格而非新购（Registration）价格</span></strong><span>，不然你会被狠狠地坑一笔！举例说明：info 后缀通常新购价格可以压到很低，低到1美元以下，但续费至少需要13美元。</span></p><p><span>除了续费价格之外，部分域名注册商为了赚更多钱，经常默认捆绑一些没用的产品，稍不注意就一起买了，而且此类服务商常常把续费价格表藏得很深，这里点名批评GoDaddy。</span></p><p><span>鉴于上述的门槛限制和潜在的坑钱机制，冰布子整理了一些自己用过的域名服务商，请根据自身情况选择。</span></p><p><span>如果你想购买 com net org moe gay lgbt red cat dog 等gTLD，或常见的ccTLD如 us me，</span><strong><span>且有国际信用卡</span></strong><span>，推荐选择 </span><a href='https://porkbun.com/products/domains'><span>Porkbun</span></a><span> ，因为它的价格很低且透明，并直接不会有各种杂七杂八坑的新人的推销陷阱（点名批评GoDaddy）；如果你没有国际信用卡，则推荐选择 </span><a href='https://www.namesilo.com/pricing?rid=2c66e95er'><span>NameSilo</span></a><span> ，价格也比较低且消费透明，支持支付宝，使用专属优惠码 </span><code>GLACEON</code><span> 可以在NameSilo购买时优惠1美元。</span></p><p><span>如果你想买类似于 pm de nl lu ie lv eu es pt cm 等不太常见的ccTLD，</span><strong><span>且有国际信用卡、能给客服提供你不在欧洲的英文证明（发票等）</span></strong><span>，推荐选择 </span><a href='https://www.ovh.ie/domains/prices/'><span>OVH爱尔兰站</span></a><span>，价格实惠、消费透明且后缀很多；如果只有支付宝或银联卡，则可以考虑 </span><a href='https://internetbs.net/zh/domain-name-registrations/price.html'><span>InternetBS</span></a><span>（此网站注册账户时，国家填写中国才可以用支付宝），不过可购买的后缀就远远没有OVH那么丰富了。</span></p><p><span>冰布子上面提到的注册商都是海外的，国内注册商推荐去 阿里云、腾讯云 购买，但后缀不多，价格一般且需要实名（域名实名和账户实名是分开的）。</span></p><h3 id='12-域名购买'><span>1.2 域名购买</span></h3><p><span>由于域名注册商比较多，冰布子不可能一一给出所有域名商的注册教程，但实际上这些服务商的购买流程和上网买东西没有太大差别，这里只提一些需要注意的几点。</span></p><h4 id='121-避免无关消费'><span>1.2.1 避免无关消费</span></h4><p><img src="https://i.loli.net/2021/03/13/wgnBhS5z9iRMalK.png" referrerpolicy="no-referrer" alt="NameSilo的捆绑套餐"></p><p><span> 绝大多数域名注册商不会只卖域名，因此要小心他们在购买的时候提供的捆绑套餐。如上图为Namesilo点击结算后出现的套餐推销页面，实际上上面的所有套餐都没有购买的必要，这时候找到页面的 SKIP 跳过即可。</span></p><p><span>总结出来就是，记住售卖页面提到的价格，对比你结账时的最终价格，任何附加费用都不要有（ICANN手续费除外，通常金额很小）。</span><strong><span>因为你要在这里买的仅仅只是域名本身，其他的什么都不需要。</span></strong></p><h4 id='122-注册信息'><span>1.2.2 注册信息</span></h4><p><span>域名注册需要的信息分为两类，互相无关联：账号信息和域名WHOIS信息。总结下来就是大体不必填写自己的真实信息，但</span><strong><span>电子邮箱必须保证真实</span></strong><span>。</span></p><p><span>账号信息就是注册域名商账号时填写的账号信息，除了OVH，</span><strong><span>不必</span></strong><span>填写真实信息，但也不能太假（跨国、地址太离谱），如果你要用 1.1 中提到的 InternetBS 且需要用支付宝，还必须把账户注册国写中国。</span></p><p><span>WHOIS信息就是注册（购买）域名的时候要求你填写的信息（持有人姓名、地址、电话等），除了邮箱外</span><strong><span>不要</span></strong><span>填写太真实的信息，因为如果域名商不提供WHOIS保护（Whois Privacy），这些信息都可以直接被查到。当然，你也不需要过于紧张，上述的域名商所售卖的gTLD基本都会提供免费的WHOIS保护，但ccTLD多数是没有相关保护服务的。</span></p><h4 id='123-选择dns服务商'><span>1.2.3 选择DNS服务商</span></h4><p><span>如果你在阿里云、腾讯云购买的域名，则可以直接使用他们自己提供的免费DNS，跳过本章节其余部分。</span></p><p><span>DNS简单来说就是将域名解析为IP的“指路”服务，通过DNS将域名解析为IP地址，从而找到对应的服务器。通常而言，域名服务商会赠送DNS服务，但为了优化速度，我们不使用他们的DNS（阿里云、腾讯云除外）。下面推荐几个DNS服务商供参考。</span></p><p><span>如果你对实名要求不太敏感，冰布子更推荐直接使用阿里云或腾讯云的服务一是方便，有淘宝或支付宝（腾讯云对应QQ微信）账户就能直接用，二是因为最后我们会提到使用对象存储加速网站，所以到头来还是需要使用阿里云或腾讯云的服务，三是确实对新手更加友好。</span></p><ol start='' ><li><p><span>阿里云（免费 需要实名）</span></p><p><span>国内第一大云服务商，国内解析速度快，海外解析速度一般，免费套餐完全够用。</span></p></li><li><p><span>腾讯云（免费 需要实名）</span></p><p><span>国内第二大云服务商，国内解析速度快，海外解析速度一般，免费套餐完全够用。</span></p></li><li><p><span>Cloudflare（免费 海外服务商）</span></p><p><span>Cloudflare其实是CDN提供商，但也免费提供DNS服务，国内解析速度一般且可能会受到污染，国外速度不错</span></p></li><li><p><span>微软Azure（付费 海外服务商 需要信用卡）</span></p><p><span>冰布子目前使用的是Azure的DNS服务，虽然是付费的，但价格很低，单个域名托管仅需0.5美元/月，请求费用对于个人网站而言很难超过0.1美元/月。国内外解析速度都不错。</span></p></li><li><p><span>亚马逊Route53（付费 海外服务商 需要信用卡）</span></p><p><span>著名的亚马逊旗下AWS的DNS服务。国内解析速度一般，国外速度不错。</span></p></li><li><p><span>Netlify（免费 基于NSOne）</span></p><p><span>Netlify其实并不是DNS服务商，但其提供免费的基于NSOne的DNS解析服务，NSOne的速度在国内外都还可以。</span></p></li></ol><p><span>下面针对阿里云和腾讯云的DNS进行讲解。如果需要使用Cloudflare或Azure或其他服务商，请自行摸索或上网搜索教程。</span></p><h5 id='1231-阿里云dns'><span>1.2.3.1 阿里云DNS</span></h5><p><img src="https://i.loli.net/2021/03/13/cJl42gxVPReX6Ga.png" referrerpolicy="no-referrer" alt="截屏2020-07-18 13.42.10"></p><p><span>要使用阿里云的DNS服务，登陆阿里云并确认账户实名后，鼠标悬停在控制台右上角，选择“产品与服务”，在弹出的菜单中找到“域名与网站（万网）”板块，选择“云解析DNS”（建议加一个星标，这样就会置顶，阿里云业务比较多，老是这样找很麻烦）</span></p><p><span>在网页跳转后，点击蓝色按钮“添加域名”，弹出窗口中输入你注册的域名，添加完成后，你可以看到“DNS服务器状态”一栏是“未使用阿里云解析”。</span></p><p><img src="https://i.loli.net/2021/03/13/L5fjAbOX2sPw8eU.png" referrerpolicy="no-referrer" alt="截屏2020-07-18 13.47.45"></p><p><span>鼠标悬停在这串文字上，会弹出一个提示，要求你去域名注册商处修改DNS服务器，把提示中的服务器网址复制下来备用（请参考阿里云实际给你的地址，不要以我的截图为准），在 1.2.3.3 小节会写修改方法。</span></p><h5 id='1232-腾讯云dnspod'><span>1.2.3.2 腾讯云DNSPod</span></h5><p><img src="https://i.loli.net/2021/03/13/7bEGlaSeqfvNV8z.png" referrerpolicy="no-referrer" alt="截屏2020-07-18 13.28.32"></p><p><span>要使用腾讯云的DNS服务，先登陆腾讯云，确保账户实名后，点击最上面的“云产品”，找到“域名和网站”板块，选择“DNS解析”，在跳转后的页面中，点击“添加解析”，在弹出的窗口中输入自己注册好的域名，点击确定</span></p><p><img src="https://i.loli.net/2021/03/13/g6fZ8Nit5SFVbpL.png" referrerpolicy="no-referrer" alt="截屏2020-07-18 13.33.39"></p><p><span>完成后，列表会出现你刚刚添加好的域名，“解析状态”一栏会显示“域名DNS未修改”，点击域名进入管理界面，你会看到页面上部分的蓝色框，内容如下：</span></p><p><img src="https://i.loli.net/2021/03/13/Iwrn9Zcs5DbEgPN.png" referrerpolicy="no-referrer" alt="截屏2020-07-18 13.35.32"></p><p><span>这时候你只需要回到 域名注册商，把域名DNS服务器地址修改为画红线部分的地址（也就是DNS服务器地址）即可（请不要按照我的截图修改，以自己得到的地址为准）。</span></p><h4 id='124-修改dns服务器'><span>1.2.4 修改DNS服务器</span></h4><p><span>选择好DNS服务商后，先注册好对应DNS提供商的账户，然后把你注册好的域名添加进去。完成后，系统会给你一串网址（这些网址就是DNS服务器地址），提示你需要在</span><strong><span>域名注册商</span></strong><span>的后台修改DNS服务器（DNS Server/Name Server）。</span></p><p><span>对于 NameSilo，可以参考 </span><a href='https://medium.com/@jackme256/namesilo-guide-2b7859157556'><span>这篇文章</span></a><span> 中“域名解析 / 设置DNS服务器”的“方法二”（需要代理访问）；对于Porkbun，登录账户后，在“DOMAIN MANAGEMENT”下，点击对应域名右边的 Details，在“AUTHORITATIVE NAMESERVERS”这一栏中，点击EDIT，输入DNS服务商提供的DNS服务器地址即可。</span></p><p><span>修改DNS服务器的操作一般需要2~72小时才能生效；关于DNS记录，会在后续讲解。</span></p><p><span>至此，域名部分讲解完毕。</span></p><h3 id='13-申请域名邮箱'><span>1.3 申请域名邮箱</span></h3><p><span>所谓域名邮箱（部分服务商称之为企业邮箱），就是用自己的域名后缀创建邮箱。因为这类邮箱完完全全是你自己使用，因此不会存在前缀被占用的问题，你可以做出个性化十足的邮箱使用！举例说明，如果你的域名是 </span><code>glaceon.best</code><span>  ，那么你可以使用类似于 </span><code>i@glaceon.best</code><span> 的邮箱。</span></p><p><span>此类域名邮箱，冰布子推荐使用 </span><a href='https://exmail.qq.com/'><span>腾讯企业邮</span></a><span>（基础版免费） 或 </span><a href='https://www.newlearner.site/2019/08/05/yandex-domain-mail.html'><span>Yandex</span></a><span>（免费） 或 </span><a href='https://www.daniao.org/4053.html'><span>Zoho</span></a><span>（建议使用付费套餐 1美元/月）。如果预算充足可以考虑购买 GSuite（付费 5美元/月）或 Microsoft365（付费）。</span></p><p><span>域名邮箱的注册方法请参考上面给出的链接，使用域名邮箱会涉及到DNS，使用DNS可以参考本文第三章 </span><a href='#31-dns解析'><span>3.1 DNS解析</span></a><span> 。此外，提供商也会提供详尽的设置方法帮助你设置。</span></p><p>&nbsp;</p><hr /><p>&nbsp;</p><h2 id='2-服务器'><span>2. 服务器</span></h2><p><span>有了域名，接下来就要选择合适的服务器（或网页空间托管）了。冰布子相信大部分人不会愿意去搞“ICP备案”的，因此位于大陆的一切服务器全部跳过。</span></p><p><span>个人建站一般会选择实用虚拟主机（网站空间）或VPS，下表简单地描述了两者之间的特点。</span></p><figure><table><thead><tr><th style='text-align:left;' ><span>类型</span></th><th><span>特性</span></th></tr></thead><tbody><tr><td style='text-align:left;' ><span>虚拟主机（网站空间）</span></td><td><span>只能搭建网站，且大部分都只能使用PHP/HTML+数据库（MySQL/PgSQL），有图形化面板，操作简单，几乎0门槛，价格相对便宜。</span></td></tr><tr><td style='text-align:left;' ><span>VPS</span></td><td><span>相当于一台完整的但是配置不高的服务器，通常使用Linux系统且无图形界面，只要条件允许可以做任何服务器能做的事情，如果需要面板则要自行搭建，需要用户掌握基本的Linux操作方法，更加自由但是门槛稍高，价格比虚拟主机贵。</span></td></tr></tbody></table></figure><p><span>但是不管用什么，有一点必须要清楚：不要去淘宝买。</span></p><p><span>由于VPS涉及到用户必须具备一定的Linux知识，考虑到本文的受众群体，故此指南不提供VPS建站教程。</span></p><h3 id='21-服务器地理位置的误区'><span>2.1 服务器地理位置的误区</span></h3><p><span>很多人都会认为离国内近的国家或地区的服务器就一定快，这是完全错误的，</span><strong><span>物理距离不能决定延迟，且延迟不能决定速度</span></strong><span>。因此不可以想当然地认为美国服务器一定比香港服务器慢。</span></p><p><span>举例说明，中国上海到美国西海岸的延迟可以低到130ms，但是香港LeaseWeb机房或者SoftLayer机房的服务器到大陆联通或电信机房的延迟可以达到200甚至300ms——因为他们的路由都绕美国了。而有的海外虚拟主机提供商却恰恰最爱用这两个香港机房，甚至号称“中国大陆优化”。</span></p><p><span>如果你参考了下面的推荐，直接用冰布子筛选过的服务商，则问题不大；如果你打算自己找提供商，那最好找到该提供商的测试IP，使用Besttrace进行路由追踪就可以看其是否有</span><strong><span>去程</span></strong><span>绕路了。</span></p><h3 id='22-虚拟主机网站空间）'><span>2.2 虚拟主机（网站空间）</span></h3><p><span>对于虚拟主机，一般人来讲有1GB为好，也不需要更大空间，因为后续教程会讲解把静态资源（图片、附件、视频等）转移到对象存储中。</span></p><p><span>虚拟主机市场鱼龙混杂，推荐反而不太好做，而且各家使用的面板也不一样。目前我自己看到的能拿出来的有下面这几个。</span></p><p><span>好的虚拟主机其实能比VPS还贵，虽说看起来性价比不高，但现实是大部分人并没有时间或精力自己维护服务器，而且对于内容为主的平台，如果要花太多心思在不熟悉的维护上确实会影响产出。但问题在于，当前国内此类市场并不太好，国内大部分做这类产品的服务商用的还是Easypanel面板（漏洞巨多），而国外常见虚拟主机提供商大多贵且国内速度极慢（部分有香港机房，但是就如同我在 2.1 中说过的，地理位置不能决定速度，更何况他们用的大都是LeaseWeb或者SoftLayer机房，大陆方向会绕美国一圈）。综合价格和其他因素，个人觉得可以拿出手的几家是：</span></p><ol start='' ><li><p><a href='https://idc.wiki/aff.php?aff=878'><span>微基主机</span></a><span>（70元/年）</span></p><p><span>冰布子目前正在使用的虚拟主机（而且是110元3年的传家宝款），使用Plesk面板，便宜，还算稳定，速度也不错。</span><em><span>上面的链接是返利链接，如果你注册购买我会得到一定数额的佣金，无佣金的通道可以使用 </span><a href='http://idc.wiki/'><span>这个链接</span></a></em></p></li><li><p><a href='https://my.laoxuehost.com/aff.php?aff=10358'><span>老薛主机</span></a><span>（110元/年）</span></p><p><span>开了很多年的服务商了，8年前独立博客还比较流行的那会儿我有几个友链在用这家。使用专属优惠码 </span><code>GLACEON</code><span> 可享受终身85折优惠。</span><em><span>上面的链接是返利链接，如果你注册购买你会得到一张5元代金券，我会得到一定数额的佣金，无佣金的通道可以使用 </span><a href='http://laoxuehost.com'><span>这个链接</span></a></em></p></li><li><p><a href='https://wanwang.aliyun.com/hosting?spm=5176.12825654.eofdhaal5.11.54212c4axvYx1v'><span>阿里云</span></a><span>（298元/年 此价格包含独立IP）</span></p><p><span>国内第一大厂，配置高一点，空间多一点且包含独立IP，这个价格已经算很实惠了。</span></p></li></ol><p><span>另外，如果你有日本当地发行的信用卡的话，去 </span><a href='https://www.sakura.ne.jp/'><span>Sakura Internet</span></a><span> 或者其他用IIJ或KDDI机房的本土服务商，搞一台524日元/月的虚拟主机也不错，IIJ/KDDI机房建站到大陆还是可以的。</span></p><p><span>虚拟主机买好后就可以直接绑定域名，上传网站程序使用了，其难度可能就比用QQ空间难一点。</span></p><h3 id='23-vps虚拟服务器）'><span>2.3 VPS（虚拟服务器）</span></h3><p><strong><span>考虑到本指南的主要受众群体，且使用VPS的门槛较高，故仅做介绍，如果你想使用VPS，请自行上网检索相关教程</span></strong></p><p><span>虚拟主机只能用来建站且大多不提供独立IP，但VPS就可以看做是一台配置不太高的长期联网在线的电脑（服务器）。</span></p><p><span>如果你面向的群体主要是在国内，冰布子更推荐购买 </span><a href='https://cn.aliyun.com/'><span>阿里云</span></a><span> 或 </span><a href='https://www.qcloud.com/'><span>腾讯云</span></a><span> 的香港轻量应用服务器（都是24元/月，两人合租可以考虑买第二档34元/月），虽然线路和性能都一般般，但绝对对得起价格，而且大厂出品稳定性可以保证。当前，冰布子更推荐使用腾讯云的香港轻量服务器。</span></p><p><span>如果你有信用卡（包括银联），且想照顾一下海外人士，可以注册 </span><a href='https://lightsail.aws.amazon.com/'><span>亚马逊AWS</span></a><span> ，买LightSail日本区，建议购买5美元/月的那一档。按照后续的教程分离静态资源后国内速度也不会太差。（任天堂也在用亚马逊AWS）</span></p><p><span>建站用VPS只推荐使用大厂或知名提供商的产品，相较于（到国内的）线路质量，更应该看重稳定性。不建议购买Vultr的VPS，即便它确实算大厂且网上很多人都推荐（因为推荐可以拿佣金），很多国人用他们的服务器做代理用途，导致其很多IP（尤其是美国西海岸和日本机房的）被墙。</span></p><p><span>VPS的建站环境可以考虑使用 </span><a href='http://oneinstack.com/'><span>Oneinstack一键包</span></a><span>（无GUI）。</span></p><p>&nbsp;</p><hr /><p>&nbsp;</p><h2 id='3-搭建wordpress'><span>3. 搭建Wordpress</span></h2><p><span>本章将以Wordpress为例。</span></p><p><span>为什么要使用Wordpress呢？首先用的人多，鼎盛时期Wordpress驱动了整个互联网50%以上的网站，即便是现在，根据其官网的说明，仍然有35%的网站在使用Wordpress。大量的用户意味着遇到问题方便解决且有大量的插件、主题对自己的网站进行个性化。而且最重要的是，相较于其他博客程序（Hexo等纯静态博客或使用NodeJS的Ghost），Wordpress对新手友好且简单易用，搭建好后几乎和用QQ空间一样方便。</span></p><p><strong><span>Wordpress是支持多用户的，也就是说，你可以叫上你社团的其他小伙伴一起创作。</span></strong></p><p><span>搭建之前，我们要先想好自己要怎么用自己的域名、做DNS解析，最后再上传源码安装。</span></p><p><span>首先，你需要想好自己要怎么使用域名。</span></p><p><span>例如，你申请的域名是 </span><code>glaceon.best</code><span> ，如果你仅仅只想安装一个Wordpress，那么你可以直接把 </span><code>glaceon.best</code><span> 和 </span><code>www.glaceon.best</code><span> 直接作为Wordpress的地址；如果你不仅想安装一个Wordpress，还想有一个静态（或动态）的，不是Wordpress做的个人主页，那这时候你应该考虑把裸域 </span><code>glaceon.best</code><span> 和 </span><code>www.glaceon.best</code><span> 指向个人主页，子域名 </span><code>blog.glaceon.best</code><span> （或其他你喜欢的子域名）指向你的Wordpress博客。</span></p><h3 id='31-dns解析'><span>3.1 DNS解析</span></h3><p><span>我们在第一章介绍了DNS，但并没有开始正式使用，现在是让它发挥作用的时候了。但是在这之前，我们需要了解一点点域名的概念和DNS记录的知识。</span></p><p><span>####3.1.1 域名相关基本常识</span></p><p><span>为了方便理解，现举例说明：</span></p><pre class="md-fences md-end-block ty-contain-cm modeLoaded" spellcheck="false" lang=""><div class="CodeMirror cm-s-inner cm-s-null-scroll CodeMirror-wrap" lang=""><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 10px; left: 4px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: none;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: none;"><div class="CodeMirror-measure"><pre><span>xxxxxxxxxx</span></pre></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation"><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">news.sina.com.cn</span></pre></div></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom: 0px solid transparent; top: 24px;"></div><div class="CodeMirror-gutters" style="display: none; height: 24px;"></div></div></div></pre><p><span>第一章中提到的“后缀”，即TLD，为顶级域名，对应上述举例的 .cn；</span></p><p><span>二级域名为就是最靠近顶级域名左侧的字段，对应上述举例的 com 部分，剩余的部分以此类推 （不过部分人也会认为 sina.com.cn 中 sina 算作二级域名）；</span></p><p><span>为了避免混淆，且大部分人最多只会用到三级域名（如 </span><code>xiaozhan.is.sb</code><span>），故后面将会把三级域名称作“子域名”。</span></p><p><span>需要注意的是， </span><code>www</code><span> ，如 </span><code>www.google.com</code><span> ，也是一个三级域名。不带 </span><code>www</code><span> 的，如 </span><code>google.com</code><span> 可以称之为“裸域”，DNS服务商通常用 </span><code>@</code><span> 表示裸域。这两条记录是相互独立的，故必须分两次填写记录。</span></p><h4 id='312-dns解析'><span>3.1.2 DNS解析</span></h4><p><span>开始使用DNS解析之前，首先我们要了解DNS的“记录”。常用到的DNS记录有 A（IPV4），CNAME（别名）、MX（邮件相关）TXT（存储文本，多用于验证）4种。</span></p><p><span>通常情况下，搭建网站时需要添加的DNS记录主要是 A 或者 CNAME，取决于你的提供商。如果提供商给你的服务器地址是IP地址，对应 A 记录；如果是一串网址，则对应 CNAME 记录。</span></p><p><span>登陆到你的DNS提供商管理页面后，找到添加DNS记录（记录集）的相关按钮，这时候网页会弹出一个表单让你填写。</span></p><figure><table><thead><tr><th><span>表单项目</span></th><th><span>填写内容</span></th></tr></thead><tbody><tr><td><span>类型</span></td><td><span>参考3.1.2中的DNS记录类型或服务商给的解释</span></td></tr><tr><td><span>名称</span></td><td><span>子域名名称 如 </span><code>blog.example.com</code><span> 就填写 </span><code>blog</code><span>；裸域则留空或填写 </span><code>@</code></td></tr><tr><td><span>目标</span></td><td><span>服务器商提供的IP地址（A记录）或网址（CNAME记录）</span></td></tr><tr><td><span>TTL</span></td><td><span>保持默认，或者通常选择1小时</span></td></tr></tbody></table></figure><p><span>需要注意的是，CNAME记录无法在裸域上使用，如果你一定要这么做，则应先使用 </span><a href='https://ip.sb/'><span>IP查询工具</span></a><span> ，输入提供商提供的服务器网址，获取其IP，并在DNS服务商处添加裸域的A记录。</span></p><p><span>添加好DNS记录后，可能需要15分钟至2小时生效。</span></p><h4 id='313-添加网站并添加ssl证书以plesk面板为例）'><span>3.1.3 添加网站并添加SSL证书（以Plesk面板为例）</span></h4><p><span>为了方便讲解，本节使用的示例网址为 </span><code>glaceon.best</code><span> 及其子域名。本节暂时不会包含宝塔面板的创建方法。</span></p><p><span>遗憾的是，当前虚拟主机提供商使用的面板可能各不相同，冰布子不可能全部讲解，本节将会使用Plesk面板举例，其他面板操作方法或逻辑大致相同。</span></p><p><span>现在都是2020年了，大家创建网站一定要开启并默认开启HTTPS。</span></p><p><span>你已经添加了DNS记录，现在，你可以在虚拟主机提供商的面板中添加网站了。你在购买虚拟主机的时候，主机商会询问你的域名，虚拟主机开通后，你的域名的裸域和 </span><code>www</code><span> 子域名会自动创建，并指向同一个目录（public_html目录）。如果你想让你的Wordpress博客直接放置在裸域上，那么请直接跳过本节；如果你想将Wordpress运行在一个子域名下，如 </span><code>blog.glaceon.best</code><span> ，则需要按照本节下面的步骤创建一个子域名。</span></p><p><img src="https://i.loli.net/2021/03/13/9jJgdRweqLGPiO8.png" referrerpolicy="no-referrer" alt="截屏2020-07-19 12.17.00"></p><p><span>在Plesk面板“网站与域名”页面，点击“添加子域名”，在跳转的页面中，“子域名”一栏填写你所想要的子域名名称，如 </span><code>blog.glaceon.best</code><span> 则在左边的框中填写 </span><code>blog</code><span> ，在右侧的框中选择 </span><code>glaceon.best</code><span> ；文档根目录会在填写好后自动生成，可以保持默认，最后点击确定即可。</span><strong><span>注意，你的子域名必须保证在DNS服务商那边添加过，否则无法解析。</span></strong></p><p><span>点击确定后，Plesk面板会自动跳转到SSL证书页面，询问你是否添加SSL证书。滑动到页面底部，有一个“Entry-level protection”，是Let’s Encrypt提供的免费证书，点击它底下的“免费获取”以申请免费的SSL证书。（你必须要拥有有效的、可被浏览器信任的证书才能正常地启用HTTPS），只要你保证DNS记录已经成功添加，系统就可以自动为你申请、绑定SSL证书。申请完成后，不要忘记开启“自动跳转HTTPS（从HTTP重定向到HTTPS）”，让浏览器访问你的网站时默认就使用HTTPS。</span></p><p><span>现在你可能有点疑惑：什么是HTTPS，什么又是SSL证书？简单地说HTTPS是HTTP协议的加密版，使用SSL/TLS加密数据包，是保护交换数据的隐私与完整性的技术。你也许会认为这对于个人网站来讲没什么大的用处，但是，现在网站如果不支持HTTPS的话主流浏览器会直接标记“不安全”，非常难看；且更重要的是，还能抵御部分来自电信运营商的DNS污染。现在都是2020年了，网站没有HTTPS都不好意思出来混的（摊手）。</span></p><p><em><span>上文的例子都是针对的Plesk面板，对于cPanel虚拟主机，你应该去面板主页“安全”一栏中的“SSL Status”，具体操作可以直接询问主机提供商客服，问他们如何申请免费SSL证书</span></em></p><h4 id='314-上传wordpress程序框架'><span>3.1.4 上传Wordpress程序框架</span></h4><p><span>本文中所有截图示例都是在Plesk面板下完成，部分提供商可能不使用本面板，但基本都是一样的。</span></p><h5 id='3141-使用服务商提供的一键安装功能'><span>3.1.4.1 使用服务商提供的一键安装功能</span></h5><p><span>如果你使用的是虚拟主机，绝大部分服务商都会提供“一键安装Wordpress”功能（使用Plesk、cPanel面板的服务商一定会有此功能），那么此步骤会变得更加简单。</span></p><p><img src="https://i.loli.net/2021/03/13/UQGiVYxydMDX4aR.png" referrerpolicy="no-referrer" alt="image-20200719191150954"></p><p><span>你只需要登陆虚拟主机控制面板，找到“Wordpress”相关选项，点击“安装”按钮，选择好默认协议（这都2020年了，请务必使用HTTPS且不带</span><code>www</code><span>）、安装路径（该Wordpress实例运使用哪个域名）、标题（你的网站名称，可以随时修改）、语言（有简体中文）、管理员账户密码（请不要用admin作为用户名，且请务必使用强密码）、电子邮箱（务必真实有效，否则你无法收到评论通知、更新通知等），其余的可以保持默认，然后点击安装，等待完成。</span></p><p><span>当程序告诉你安装好后，你可以直接访问你安装的网址，一个全新的Wordpress网站就诞生了！</span></p><h5 id='3142-手动安装wordpress'><span>3.1.4.2 手动安装Wordpress</span></h5><p><span>有的服务商可能不自带一键安装功能，但是问题不大，本身Wordpress的安装流程就不复杂。</span></p><h6 id='31421-创建数据库'><span>3.1.4.2.1 创建数据库</span></h6><p><img src="https://i.loli.net/2021/03/13/rpQXyjTOtG7gZDY.png" referrerpolicy="no-referrer" alt="image-20200719192053543"></p><p><span>首先你需要创建一个MySQL（MariaDB）数据库：在虚拟主机面板找到MySQL数据库（或就叫数据库）的选项，点击“添加数据库”，在跳转后的页面（如上图），填写数据库名（为本数据库起名，名称随意）、数据库服务器类型（MySQL/MariaDB，因为Wordpress只能用此类数据库）、相关网站（Wordpress要使用的域名）、数据库用户名及密码（</span><strong><span>数据库</span></strong><span>的登录名和密码，请务必使用高强度密码且不要和Wordpress登录名密码一样），其余可以保持默认。最后点击确定，等待服务器为你创建数据库。</span></p><h6 id='31422-上传并安装wordpress框架'><span>3.1.4.2.2 上传并安装Wordpress框架</span></h6><p><span>现在，我们要把Wordpress的程序框架上传到服务器上。由于Wordpress官网被墙，这一步你需要使用代理（你也可以直接使用SSH登陆进去，</span><code>wget</code><span> 框架到服务器上，但老实说使用SSH本身对新手太不友好了）。</span></p><p><a href='https://cn.wordpress.org/download/'><span>点击这里</span></a><span> 访问Wordpress官网，下载框架到你的电脑。</span><em><span>哦对了，如果你喜欢，还可以到Google Play或者APP Store下载官方手机APP，在网站创建后可以直接使用手机码字、管理评论等等。</span></em></p><p><span>下载好后，访问虚拟主机提供商的面板，找到文件管理相关页面，进入你准备安装Wordpress的文件夹（如果你要在裸域上安装，则通常这个文件夹就叫public_html；如果你要在子域名上安装，则通常这个文件夹名称就是子域名名称），点击“上传”来上传你刚刚下载好的Wordpress压缩包，再选择此文件，点击面板上的“解压文件”，进行解压。如果解压后只有一个 </span><code>wordpress</code><span> 文件夹，请不要忘记把这个文件夹的所有内容全部移动出来。</span></p><p><img src="https://i.loli.net/2021/03/13/LvXbSUERPhAJVqm.png" referrerpolicy="no-referrer" alt="image-20200719194732115"></p><p><span>你的网站目录应该类似于这个样子。完成后，你可以直接使用浏览器访问你的网站网址了。浏览器会自动跳转到Wordpress安装页面。</span></p><p><img src="https://i.loli.net/2021/03/13/h3sUp2SVnqB1zcP.png" referrerpolicy="no-referrer" alt="image-20200719195357433"></p><p><span>上图一整页要求你填写的都是</span><strong><span>数据库</span></strong><span>信息，这些信息基本上只会在这里使用一次，以后很少会用到。</span></p><p><span>数据库名填写 3.1.4.2.1 中你自定义的数据库名称，用户名和密码对应的是你创建的数据库用户名和密码，数据库主机保持默认，表前缀建议不使用默认，改成其他字符（但不要忘记最后需要有一个下划线，如 </span><code>gLa_</code><span>），完成后提交。如果信息正确，系统会告诉你可以安装了。</span></p><p><img src="https://i.loli.net/2021/03/13/mEIjLGgRpZA56dU.png" referrerpolicy="no-referrer" alt="image-20200719200054540"></p><p><span>接下来，Wordpress会让你填写网站基本信息，本页的所有信息都是</span><strong><span>你的Wordpress网站信息</span></strong><span>。</span></p><p><span>站点标题即网站名称，用户名请务必</span><strong><span>不要</span></strong><span>使用 </span><code>admin</code><span> 或 </span><code>root</code><span> ，密码请</span><strong><span>务必</span></strong><span>使用高强度随机密码，电子邮件请务必填写真实且你自己常用的邮箱。而“对搜索引擎的可见性”一项，如果你不想公开你的Wordpress网站（因为你的网站是</span><strong><span>可以</span></strong><span>被Google或百度等搜索引擎索引到的），则请勾选；否则请务必保持默认（建议不勾选，部分文章不想所有人可见可以设置密码，而非把整个网站变成非公开）。</span></p><p><span>填写完成确保正确无误后，点击安装Wordpress，大功告成~！</span></p><h2 id='4-简易设置与优化'><span>4. 简易设置与优化</span></h2><p><span>首先，恭喜你创建好了属于你自己的Wordpress站点！不过在正式开写之前，你需要设置和优化一下你的网站。</span></p><h3 id='41-创建个人头像'><span>4.1 创建个人头像</span></h3><p><span>老实说，这不算站点设置，但同样重要！</span></p><p><span>Wordpress（和其他非常非常多的程序）使用 </span><a href='https://cn.gravatar.com/'><span>Gravatar</span></a><span> （需要使用代理访问）读取头像，用户只需在网站上留下电子邮箱即可自动读取该邮箱在 Gravatar 中的头像。因此，请务必点击上面给的链接注册一个账户，将你在 3.1.4 节中安装Wordpress时留下的邮箱添加进去并设置好头像，完成后，你的Wordpress会自动获取并展示。</span></p><p><em><span>当你在别的网站中评论时，使用带有头像的邮箱，即可在别人的网站评论中显示你的头像；如果你没有头像，在别人的网站去评论的话可能更容易会被当做为垃圾评论。</span></em></p><h3 id='42-wordpress基本设置'><span>4.2 Wordpress基本设置</span></h3><p><span>从本节开始，你应该登陆进Wordpress仪表盘（后台）进行操作。地址为 </span><code>https://你的网站链接/wp-admin</code><span> 。</span></p><p><span>本节主要讲的是可能会被忽略的设置，其余设置可以自行摸索，也鼓励自行摸索。</span></p><h4 id='421-完善个人资料'><span>4.2.1 完善个人资料</span></h4><p><span>在Wordpress仪表盘——用户——我的个人资料中，根据个人喜好编辑自己的资料（尤其是昵称），同时可以完善一下“个人说明”，部分主题会展示这个个人说明。如果你想修改密码和邮箱，也需要在本页面操作。</span></p><h4 id='421-设置固定链接'><span>4.2.1 设置固定链接</span></h4><p><span>所谓“固定链接”，指某一篇文章的唯一的链接（URL）。在Wordpress仪表盘——设置——固定链接中，你可以根据个人喜好设置固定链接。</span></p><p><span>对于新手，冰布子建议使用“数字型”，因为这样最省心，否则你</span><strong><span>必须</span></strong><span>为每篇文章指定</span><strong><span>英文</span></strong><span>的URL名称。（如果不指定，Wordpress会直接将文章的中文标题放到URL上，非常难看且对搜索引擎极其不友好。指定的方法是，在文章编辑页，点击文章标题，在会出现一个“永久链接”，点击编辑更改即可。）</span></p><p><span>注意，修改好后请</span><strong><span>不要</span></strong><span>频繁地变更链接样式，过干脆以后都不要修改，否则会严重影响网站被搜索引擎索引的效率。</span></p><p><em><span>此情况通常不会出现，但是不能完全排除可能性</span></em><span> 如果在这个设置页面中，发现系统给出的固定链接示例URL带有 </span><code>index.php</code><span> ，例如 </span><code>https://glaceon.best/index.php/2020/07/sample-post</code><span> ，则说明你网站没有做“伪静态”。鉴于几乎所有的虚拟主机都用的Apache或LiteSpeed，只需要加一个</span><code>.htaccess</code><span>文件即可搞定：使用记事本编辑一个名为 </span><code>.htaccess</code><span> 的文件，上传到Wordpress的安装目录即可。文件内容如下。</span></p><pre class="md-fences md-end-block ty-contain-cm modeLoaded" spellcheck="false" lang="shell"><div class="CodeMirror cm-s-inner cm-s-null-scroll CodeMirror-wrap" lang="shell"><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 10px; left: 4px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: none;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: none;"><div class="CodeMirror-measure"><pre><span>xxxxxxxxxx</span></pre></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation" style=""><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-comment"># BEGIN WordPress</span></span></pre></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="" cm-zwsp="">
+</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">RewriteEngine On</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">RewriteBase /</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">RewriteRule ^index\.php<span class="cm-def">$ </span><span class="cm-attribute">-</span> [L]</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">RewriteCond %{REQUEST_FILENAME} !-f</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">RewriteCond %{REQUEST_FILENAME} !-d</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">RewriteRule . /index.php [L]</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="" cm-zwsp="">
+</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-comment"># END WordPress</span></span></pre></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom: 0px solid transparent; top: 240px;"></div><div class="CodeMirror-gutters" style="display: none; height: 240px;"></div></div></div></pre><h4 id='422-安装插件'><span>4.2.2 安装插件</span></h4><p><span>Wordpress的扩展性非常强，使用插件可以方便地扩展其功能。</span></p><p><span>在 Wordpress仪表盘——插件——安装插件，即可直接搜索或上传插件安装。</span></p><h5 id='4221-缓存'><span>4.2.2.1 缓存</span></h5><p><span>利用缓存插件，可以极大地加快网站加载速度。同时这些插件往往还有优化功能（尤其是懒加载Lazy Load，即页面加载完成后才开始加载图片，有效减少空白页面时间）。</span></p><p><span>在安装缓存插件之前，你需要了解自己的主机使用的是什么HTTP服务器软件（通常要么是Apache要么是LiteSpeed），因为这会决定我们最终使用哪款缓存插件。如果你不知道，请访问 </span><a href='https://zh.infobyip.com/httpservertest.php'><span>这个网站</span></a><span> ，输入你的Wordpress网址，在返回值中，找到 </span><code>Server</code><span> 字段，内容就是你的主机HTTP服务器软件名称。</span></p><p><span>你只需要安装一种缓存插件，不要重复安装。</span></p><h6 id='42211-litespeed-cache'><span>4.2.2.1.1 LiteSpeed Cache</span></h6><p><span>如果你的主机使用LiteSpeed，那么恭喜你，这是最适合Wordpress的HTTP服务器软件，配合专属缓存插件可以显著提升网站速度。你可以直接在安装插件页面搜索 </span><code>LiteSpeed Cache</code><span> 并直接安装、启用。下面开始配置。</span></p><p><span>启用后，你的仪表盘左侧菜单就会多出一个“LiteSpeed”选项，选择 LiteSpeed Cache——缓存规则，里面有8个选项卡供设置。这里我们大部分可以保持默认，不过可以考虑进入 [5]ESI 开启ESI，[7]浏览器 开启浏览器缓存，如果你的主机商告诉你提供Memcached或Redis，则还可以进入 [6]对象 开启对应的（Redis或Memcached）对象缓存，这是内存缓存，如果服务商提供的话效果还是非常可观的（一般来讲不会提供）。</span></p><p><em><span>虽然已经考虑到了主题兼容性，但是下面几段的选项仍然可能会导致主题出现问题，请根据你的主题兼容性，开或关部分选项。</span></em><span> </span></p><p><span>依旧是在LiteSpeed Cache这个大类中，选择左侧菜单的“页面优化”，这个页面有7个选项卡供设置。</span></p><p><span>首先在 [1]CSS设置中，开启CSS最小化、CSS合并、CSS HTTP/2推送和异步加载CSS；</span></p><p><span>接着在 [2]JS设置中，开启JS HTTP/2推送和延迟加载JS；</span></p><p><span>在[3]优化设定中，开启HTTP最小化、DNS Prefetch Control、移除注释、异步加载Google Fonts、移除WordPress表情包；</span></p><p><span>在[4]多媒体设定中开启延迟加载图片（非常重要）、响应式占位符、延迟加载Iframe、Inline Lazy Load Images Library</span></p><p><span>在[6]Discussion Settings中，开启Gravatar 缓存、Gravatar 缓存 Cron</span></p><p><span>最后不要忘记保存修改。</span></p><h6 id='42211-其他缓存'><span>4.2.2.1.1 其他缓存</span></h6><p><span>如果你的主机商不是用的LiteSpeed，则只能选择其他的通用插件。在这里推荐使用 Autoptimize 和 WP-Optimize 一起使用（直接在后台插件页面搜索）。</span></p><p><span>启用这两个插件后，在 WP-Optimize——缓存页面设置：在「页面缓存」选项卡，启用：启用页面缓存、为移动设备生成单独的文件、为登录用户提供缓存页面；「预加载选项卡」中，勾选激活预定的缓存预加载；最后记得保存更改。</span></p><p><em><span>虽然已经考虑到了主题兼容性，但是下面一段的选项仍然可能会导致主题出现问题，请根据你的主题兼容性，开或关部分选项。</span></em><span> </span></p><p><span>再到左侧菜单，选择设置——Autoptimize，在「JS CSS HTML」选项卡，勾选：启用 JavaScript 优化、启用 CSS 优化、生成小图片为Base64 数据、优化 HTML 代码，保存更改；「图像选项卡」，勾选“延迟加载”图像，保存更改；「额外」选项卡中，勾选移除 emojis，保存更改。</span></p><h5 id='4222-对象存储'><span>4.2.2.2 对象存储</span></h5><p><span>网站最占用空间的是图片，加载最耗时的也是图片，现在我们可以将图片等附件分离出主机，存储到专业的“对象存储”内，不仅图片文件更安全，而且还能得到更快的速度。对象存储是一项付费服务，但价格便宜：对于个人网站，月消费通常会低于1元。</span></p><p><span>在这里，冰布子推荐使用阿里云OSS作为对象存储提供商，主要是国内访问速度快、价格低廉（且提供一定的免费额度）、插件完善且对新手友好。</span><em><span>如过你不想使用阿里云的存储，可以考虑使用微软的Azure Storage或亚马逊AWS的S3。但本文只会讲解如何使用阿里云OSS。</span></em></p><h6 id='42221-创建bucket'><span>4.2.2.2.1 创建Bucket</span></h6><p><span>在阿里云控制台，在产品中心中找到对象存储OSS，</span><strong><span>在非中国大陆区（推荐香港或新加坡）</span></strong><span>新建一个bucket，存储类型选择标准存储、不需要开通版本控制和备份、无须加密、不需要开通日志。关于读写权限，如果你不想绑定自己的域名，想直接使用阿里云OSS外链或使用第三方CDN加速，则权限应该选择“公共读”；如果你想直接使用阿里云的CDN加速（价格也很便宜，且能全球加速），则权限建议选择“私有”。</span></p><h6 id='42222-创建accesskey'><span>4.2.2.2.2 创建AccessKey</span></h6><p><span>创建好了对象存储Bucket后，还需要创建AccessKey，让Wordpress插件登录并上传文件到OSS中。</span></p><p><span>在阿里云控制台，鼠标悬停在右上角头像处，在弹出的菜单中点击“AccessKey管理”，确认继续使用AccessKey后，点击“创建AccessKey”，这时候请务必记下并</span><strong><span>妥善保管</span></strong><span>AccessKey和Secret，它们和你的账户密码一样重要。</span></p><h6 id='42223-开启cdn加速可选）'><span>4.2.2.2.3 开启CDN加速（可选）</span></h6><p><span>冰布子不推荐直接绑定域名使用，故本节将会直接讲解如何开启CDN加速并绑定域名。因为阿里云OSS不会帮你自动申请SSL证书，你必须手动上传证书开启HTTPS（但使用CDN，则会直接用阿里云分配的SSL证书）。如果你不想绑定域名或使用CDN加速，可以直接跳过本节。</span></p><p><span>CDN也是付费服务，但是对于个人网站而言，价格实惠，一般网站月开销可能不足1元。</span></p><p><span>在阿里云控制台产品中，找到CDN，开通按量付费后，在“域名管理”内点击“添加域名”。</span></p><p><span>在跳转后的页面中，“加速域名”填写你想绑定的域名（一个子域名，名称自由发挥，例如你的网站是 </span><code>glaceon.best</code><span>，那么加速域名可以写 </span><code>static.glaceon.best</code><span> 或者 </span><code>image.glaceon.best</code><span>），业务类型选择“图片小文件”，源站信息选择“OSS域名”并在域名一栏中选择你刚刚创建的那一个Bucket，端口选择443，加速区域选择“全球（不含中国内地）”。最后确认、等待审核。</span></p><p><span>审核完成后会在“域名管理”处的“CNAME”一项显示一个网址，你需要将此CNAME记录添加到DNS提供商中：名称为你的加速域名，类型CNAME，记录值为阿里云CDN提供给你的这个CNAME。</span></p><p><span>添加完成后，等待解析生效，点击加速域名进入CDN管理页面，在“HTTPS配置”中，开启HTTPS安全加速，证书类型选择免费证书（如果不开启，你的网站会被警告有Mixed Content错误）。仍然在本页，你可以开启HTTP/2、强制跳转HTTPS、关闭TLS1.0支持和开启HSTS。</span></p><h6 id='42224-设置wordpress插件'><span>4.2.2.2.4 设置Wordpress插件</span></h6><p><span>创建好了AccessKey后，回到Wordpress仪表盘。现在你可以安装Wordpress的OSS插件并使用了。本插件没有登录到Wordpress自带的插件目录，所以需要在安装插件页面自行上传。</span></p><p><span>插件作者提供了非常详细的安装说明，请 </span><a href='https://github.com/IvanChou/aliyun-oss-support/wiki/Quick-start'><span>参阅插件文档</span></a><span> 使用。需要特殊说明的是，如果你根据 4.2.2.2.3 的步骤启用了CDN，那么本插件的“Bucket 域名”一项应该填写你的CDN的加速域名，这样才能有加速效果。同时，请务必阅读插件文档中“图片服务”一节的讲解，冰布子强烈建议配置图片服务。</span></p><h5 id='4223-反垃圾插件akismet'><span>4.2.2.3 反垃圾插件Akismet</span></h5><p><span>由于网站大都是公开的，任何人都可以访问，因此垃圾评论自然少不了，我们必须配置一些反垃圾评论插件。</span></p><p><span>Wordpress安装后自带了一个反垃圾插件，默认为禁用状态。启用后，插件会叫你去申请一个API密钥，按照插件提示申请，选择免费版本，最后把密钥填入插件中并保存设置即可。</span></p><h5 id='4224-网站发信插件wp-mail-smtp'><span>4.2.2.4 网站发信插件WP Mail SMTP</span></h5><p><span>Wordpress会通过发邮件的形式提醒你一些事情（如评论待审、自动更新等），同时有的主题提供了评论回复邮件提醒功能。这些都涉及到“发邮件”的操作。然而Wordpress默认使用的发信方式是PHP的 </span><code>mail()</code><span> 函数，很大概率（或者说，几乎100%的概率）会被丢进垃圾邮件甚至直接被退信。因此，我们必须配置SMTP，让Wordpress使用真实的邮件服务器发信。</span></p><p><span>在开始之前，你必须拥有一个可靠的电子邮件地址（推荐使用GMail，当然如果你可以申请一个企业邮箱或域名邮箱就更好了），并开启SMTP功能，具体操作请上网搜索“[你的邮箱提供商] 开启SMTP”。</span><em><span>关于申请、使用免费域名邮箱的指引，可以考虑申请 腾讯企业邮 或 Yandex域名邮箱，冰布子自己使用的是Office365的付费服务。</span></em></p><p><span>在Wordpress插件安装页面，搜索WP Mail SMTP并安装。</span></p><p><span>如果你要使用GMail，需要使用API，请参考 </span><a href='https://wpmailsmtp.com/docs/how-to-set-up-the-gmail-mailer-in-wp-mail-smtp/'><span>插件官方文档（英语）</span></a><span> 进行配置。该文档非常详细。</span></p><p><span>如果你要使用其他邮件提供商，且知道其SMTP配置，可以在插件配置中选择Other SMTP，根据邮件服务提供商提供的信息填写。举例说明，Office365的SMTP主机为 </span><code>smtp.office365.com</code><span> ，加密类型为 </span><code>STARTTLS</code><span>，端口为587，用户名和密码即完整邮箱地址和邮箱密码。</span></p><p><span>设置完成后，保存更改，在“发送电子邮件测试”选项卡中给自己发送一封测试邮件，如果能收到，就说明没有问题可以正常使用了。</span></p><h5 id='4225-友情链接link-manager'><span>4.2.2.5 友情链接Link Manager</span></h5><p><span>友情链接姑且算一种古老的“社交方式”了，可以算作博客时代的“朋友圈”，在自己网站的某个地方挂着其他人的网站链接。当你的朋友有了自己的网站后，不要忘记去交换友情链接噢。</span><em><span>友情链接对SEO（搜索引擎优化）也有一定的帮助</span></em></p><p><span>链接管理器本来是自带的，但后来Wordpress把它分离出来成了插件，如果要使用友情链接功能，需要去插件搜索 Link Manager 安装并启用。安装后会在仪表盘左侧菜单多出一个“链接”设置。只需点击链接——添加，即可添加友情链接。关于如何展示友情链接，会在后续讲到。</span></p><h5 id='4226-其它实用插件'><span>4.2.2.6 其它实用插件</span></h5><p><span>冰布子实用Wordpress已经有10年了，现在总结一些自己使用的插件供各位参考。</span></p><h6 id='42261-auto-ping-booster-和-google-xml-sitemap-generator'><span>4.2.2.6.1 Auto Ping Booster 和 Google XML Sitemap Generator</span></h6><p><span>想让自己的网站尽快被搜索引擎收录吗？除了多更新文章之外，使用Ping服务（新文章发布后会主动通知搜索引擎）、创建Sitemap（为搜索引擎准备的网站地图，方便爬虫爬取）是简单而有效的方式。</span></p><h6 id='42262-google-font-fix'><span>4.2.2.6.2 Google Font Fix</span></h6><p><span>由于某些原因，Google Font在国内使用起来总有点问题，但绝大多数主题都会引用Google Font的字体。使用本插件可以加速Google Font的体验，同时还支持加速Gravatar头像，强烈推荐使用。</span></p><h6 id='42263-really-simple-ssl'><span>4.2.2.6.3 Really Simple SSL</span></h6><p><span>你的网站多多少少都可能会出现Mixed Content（在HTTPS页面中，出现了非HTTPS的元素）的问题，这时候使用此插件就可以一键解决。简单、无脑、效果好。</span></p><h6 id='42264-wp-statistics'><span>4.2.2.6.4 WP Statistics</span></h6><p><span>想知道你的博客人气的</span><strong><span>真实的</span></strong><span>数据吗？使用此插件可以直接为你分析你的搜索引擎索引量、访问量、访客数据（从哪里找到链接访问的、访问地区、访问了什么文章、使用了什么浏览器等等），然你对你的网站数据有一个详尽的了解，知道自己的网站访客的兴趣，并优化自己的内容。</span><em><span>部分主体的“本文被阅读过XX次”的功能就需要此插件</span></em></p><h5 id='4227-使用cdn加速其它静态文件可选）'><span>4.2.2.7 使用CDN加速其它静态文件（可选）</span></h5><p><span>在 </span><a href='#-4222对象存储'><span>4.2.2.2 对象存储</span></a><span> 一节，冰布子讲到了使用CDN加速对象存储以起到加速网站的图片的作用。除此之外，我们还可以配合Wordpress插件，使用CDN加速CSS、JS等静态文件，减少对源站的请求以达到加速的效果。</span></p><p><span>在开始之前，你需要先参考 </span><a href='#42223开启cdn加速(可选)'><span>4.2.2.2.3 开启CDN加速（可选）</span></a><span> 一节，添加一个CDN域名，加速域名依旧是自己定义，如 </span><code>cdn.glaceon.best</code><span> ，源站选择“源站域名”，源站域名填写你的Wordpress网址，端口为443。冰布子的静态文件加速使用的是Azure CDN，创建方法和阿里云差不多，只需带入过去即可。</span></p><p><span>创建好CDN节点后，回到Wordpress仪表盘。</span></p><p><strong><span>如果你使用的是LiteSpeed Cache</span></strong><span>，直接在LiteSpeed Cache——CDN页面中：开启“使用CDN映射”、CDN URL填写你的CDN加速域名（需要包含 </span><code>https://</code><span> ）且进选择“包含CSS”和“包含JS”，原始URI填写 </span><code>//[你的Wordpress网址]</code><span>，包括目录填写</span><code>wp-content</code><span> </span><code>wp-includes</code><span> </span><code>/min/</code><span>，一行一个。最后保存修改即可。</span></p><p><strong><span>如果你使用的不是LiteSpeed Cache</span></strong><span>，请确保你已经安装了Autoptimize。在设置——Autoptimize中，第一个选项卡（JS CSS &amp; HTML）找到“CDN选项”，在“CDN基本URL”中填写 </span><code>//[你的CDN加速域名]</code><span>，最后保存修改即可。</span></p><h3 id='43-从lofter迁移到wordpress'><span>4.3 从Lofter迁移到Wordpress</span></h3><p><strong><span>注意，由于Lofter、微博都有防盗链机制，因此你文章中的图片必须要自行上传并自行重新插入到文章中！</span></strong></p><p><span>请参考 </span><a href='https://github.com/alicewish/Lofter2Hexo'><span>Lofter2Hexo项目</span></a><span> ，或作者的 </span><a href='https://zhuanlan.zhihu.com/p/138983325'><span>知乎专栏</span></a><span> ，其中知乎专栏的最下面有作者提供的视频教程。但是需要注意的是，我们此处虽然需要下载图片，但不需要按照作者所说上传到Github图床，因为Wordpress本身自带图片上传功能且通过前文你应该已经配置好了对象存储，因此你应该直接把图片上传到Wordpress。作者这样做是为了照顾Hexo或Hugo用户。</span></p><p>&nbsp;</p><hr /><p>&nbsp;</p><h2 id='5-个性化'><span>5. 个性化</span></h2><p><span>现在你已经初步设置好并简单地优化了你的Wordpress站点，在写作之前，挑一个你喜欢的主题，做好个性化配置再开始吧。</span></p><h3 id='51-主题'><span>5.1 主题</span></h3><p><span>Wordpress拥有相当庞大的主题库，你可以充分利用主题来个性化网站。</span></p><p><span>在Wordpress仪表盘内置有主题市场（仪表盘——外观——主题——添加主题），可以在里面选择你喜欢的主题选用。但需要注意的是，外国人制作的主题通常</span><strong><span>不会</span></strong><span>考虑中文博客体验，因此建议选用主题时优先考虑国人制作的主题。</span></p><p><span>除了Wordpress内置的主题市场，你还可以去 </span><a href='https://github.com/search?q=Wordpress+theme'><span>Github搜索</span></a><span> 或 </span><a href='https://github.com/topics/wordpress-theme'><span>Github话题</span></a><span> 等网站寻找优秀的主题。在这里，冰布子推荐 </span><a href='https://github.com/mirai-mamori/Sakurairo'><span>Sakurairo</span></a><span> ，</span><a href='https://github.com/yrccondor/mdx'><span>mdx</span></a><span> ，</span><a href='https://github.com/solstice23/argon-theme'><span>argon-theme</span></a><span> ，</span><a href='https://github.com/HelipengTony/tony'><span>tony</span></a><span> 和Wordpress官方出品的 </span><a href='https://wordpress.org/themes/twentyseventeen/'><span>Twenty Seventeen</span></a><span> 等主题。</span></p><p><span>由于各主题的个性化配置都互不相同，且很多主题还有其特定的功能，因此具体使用方式请参照主题说明。但仍有很多通用的配置需要注意。</span></p><h4 id='511-自定义功能'><span>5.1.1 自定义功能</span></h4><p><span>选择主题时，点击“即时预览”可以预览主题（但不保证是最终效果），在预览的同时可以对你的网站的站点身份和图标可以进行自定义。点击“站点身份”可以修改你的图标（即LOGO，如果没有，主题会自动换成文字。点击选择图标后网站会提示你建议尺寸）、站点标题和副标题、站点图片（网站图标，见下图，建议512*512以上的正方形）</span></p><p><img src="https://i.loli.net/2021/03/13/aOUVwryJAqj7dKG.png" referrerpolicy="no-referrer" alt="image-20200720155004182"></p><p><span>除此之外，即时预览功能还能修改和自定义其他很多选项，具体取决于你使用什么主题。每一项都有中文引导，其难度比装修淘宝店或修改QQ空间还简单，相信对各位来讲不是问题。</span></p><p><span>修改好后，点击“发布”，即可使用主题。</span></p><p><span>另外，有的主题功能非常强大，还自带自己的设置页面可以供用户调整，具体请参照实际和文档自行配置。</span></p><h4 id='512-菜单和小工具'><span>5.1.2 菜单和小工具</span></h4><p><span>不同主题菜单的样式和位置都不一样，有的主题允许用户使用多个菜单（具体请参考主题本身的文档或即时预览中“菜单”选项中的说明），你可以利用其特点充分使用它们。</span></p><p><span>小工具（Widget）类似于一种“挂件”，可以在侧边栏或者网站底部展示特定内容，但部分主题没有侧边栏（单栏主题），因此请根据主题自身情况使用。</span></p><p><span>调整这些选项都</span><strong><span>不会</span></strong><span>触发缓存插件清理缓存，因此你修改后必须清除缓存（查看你仪表盘顶部，有删除缓存的菜单）后才能生效。</span></p><p>&nbsp;</p><hr /><p>&nbsp;</p><h2 id='6-撰写内容'><span>6. 撰写内容</span></h2><p><span>终于，现在你可以</span><strong><span>准备</span></strong><span>动笔开写了！但是在写文章的同时还有一些问题必须要了解。同时冰布子将会给出一些建议，让你的文章更好看。</span></p><p><span>Wordpress有两种文章类型：文章、页面。“文章”即普通文章，会出现在博客时间线中；“页面”则被看作一个独立网页，默认隐藏，你必须在菜单中添加此页面才会显示该页面的链接（因此，“页面”通常用来写“关于”页或留言板页）。</span></p><h3 id='61-使用wordpress编辑器'><span>6.1 使用Wordpress编辑器</span></h3><p><img src="https://i.loli.net/2021/03/13/H63ITJ7gSCBpqly.png" referrerpolicy="no-referrer" alt="image-20200720161001233"></p><p><span>不管是页面还是文章，使用的编辑器都是一样的。Wordpress的编辑器是最近比较流行的“模块化编辑器”，有的人一开始会不习惯，但实际上用一段时间后会发现比其他的那些所见即所得编辑器好用很多倍。插入图片也支持拖拽图片到窗口内，调整位置也非常简单。但现在冰布子主要想讲的是右侧菜单中的选项。</span></p><ul><li><span>永久链接：本文章的URL，如果你的永久链接不是选择的“数字型”，那么为了美观和SEO，务必修改此处，将里面的中文改成英文字母、横杠和数字的组合（拼音也行）</span></li><li><span>特色图像：文章封面图，为了美观，最好每篇文章都设置一个。</span></li><li><span>摘要：（建议每篇文章都要写）为文章写一个摘要（将会出现在首页的文章列表），如果懒得写，直接把你文章的第一段丢进去也行。</span></li><li><span>标签：你熟悉的标签，但是标签广场这种功能是不存在的，但是为了SEO，一定也不要忘记打TAG。</span></li></ul><h3 id='62-首页显示摘要'><span>6.2 首页显示摘要</span></h3><p><span>如果你的主题不支持首页截取摘要，且你没有给文章写“摘要”，那么你的博客页面会变得非常————————长！因为没有写摘要且主题不支持截取的话，系统会在文章页中直接输出文章全文。这样会严重拖慢加载速度，非常不好。</span></p><p><span>如果你的主题支持首页截取摘要（通常来讲，国人主题大部分支持，外国人的主题大部分都不支持），则你不需要插件，直接去主题的设置中寻找是否有类似选项，开启即可。能不用插件的时候就尽量不要使用插件。</span></p><p><span>那如何让不支持首页截取摘要的主题支持此功能呢？你需要一个插件：</span><strong><span>Advanced Excerpt</span></strong><span>，在插件页搜索并启用它后，在设置——Excerpt中进行调整：Excerpt Length建议选择250至300词（Character）；勾选“Read More Link”，自定义文本为“继续阅读”或其他你喜欢的文字，其余的根据自己喜好调整，最后保存即可。</span></p><p><span>Wordpress相关讲解到此结束。有了一个属于自己的环境后，冰布子希望你能坚持写作，不要途中放弃。</span></p><h2 id='7-rss订阅'><span>7. RSS订阅</span></h2><p><span>微博可以关注博主，Lofter也可以关注博主，那么独立博客能不能？当然可以，用一种古老的办法：RSS。</span></p><p><span>Wordpress、Typecho（使用PHP的博客平台）、Hexo（静态博客平台，需要插件）、Hugo（静态博客平台，需要插件）、Ghost（使用NodeJS的博客平台）等等等等都支持输出RSS，你只需要下载一个RSS阅读器（网上搜索即可），获取订阅链接（通常而言，就是博客链接后面加 </span><code>feed</code><span> 或 </span><code>rss</code><span> ，如 </span><code>https://glaceon.best/feed</code><span> ）在阅读器中订阅即可。</span></p><p><span>除了博客，很多媒体网站都支持RSS，不支持的也可以使用 </span><a href='https://docs.rsshub.app/'><span>RSSHub</span></a><span> 之类的工具让其支持。使用RSS，没有“猜你喜欢”，也没有广告（除非文章作者在文中插入广告），只有最原始的信息流。</span></p><h2 id='8-接下来要做什么'><span>8. 接下来要做什么</span></h2><p><span>专心创作、同时别忘了宣传你的网站，也可以每次更新博客都可以在你的微博或者小红书或其他SNS平台里面推送。</span></p><p>&nbsp;</p><hr /><p>&nbsp;</p><div class='md-toc' mdtype='toc'><p class="md-toc-content" role="list"><span role="listitem" class="md-toc-item md-toc-h1" data-ref="n0"><a class="md-toc-inner" href="#冰布子的简易建站指南">冰布子的简易建站指南</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n8"><a class="md-toc-inner" href="#0-准备">0. 准备</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n12"><a class="md-toc-inner" href="#01-为什么要搭建独立博客">0.1 为什么要搭建独立博客</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n358"><a class="md-toc-inner" href="#02-为什么不使用博客托管服务">0.2 为什么不使用博客托管服务</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n378"><a class="md-toc-inner" href="#03-为什么选择wordpress作为建站框架">0.3 为什么选择Wordpress作为建站框架</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n385"><a class="md-toc-inner" href="#04-我还是希望使用更加快速的静态网站框架有推荐吗">0.4 我还是希望使用更加快速的静态网站框架，有推荐吗</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n413"><a class="md-toc-inner" href="#05-独立网站能解决盗图问题吗">0.5 独立网站能解决盗图问题吗</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n18"><a class="md-toc-inner" href="#1-域名">1. 域名</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n23"><a class="md-toc-inner" href="#10-备案问题">1.0 备案问题</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n26"><a class="md-toc-inner" href="#11-选择域名注册商">1.1 选择域名注册商</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n33"><a class="md-toc-inner" href="#12-域名购买">1.2 域名购买</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n35"><a class="md-toc-inner" href="#121-避免无关消费">1.2.1 避免无关消费</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n39"><a class="md-toc-inner" href="#122-注册信息">1.2.2 注册信息</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n43"><a class="md-toc-inner" href="#123-选择dns服务商">1.2.3 选择DNS服务商</a></span><span role="listitem" class="md-toc-item md-toc-h5" data-ref="n67"><a class="md-toc-inner" href="#1231-阿里云dns">1.2.3.1 阿里云DNS</a></span><span role="listitem" class="md-toc-item md-toc-h5" data-ref="n73"><a class="md-toc-inner" href="#1232-腾讯云dnspod">1.2.3.2 腾讯云DNSPod</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n80"><a class="md-toc-inner" href="#124-修改dns服务器">1.2.4 修改DNS服务器</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n85"><a class="md-toc-inner" href="#13-申请域名邮箱">1.3 申请域名邮箱</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n92"><a class="md-toc-inner" href="#2-服务器">2. 服务器</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n107"><a class="md-toc-inner" href="#21-服务器地理位置的误区">2.1 服务器地理位置的误区</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n111"><a class="md-toc-inner" href="#22-虚拟主机网站空间）">2.2 虚拟主机（网站空间）</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n130"><a class="md-toc-inner" href="#23-vps虚拟服务器）">2.3 VPS（虚拟服务器）</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n141"><a class="md-toc-inner" href="#3-搭建wordpress">3. 搭建Wordpress</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n147"><a class="md-toc-inner" href="#31-dns解析">3.1 DNS解析</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n156"><a class="md-toc-inner" href="#312-dns解析">3.1.2 DNS解析</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n178"><a class="md-toc-inner" href="#313-添加网站并添加ssl证书以plesk面板为例）">3.1.3 添加网站并添加SSL证书（以Plesk面板为例）</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n188"><a class="md-toc-inner" href="#314-上传wordpress程序框架">3.1.4 上传Wordpress程序框架</a></span><span role="listitem" class="md-toc-item md-toc-h5" data-ref="n190"><a class="md-toc-inner" href="#3141-使用服务商提供的一键安装功能">3.1.4.1 使用服务商提供的一键安装功能</a></span><span role="listitem" class="md-toc-item md-toc-h5" data-ref="n195"><a class="md-toc-inner" href="#3142-手动安装wordpress">3.1.4.2 手动安装Wordpress</a></span><span role="listitem" class="md-toc-item md-toc-h6" data-ref="n197"><a class="md-toc-inner" href="#31421-创建数据库">3.1.4.2.1 创建数据库</a></span><span role="listitem" class="md-toc-item md-toc-h6" data-ref="n200"><a class="md-toc-inner" href="#31422-上传并安装wordpress框架">3.1.4.2.2 上传并安装Wordpress框架</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n213"><a class="md-toc-inner" href="#4-简易设置与优化">4. 简易设置与优化</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n215"><a class="md-toc-inner" href="#41-创建个人头像">4.1 创建个人头像</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n219"><a class="md-toc-inner" href="#42-wordpress基本设置">4.2 Wordpress基本设置</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n222"><a class="md-toc-inner" href="#421-完善个人资料">4.2.1 完善个人资料</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n224"><a class="md-toc-inner" href="#421-设置固定链接">4.2.1 设置固定链接</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n230"><a class="md-toc-inner" href="#422-安装插件">4.2.2 安装插件</a></span><span role="listitem" class="md-toc-item md-toc-h5" data-ref="n233"><a class="md-toc-inner" href="#4221-缓存">4.2.2.1 缓存</a></span><span role="listitem" class="md-toc-item md-toc-h6" data-ref="n237"><a class="md-toc-inner" href="#42211-litespeed-cache">4.2.2.1.1 LiteSpeed Cache</a></span><span role="listitem" class="md-toc-item md-toc-h6" data-ref="n248"><a class="md-toc-inner" href="#42211-其他缓存">4.2.2.1.1 其他缓存</a></span><span role="listitem" class="md-toc-item md-toc-h5" data-ref="n253"><a class="md-toc-inner" href="#4222-对象存储">4.2.2.2 对象存储</a></span><span role="listitem" class="md-toc-item md-toc-h6" data-ref="n256"><a class="md-toc-inner" href="#42221-创建bucket">4.2.2.2.1 创建Bucket</a></span><span role="listitem" class="md-toc-item md-toc-h6" data-ref="n258"><a class="md-toc-inner" href="#42222-创建accesskey">4.2.2.2.2 创建AccessKey</a></span><span role="listitem" class="md-toc-item md-toc-h6" data-ref="n261"><a class="md-toc-inner" href="#42223-开启cdn加速可选）">4.2.2.2.3 开启CDN加速（可选）</a></span><span role="listitem" class="md-toc-item md-toc-h6" data-ref="n268"><a class="md-toc-inner" href="#42224-设置wordpress插件">4.2.2.2.4 设置Wordpress插件</a></span><span role="listitem" class="md-toc-item md-toc-h5" data-ref="n271"><a class="md-toc-inner" href="#4223-反垃圾插件akismet">4.2.2.3 反垃圾插件Akismet</a></span><span role="listitem" class="md-toc-item md-toc-h5" data-ref="n274"><a class="md-toc-inner" href="#4224-网站发信插件wp-mail-smtp">4.2.2.4 网站发信插件WP Mail SMTP</a></span><span role="listitem" class="md-toc-item md-toc-h5" data-ref="n281"><a class="md-toc-inner" href="#4225-友情链接link-manager">4.2.2.5 友情链接Link Manager</a></span><span role="listitem" class="md-toc-item md-toc-h5" data-ref="n284"><a class="md-toc-inner" href="#4226-其它实用插件">4.2.2.6 其它实用插件</a></span><span role="listitem" class="md-toc-item md-toc-h6" data-ref="n286"><a class="md-toc-inner" href="#42261-auto-ping-booster-和-google-xml-sitemap-generator">4.2.2.6.1 Auto Ping Booster 和 Google XML Sitemap Generator</a></span><span role="listitem" class="md-toc-item md-toc-h6" data-ref="n288"><a class="md-toc-inner" href="#42262-google-font-fix">4.2.2.6.2 Google Font Fix</a></span><span role="listitem" class="md-toc-item md-toc-h6" data-ref="n290"><a class="md-toc-inner" href="#42263-really-simple-ssl">4.2.2.6.3 Really Simple SSL</a></span><span role="listitem" class="md-toc-item md-toc-h6" data-ref="n292"><a class="md-toc-inner" href="#42264-wp-statistics">4.2.2.6.4 WP Statistics</a></span><span role="listitem" class="md-toc-item md-toc-h5" data-ref="n294"><a class="md-toc-inner" href="#4227-使用cdn加速其它静态文件可选）">4.2.2.7 使用CDN加速其它静态文件（可选）</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n300"><a class="md-toc-inner" href="#43-从lofter迁移到wordpress">4.3 从Lofter迁移到Wordpress</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n306"><a class="md-toc-inner" href="#5-个性化">5. 个性化</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n308"><a class="md-toc-inner" href="#51-主题">5.1 主题</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n313"><a class="md-toc-inner" href="#511-自定义功能">5.1.1 自定义功能</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n319"><a class="md-toc-inner" href="#512-菜单和小工具">5.1.2 菜单和小工具</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n326"><a class="md-toc-inner" href="#6-撰写内容">6. 撰写内容</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n329"><a class="md-toc-inner" href="#61-使用wordpress编辑器">6.1 使用Wordpress编辑器</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n341"><a class="md-toc-inner" href="#62-首页显示摘要">6.2 首页显示摘要</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n346"><a class="md-toc-inner" href="#7-rss订阅">7. RSS订阅</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n421"><a class="md-toc-inner" href="#8-接下来要做什么">8. 接下来要做什么</a></span></p></div><p>&nbsp;</p><p>&nbsp;</p></div></div>
 </body>
 </html>
